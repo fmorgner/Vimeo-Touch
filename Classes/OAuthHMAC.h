@@ -9,12 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonHMAC.h>
 #import "NSData+Base64.h"
+#import "OAuthSignerProtocol.h"
 
-@interface OAuthHMAC : NSObject
+@interface OAuthHMAC : NSObject <OAuthSigner>
 	{
 
 	}
-
-+ (NSString*)signClearText:(NSString*)theClearText withSecret:(NSString*)theSecret;
 
 @end
