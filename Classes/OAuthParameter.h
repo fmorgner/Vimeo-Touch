@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+OAuthURLEncoding.h"
 
 
 @interface OAuthParameter : NSObject

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonHMAC.h>
+#import "NSData+Base64.h"
 
 @interface OAuthHMAC : NSObject
 	{

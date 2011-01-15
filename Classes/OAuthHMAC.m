@@ -7,7 +7,6 @@
 //
 
 #import "OAuthHMAC.h"
-#import "NSData+Base64.h"
 
 
 @implementation OAuthHMAC

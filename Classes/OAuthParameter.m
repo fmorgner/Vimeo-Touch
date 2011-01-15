@@ -7,7 +7,6 @@
 //
 
 #import "OAuthParameter.h"
-#import "NSString+OAuthURLEncoding.h"
 
 @implementation OAuthParameter
 
