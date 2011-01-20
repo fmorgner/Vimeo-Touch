@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "ChannelsList.h"
 
+#import "OAuthRequest.h"
+
 @implementation AppDelegate
 
 
@@ -18,6 +20,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 	{
+	OAuthConsumer* consumer = [OAuthConsumer consumerWithKey:@"key" secret:@"secret"];
+	OAuthRequest* request = [[OAuthRequest alloc] initWithURL:nil consumer:consumer token:nil realm:nil signerClass:nil];
+	[request signatureForBaseString];
+	
+	
 	NSMutableArray* viewControllers = [NSMutableArray arrayWithCapacity:1];
 	
 	UINavigationController* localNavigationController;
