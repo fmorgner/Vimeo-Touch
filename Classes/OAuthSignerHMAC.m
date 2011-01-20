@@ -25,4 +25,9 @@
 	return [signedData base64EncodedString];
 	}
 
++ (NSString*)signatureType
+	{
+	return @"HMAC-SHA1";
+	}
+
 @end
