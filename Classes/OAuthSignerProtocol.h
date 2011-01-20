@@ -13,5 +13,5 @@
 
 @required
 + (NSString*)signClearText:(NSString*)theClearText withSecret:(NSString*)theSecret;
-
++ (NSString*)signatureType;
 @end
