@@ -11,13 +11,14 @@
 		BB05348512DCFAC8008578F2 /* ChannelsList.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB05348312DCFAC8008578F2 /* ChannelsList.xib */; };
 		BB05348B12DE12D4008578F2 /* 70-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = BB05348A12DE12D4008578F2 /* 70-tv.png */; };
 		BB1AFA2612E0DF2B00252AF3 /* VimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA2512E0DF2B00252AF3 /* VimeoVideo.m */; };
-		BB1AFA2D12E0E10600252AF3 /* OAuthHMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA2C12E0E10600252AF3 /* OAuthHMAC.m */; };
+		BB1AFA2D12E0E10600252AF3 /* OAuthSignerHMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA2C12E0E10600252AF3 /* OAuthSignerHMAC.m */; };
 		BB1AFA2F12E0E15B00252AF3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1AFA2E12E0E15B00252AF3 /* Security.framework */; };
 		BB1AFA3812E0E38900252AF3 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA3712E0E38900252AF3 /* NSData+Base64.m */; };
 		BB1AFA3F12E0EA7400252AF3 /* NSString+OAuthURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA3E12E0EA7400252AF3 /* NSString+OAuthURLEncoding.m */; };
 		BB1AFA4312E0EC4900252AF3 /* OAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA4212E0EC4900252AF3 /* OAuthToken.m */; };
 		BB1AFA4612E0EE7D00252AF3 /* OAuthConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA4512E0EE7D00252AF3 /* OAuthConsumer.m */; };
 		BB1AFA4912E0EF6500252AF3 /* OAuthParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA4812E0EF6500252AF3 /* OAuthParameter.m */; };
+		BB1DF9EC12E1C30B00FC342D /* OAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1DF9EB12E1C30B00FC342D /* OAuthRequest.m */; };
 		BBF7289F12DB995C00FEEBA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF7289E12DB995C00FEEBA3 /* UIKit.framework */; };
 		BBF728A112DB995C00FEEBA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A012DB995C00FEEBA3 /* Foundation.framework */; };
 		BBF728A312DB995C00FEEBA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A212DB995C00FEEBA3 /* CoreGraphics.framework */; };
@@ -34,8 +35,8 @@
 		BB05348A12DE12D4008578F2 /* 70-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "70-tv.png"; sourceTree = "<group>"; };
 		BB1AFA2412E0DF2B00252AF3 /* VimeoVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoVideo.h; sourceTree = "<group>"; };
 		BB1AFA2512E0DF2B00252AF3 /* VimeoVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoVideo.m; sourceTree = "<group>"; };
-		BB1AFA2B12E0E10600252AF3 /* OAuthHMAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthHMAC.h; sourceTree = "<group>"; };
-		BB1AFA2C12E0E10600252AF3 /* OAuthHMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthHMAC.m; sourceTree = "<group>"; };
+		BB1AFA2B12E0E10600252AF3 /* OAuthSignerHMAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSignerHMAC.h; sourceTree = "<group>"; };
+		BB1AFA2C12E0E10600252AF3 /* OAuthSignerHMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthSignerHMAC.m; sourceTree = "<group>"; };
 		BB1AFA2E12E0E15B00252AF3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BB1AFA3612E0E38900252AF3 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		BB1AFA3712E0E38900252AF3 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
@@ -47,6 +48,9 @@
 		BB1AFA4512E0EE7D00252AF3 /* OAuthConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthConsumer.m; sourceTree = "<group>"; };
 		BB1AFA4712E0EF6500252AF3 /* OAuthParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthParameter.h; sourceTree = "<group>"; };
 		BB1AFA4812E0EF6500252AF3 /* OAuthParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthParameter.m; sourceTree = "<group>"; };
+		BB1DF9EA12E1C30B00FC342D /* OAuthRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthRequest.h; sourceTree = "<group>"; };
+		BB1DF9EB12E1C30B00FC342D /* OAuthRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthRequest.m; sourceTree = "<group>"; };
+		BBD34D5812E2085500CAB3BF /* OAuthSignerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSignerProtocol.h; sourceTree = "<group>"; };
 		BBF7289B12DB995C00FEEBA3 /* Vimeo Touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vimeo Touch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF7289E12DB995C00FEEBA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBF728A012DB995C00FEEBA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -87,14 +91,17 @@
 		BB1AFA2A12E0E0F200252AF3 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
+				BBD34D5812E2085500CAB3BF /* OAuthSignerProtocol.h */,
 				BB1AFA4412E0EE7D00252AF3 /* OAuthConsumer.h */,
 				BB1AFA4512E0EE7D00252AF3 /* OAuthConsumer.m */,
-				BB1AFA2B12E0E10600252AF3 /* OAuthHMAC.h */,
-				BB1AFA2C12E0E10600252AF3 /* OAuthHMAC.m */,
+				BB1AFA2B12E0E10600252AF3 /* OAuthSignerHMAC.h */,
+				BB1AFA2C12E0E10600252AF3 /* OAuthSignerHMAC.m */,
 				BB1AFA4712E0EF6500252AF3 /* OAuthParameter.h */,
 				BB1AFA4812E0EF6500252AF3 /* OAuthParameter.m */,
 				BB1AFA4112E0EC4900252AF3 /* OAuthToken.h */,
 				BB1AFA4212E0EC4900252AF3 /* OAuthToken.m */,
+				BB1DF9EA12E1C30B00FC342D /* OAuthRequest.h */,
+				BB1DF9EB12E1C30B00FC342D /* OAuthRequest.m */,
 			);
 			name = OAuth;
 			sourceTree = "<group>";
@@ -243,12 +250,13 @@
 				BBF728AD12DB995C00FEEBA3 /* AppDelegate.m in Sources */,
 				BB05348412DCFAC8008578F2 /* ChannelsList.m in Sources */,
 				BB1AFA2612E0DF2B00252AF3 /* VimeoVideo.m in Sources */,
-				BB1AFA2D12E0E10600252AF3 /* OAuthHMAC.m in Sources */,
+				BB1AFA2D12E0E10600252AF3 /* OAuthSignerHMAC.m in Sources */,
 				BB1AFA3812E0E38900252AF3 /* NSData+Base64.m in Sources */,
 				BB1AFA3F12E0EA7400252AF3 /* NSString+OAuthURLEncoding.m in Sources */,
 				BB1AFA4312E0EC4900252AF3 /* OAuthToken.m in Sources */,
 				BB1AFA4612E0EE7D00252AF3 /* OAuthConsumer.m in Sources */,
 				BB1AFA4912E0EF6500252AF3 /* OAuthParameter.m in Sources */,
+				BB1DF9EC12E1C30B00FC342D /* OAuthRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +321,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vimeo_Touch-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Vimeo_Touch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -327,6 +336,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vimeo_Touch-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Vimeo_Touch-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
