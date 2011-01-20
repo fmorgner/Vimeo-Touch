@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OAuthConsumer.h"
 #import "OAuthToken.h"
+#import "OAuthSignerProtocol.h"
 
 @interface OAuthRequest : NSMutableURLRequest
 	{
@@ -20,6 +21,14 @@
 	NSString* timestamp;
 	}
 
-- (id)initWithURL:(NSURL *)theURL consumer:(OAuthConsumer*)theConsumer token:(OAuthToken*)theToken realm:(NSString*)realm;
+- (id)initWithURL:(NSURL *)theURL consumer:(OAuthConsumer*)theConsumer token:(OAuthToken*)theToken realm:(NSString*)realm signer:(id<OAuthSigner>)signer;
+
+@property(nonatomic, retain) OAuthConsumer* consumer;
+@property(nonatomic, retain) OAuthToken*	token;
+@property(nonatomic, retain) NSString* realm;
+@property(nonatomic, retain) NSString* signature;
+@property(nonatomic, retain) NSString* nonce;
+@property(nonatomic, retain) NSString* timestamp;
+
 
 @end
