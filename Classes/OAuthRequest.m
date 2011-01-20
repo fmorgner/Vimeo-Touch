@@ -7,6 +7,7 @@
 //
 
 #import "OAuthRequest.h"
+#import "OAuthSignerProtocol.h"
 
 
 @implementation OAuthRequest
@@ -31,7 +32,17 @@
 		[self setToken:theToken];
 		[self setRealm:theRealm];
     }
-	
+
+	if([theSignerClass conformsToProtocol:@protocol(OAuthSigner)])
+		{
+		NSLog(@"Info: Using signer class '%@' to generate signature.", theSignerClass);
+		NSLog(@"Info: The signer class '%@' provides a '%@' signature.", theSignerClass, [theSignerClass signatureType]);
+		}
+	else
+		{
+		NSLog(@"Warning: The supplied signer class '%@' does not conform to the 'OAuthSigner' protocol. Falling back to HMAC-SHA1!", theSignerClass);
+		}
+
 	return self;
 	}
 
