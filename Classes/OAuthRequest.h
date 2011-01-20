@@ -13,6 +13,7 @@
 
 @interface OAuthRequest : NSMutableURLRequest
 	{
+	Class signerClass;
 	OAuthConsumer* consumer;
 	OAuthToken*	token;
 	NSString* realm;
@@ -23,12 +24,16 @@
 
 - (id)initWithURL:(NSURL *)theURL consumer:(OAuthConsumer*)theConsumer token:(OAuthToken*)theToken realm:(NSString*)realm signerClass:(Class)theSignerClass;
 
+- (NSString*)generateNonce;
+- (NSString*)generateTimestamp;
+- (NSString*)signatureForBaseString;
+
 @property(nonatomic, retain) OAuthConsumer* consumer;
 @property(nonatomic, retain) OAuthToken*	token;
 @property(nonatomic, retain) NSString* realm;
 @property(nonatomic, retain) NSString* signature;
 @property(nonatomic, retain) NSString* nonce;
 @property(nonatomic, retain) NSString* timestamp;
-
+@property(nonatomic, assign) Class signerClass;
 
 @end
