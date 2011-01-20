@@ -49,7 +49,12 @@
 
 - (void)dealloc
 	{
-    
+	[consumer release];
+	[token release];
+	[nonce release];
+	[realm dealloc];
+	[signature dealloc];
+	[timestamp dealloc];
 	[super dealloc];
 	}
 
