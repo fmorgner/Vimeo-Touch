@@ -21,7 +21,7 @@
 	NSString* timestamp;
 	}
 
-- (id)initWithURL:(NSURL *)theURL consumer:(OAuthConsumer*)theConsumer token:(OAuthToken*)theToken realm:(NSString*)realm signer:(id<OAuthSigner>)signer;
+- (id)initWithURL:(NSURL *)theURL consumer:(OAuthConsumer*)theConsumer token:(OAuthToken*)theToken realm:(NSString*)realm signerClass:(Class)theSignerClass;
 
 @property(nonatomic, retain) OAuthConsumer* consumer;
 @property(nonatomic, retain) OAuthToken*	token;

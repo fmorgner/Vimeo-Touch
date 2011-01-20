@@ -23,7 +23,7 @@
 	return self;
 	}
 
-- (id)initWithURL:(NSURL *)theURL consumer:(OAuthConsumer*)theConsumer token:(OAuthToken*)theToken realm:(NSString*)theRealm signer:(id<OAuthSigner>)theSigner
+- (id)initWithURL:(NSURL *)theURL consumer:(OAuthConsumer*)theConsumer token:(OAuthToken*)theToken realm:(NSString*)theRealm signerClass:(Class)theSignerClass
 	{
 	if ((self = [super init]))
 		{
