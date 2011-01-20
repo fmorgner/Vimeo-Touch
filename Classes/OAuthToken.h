@@ -16,8 +16,9 @@
 	}
 
 - (id)initWithKey:(NSString*)theKey secret:(NSString*)theSecret;
-
 + (OAuthToken*)tokenWithKey:(NSString*)theKey secret:(NSString*)theSecret;
+
++ (OAuthToken*)token;
 
 @property(nonatomic, retain) NSString* key;
 @property(nonatomic, retain) NSString* secret;

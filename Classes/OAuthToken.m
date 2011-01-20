@@ -17,8 +17,8 @@
 	{
 	if((self = [super init]))
 		{
-		self.key = nil;
-		self.secret = nil;
+		self.key = @"";
+		self.secret = @"";
 		}
 	
 	return self;
@@ -47,5 +47,9 @@
 	return [[[OAuthToken alloc] initWithKey:theKey secret:theSecret] autorelease];
 	}
 
++ (OAuthToken*)token
+	{
+	return [[[OAuthToken alloc] init] autorelease];
+	}
 
 @end
