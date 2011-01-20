@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 #import "ChannelsList.h"
 
-#import "OAuthHMAC.h"
-
 @implementation AppDelegate
 
 
