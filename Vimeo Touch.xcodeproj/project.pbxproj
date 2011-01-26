@@ -19,6 +19,8 @@
 		BB1AFA4612E0EE7D00252AF3 /* OAuthConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA4512E0EE7D00252AF3 /* OAuthConsumer.m */; };
 		BB1AFA4912E0EF6500252AF3 /* OAuthParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA4812E0EF6500252AF3 /* OAuthParameter.m */; };
 		BB1DF9EC12E1C30B00FC342D /* OAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1DF9EB12E1C30B00FC342D /* OAuthRequest.m */; };
+		BBA91EAD12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m */; };
+		BBA91EB412EB129500B95AFE /* NSURL+BaseString.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EB312EB129500B95AFE /* NSURL+BaseString.m */; };
 		BBF7289F12DB995C00FEEBA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF7289E12DB995C00FEEBA3 /* UIKit.framework */; };
 		BBF728A112DB995C00FEEBA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A012DB995C00FEEBA3 /* Foundation.framework */; };
 		BBF728A312DB995C00FEEBA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A212DB995C00FEEBA3 /* CoreGraphics.framework */; };
@@ -50,6 +52,10 @@
 		BB1AFA4812E0EF6500252AF3 /* OAuthParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthParameter.m; sourceTree = "<group>"; };
 		BB1DF9EA12E1C30B00FC342D /* OAuthRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthRequest.h; sourceTree = "<group>"; };
 		BB1DF9EB12E1C30B00FC342D /* OAuthRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthRequest.m; sourceTree = "<group>"; };
+		BBA91EAB12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+OAuthParameters.h"; sourceTree = "<group>"; };
+		BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+OAuthParameters.m"; sourceTree = "<group>"; };
+		BBA91EB212EB129500B95AFE /* NSURL+BaseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+BaseString.h"; sourceTree = "<group>"; };
+		BBA91EB312EB129500B95AFE /* NSURL+BaseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+BaseString.m"; sourceTree = "<group>"; };
 		BBD34D5812E2085500CAB3BF /* OAuthSignerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSignerProtocol.h; sourceTree = "<group>"; };
 		BBF7289B12DB995C00FEEBA3 /* Vimeo Touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vimeo Touch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF7289E12DB995C00FEEBA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -109,6 +115,10 @@
 		BB1AFA3512E0E37800252AF3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				BBA91EB212EB129500B95AFE /* NSURL+BaseString.h */,
+				BBA91EB312EB129500B95AFE /* NSURL+BaseString.m */,
+				BBA91EAB12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.h */,
+				BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m */,
 				BB1AFA3612E0E38900252AF3 /* NSData+Base64.h */,
 				BB1AFA3712E0E38900252AF3 /* NSData+Base64.m */,
 				BB1AFA3D12E0EA7300252AF3 /* NSString+OAuthURLEncoding.h */,
@@ -257,6 +267,8 @@
 				BB1AFA4612E0EE7D00252AF3 /* OAuthConsumer.m in Sources */,
 				BB1AFA4912E0EF6500252AF3 /* OAuthParameter.m in Sources */,
 				BB1DF9EC12E1C30B00FC342D /* OAuthRequest.m in Sources */,
+				BBA91EAD12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m in Sources */,
+				BBA91EB412EB129500B95AFE /* NSURL+BaseString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

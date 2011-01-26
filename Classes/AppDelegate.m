@@ -20,10 +20,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 	{
-	OAuthConsumer* consumer = [OAuthConsumer consumerWithKey:@"key" secret:@"secret"];
-	OAuthRequest* request = [[OAuthRequest alloc] initWithURL:nil consumer:consumer token:nil realm:nil signerClass:nil];
-	[request signatureForBaseString];
+	OAuthConsumer* consumer = [OAuthConsumer consumerWithKey:@"7ae96ae33601e4482b6bf6e76e442781" secret:@"b79d3ec05a464bd7"];
+	OAuthRequest* request = [[OAuthRequest alloc] initWithURL:[NSURL URLWithString:@"http://vimeo.com/oauth/request_token"] consumer:consumer token:nil realm:nil signerClass:nil];
+	[request addParameter:[OAuthParameter parameterWithKey:@"oauth_callback" andValue:@"oob"]];
+	[request prepare];
 	
+	NSURLResponse* response;
+	NSError* error;
+	NSData* fetchedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+	char* data = malloc([fetchedData length]);
+	memcpy(data, [fetchedData bytes], [fetchedData length]);
 	
 	NSMutableArray* viewControllers = [NSMutableArray arrayWithCapacity:1];
 	

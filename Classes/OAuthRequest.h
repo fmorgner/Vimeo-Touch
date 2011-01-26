@@ -21,7 +21,7 @@
 	NSString* signature;
 	NSString* nonce;
 	NSString* timestamp;
-	NSMutableDictionary* extraParameters;
+	NSMutableArray* oauthParameters;
 	}
 
 - (id)initWithURL:(NSURL *)theURL consumer:(OAuthConsumer*)theConsumer token:(OAuthToken*)theToken realm:(NSString*)realm signerClass:(Class)theSignerClass;
@@ -40,6 +40,6 @@
 @property(nonatomic, retain) NSString* nonce;
 @property(nonatomic, retain) NSString* timestamp;
 @property(nonatomic, assign) Class signerClass;
-@property(nonatomic, assign) NSMutableDictionary* extraParameters;
+@property(nonatomic, assign) NSMutableArray* oauthParameters;
 
 @end

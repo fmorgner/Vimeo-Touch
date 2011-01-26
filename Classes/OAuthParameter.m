@@ -51,4 +51,9 @@
 	return [keyValuePair stringUsingOAuthURLEncoding];
 	}
 
+- (NSString*)concatenatedKeyValuePair
+	{
+	NSString* keyValuePair = [NSString stringWithFormat:@"%@=%@", key, value];
+	return keyValuePair;
+	}
 @end
