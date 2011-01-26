@@ -35,7 +35,7 @@
 	for(NSString* pair in parameterPairs)
 		{
 		NSArray* pairElements = [pair componentsSeparatedByString:@"="];
-		OAuthParameter *parameter = [OAuthParameter parameterWithKey:[[pairElements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] andValue:[[pairElements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+		OAuthParameter *parameter = [OAuthParameter parameterWithKey:[[pairElements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] andValue:[[pairElements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 		[requestParameters addObject:parameter];
 		}
 	
