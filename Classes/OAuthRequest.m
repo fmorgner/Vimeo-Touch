@@ -102,6 +102,7 @@
 
 - (NSString*)signatureBaseString
 	{
+	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_callback" andValue:@"oob"]];
 	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_consumer_key" andValue:consumer.key]];
 	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_signature_method" andValue:[signerClass signatureType]]];
 	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_timestamp" andValue:timestamp]];
@@ -112,16 +113,13 @@
 		{
 		[oauthParameters addObject:[[OAuthParameter parameterWithKey:@"oauth_token" andValue:token.key] concatenatedKeyValuePair]];
 		}
-	
+		
 	for(OAuthParameter* parameter in [self parameters])
 		{
-		[oauthParameters addObject:[parameter concatenatedKeyValuePair]];
+		[oauthParameters addObject:parameter];
 		}
-	
-	[oauthParameters sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-		return [[obj1 key] compare:[obj2 key]];
-	}];
-	
+
+	[oauthParameters sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES] autorelease]]];
 	NSMutableArray* keyValuePairStrings = [NSMutableArray arrayWithCapacity:[oauthParameters count]];
 	
 	for(OAuthParameter* parameter in oauthParameters)
@@ -150,19 +148,17 @@
 	NSString* sigKey = [NSString stringWithFormat:@"%@&%@", consumer.secret, token.secret];
 	NSString* sigBase = [self signatureBaseString];
 	[self setSignature:[signerClass signClearText:sigBase withSecret:sigKey]];
-	NSString* tokenString;
-	([token.key isEqualToString:@""]) ? (tokenString = @"") : (tokenString = [NSString stringWithFormat:@"oauth_token=%@, ", [token.key stringUsingOAuthURLEncoding]]);
 
-	NSString *oauthHeader = [NSString stringWithFormat:@"OAuth realm=%@, oauth_consumer_key=%@, %@oauth_signature_method=%@, oauth_signature=%@, oauth_timestamp=%@, oauth_nonce=%@, oauth_version=1.0%@",
-													[realm stringUsingOAuthURLEncoding],
-													[consumer.key stringUsingOAuthURLEncoding],
-													tokenString,
-													[[signerClass signatureType] stringUsingOAuthURLEncoding],
-													[signature stringUsingOAuthURLEncoding],
-													timestamp,
-													nonce,
-													@""];
-	[self setValue:oauthHeader forHTTPHeaderField:@"Authorization"];
+	NSMutableString* oauthHeaderString = [NSMutableString stringWithFormat:@"OAuth realm=\"%@\"", [realm stringUsingOAuthURLEncoding]];
+	
+	for(OAuthParameter* parameter in oauthParameters)
+		{
+		[oauthHeaderString appendFormat:@", %@=\"%@\"", [[parameter key] stringUsingOAuthURLEncoding], [[parameter value] stringUsingOAuthURLEncoding]];
+		}
+
+	[oauthHeaderString appendFormat:@", oauth_signature=\"%@\"", [signature stringUsingOAuthURLEncoding]];
+
+	[self setValue:oauthHeaderString forHTTPHeaderField:@"Authorization"];
 	}
 
 @end
