@@ -3,13 +3,14 @@
 //  Vimeo Touch
 //
 //  Created by Felix Morgner on 10.01.11.
-//  Copyright 2011 Bühler AG. All rights reserved.
+//  Copyright 2011 Felix Morgner. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "ChannelsList.h"
 
-#import "OAuthRequest.h"
+#import "OAuth.h"
+#import "VimeoController.h"
 
 @implementation AppDelegate
 
@@ -21,16 +22,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 	{
 	OAuthConsumer* consumer = [OAuthConsumer consumerWithKey:@"7ae96ae33601e4482b6bf6e76e442781" secret:@"b79d3ec05a464bd7"];
-	OAuthRequest* request = [[OAuthRequest alloc] initWithURL:[NSURL URLWithString:@"http://vimeo.com/oauth/request_token"] consumer:consumer token:nil realm:nil signerClass:nil];
-	[request addParameter:[OAuthParameter parameterWithKey:@"oauth_callback" andValue:@"oob"]];
-	[request prepare];
+	VimeoController* vimeo = [[VimeoController alloc] init];
 	
-	NSURLResponse* response;
-	NSError* error;
-	NSData* fetchedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-	char* data = malloc([fetchedData length]);
-	memcpy(data, [fetchedData bytes], [fetchedData length]);
+	[vimeo setConsumer:consumer];
+	[vimeo allChannels];
 	
+	[vimeo release];
+	[consumer release];
+			
 	NSMutableArray* viewControllers = [NSMutableArray arrayWithCapacity:1];
 	
 	UINavigationController* localNavigationController;
