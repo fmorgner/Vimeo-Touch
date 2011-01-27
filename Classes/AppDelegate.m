@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
+
 #import "ChannelsList.h"
+#import "AccountViewController.h"
 
 #import "OAuth.h"
 #import "VimeoController.h"
@@ -21,15 +23,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 	{
-	OAuthConsumer* consumer = [OAuthConsumer consumerWithKey:@"7ae96ae33601e4482b6bf6e76e442781" secret:@"b79d3ec05a464bd7"];
-	VimeoController* vimeo = [[VimeoController alloc] init];
-	
-	[vimeo setConsumer:consumer];
-	[vimeo allChannels];
-	
-	[vimeo release];
-	[consumer release];
-			
 	NSMutableArray* viewControllers = [NSMutableArray arrayWithCapacity:1];
 	
 	UINavigationController* localNavigationController;
@@ -39,6 +32,11 @@
 	[channelsListController release];
 	[viewControllers addObject:localNavigationController];
 	[localNavigationController release];
+
+	AccountViewController* accountViewController = [[AccountViewController alloc] initWithNibName:@"AccountViewController" bundle:[NSBundle mainBundle]];
+	[viewControllers addObject:accountViewController];
+	[accountViewController release];
+
 	tabBarController = [[UITabBarController alloc] init];
 	[tabBarController setViewControllers:viewControllers];
 	

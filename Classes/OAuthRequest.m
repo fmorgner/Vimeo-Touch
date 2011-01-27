@@ -114,19 +114,19 @@
 		[oauthParameters addObject:[[OAuthParameter parameterWithKey:@"oauth_token" andValue:token.key] concatenatedKeyValuePair]];
 		}
 		
-	for(OAuthParameter* parameter in [self parameters])
-		{
-		[oauthParameters addObject:parameter];
-		}
-
 	[oauthParameters sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES] autorelease]]];
 	NSMutableArray* keyValuePairStrings = [NSMutableArray arrayWithCapacity:[oauthParameters count]];
 	
+	for(OAuthParameter* parameter in [self parameters])
+		{
+		[keyValuePairStrings addObject:[parameter concatenatedKeyValuePair]];
+		}
+
 	for(OAuthParameter* parameter in oauthParameters)
 		{
 		[keyValuePairStrings addObject:[parameter concatenatedKeyValuePair]];
 		}
-	
+
 	NSString* baseString = [keyValuePairStrings componentsJoinedByString:@"&"];
 	
 	return [NSString stringWithFormat:@"%@&%@&%@", [self HTTPMethod], [[[self URL] URLStringWithoutQuery] stringUsingOAuthURLEncoding], [baseString stringUsingOAuthURLEncoding]];

@@ -21,6 +21,8 @@
 		BB1DF9EC12E1C30B00FC342D /* OAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1DF9EB12E1C30B00FC342D /* OAuthRequest.m */; };
 		BB313A5B12F079F100FD1FDD /* VimeoController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB313A5A12F079F100FD1FDD /* VimeoController.m */; };
 		BB313A5F12F07AAA00FD1FDD /* VimeoChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB313A5E12F07AAA00FD1FDD /* VimeoChannel.m */; };
+		BB313A6412F09ABF00FD1FDD /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB313A6212F09ABF00FD1FDD /* AccountViewController.m */; };
+		BB313A6512F09ABF00FD1FDD /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB313A6312F09ABF00FD1FDD /* AccountViewController.xib */; };
 		BBA91EAD12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m */; };
 		BBA91EB412EB129500B95AFE /* NSURL+BaseString.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EB312EB129500B95AFE /* NSURL+BaseString.m */; };
 		BBF7289F12DB995C00FEEBA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF7289E12DB995C00FEEBA3 /* UIKit.framework */; };
@@ -54,11 +56,14 @@
 		BB1AFA4812E0EF6500252AF3 /* OAuthParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthParameter.m; sourceTree = "<group>"; };
 		BB1DF9EA12E1C30B00FC342D /* OAuthRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthRequest.h; sourceTree = "<group>"; };
 		BB1DF9EB12E1C30B00FC342D /* OAuthRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthRequest.m; sourceTree = "<group>"; };
-		BB313A5912F079F100FD1FDD /* VimeoController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = VimeoController.h; sourceTree = "<group>"; };
+		BB313A5912F079F100FD1FDD /* VimeoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoController.h; sourceTree = "<group>"; };
 		BB313A5A12F079F100FD1FDD /* VimeoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoController.m; sourceTree = "<group>"; };
 		BB313A5D12F07AAA00FD1FDD /* VimeoChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoChannel.h; sourceTree = "<group>"; };
 		BB313A5E12F07AAA00FD1FDD /* VimeoChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoChannel.m; sourceTree = "<group>"; };
 		BB313A6012F07C9B00FD1FDD /* OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuth.h; sourceTree = "<group>"; };
+		BB313A6112F09ABF00FD1FDD /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		BB313A6212F09ABF00FD1FDD /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		BB313A6312F09ABF00FD1FDD /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountViewController.xib; path = Classes/AccountViewController.xib; sourceTree = "<group>"; };
 		BBA91EAB12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+OAuthParameters.h"; sourceTree = "<group>"; };
 		BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+OAuthParameters.m"; sourceTree = "<group>"; };
 		BBA91EB212EB129500B95AFE /* NSURL+BaseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+BaseString.h"; sourceTree = "<group>"; };
@@ -139,6 +144,16 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		BB313A6612F09ACD00FD1FDD /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				BB313A6312F09ABF00FD1FDD /* AccountViewController.xib */,
+				BBF728AE12DB995C00FEEBA3 /* MainWindow.xib */,
+				BB05348312DCFAC8008578F2 /* ChannelsList.xib */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
 		BBF7288C12DB995C00FEEBA3 = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +175,8 @@
 				BBF728AC12DB995C00FEEBA3 /* AppDelegate.m */,
 				BB05348112DCFAC8008578F2 /* ChannelsList.h */,
 				BB05348212DCFAC8008578F2 /* ChannelsList.m */,
+				BB313A6112F09ABF00FD1FDD /* AccountViewController.h */,
+				BB313A6212F09ABF00FD1FDD /* AccountViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -176,11 +193,10 @@
 		BBF7289512DB995C00FEEBA3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BB313A6612F09ACD00FD1FDD /* User Interface */,
 				BB05348A12DE12D4008578F2 /* 70-tv.png */,
 				BBF728A412DB995C00FEEBA3 /* Vimeo_Touch-Info.plist */,
 				BBF728A612DB995C00FEEBA3 /* InfoPlist.strings */,
-				BBF728AE12DB995C00FEEBA3 /* MainWindow.xib */,
-				BB05348312DCFAC8008578F2 /* ChannelsList.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -258,6 +274,7 @@
 				BBF728B012DB995C00FEEBA3 /* MainWindow.xib in Resources */,
 				BB05348512DCFAC8008578F2 /* ChannelsList.xib in Resources */,
 				BB05348B12DE12D4008578F2 /* 70-tv.png in Resources */,
+				BB313A6512F09ABF00FD1FDD /* AccountViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +300,7 @@
 				BBA91EB412EB129500B95AFE /* NSURL+BaseString.m in Sources */,
 				BB313A5B12F079F100FD1FDD /* VimeoController.m in Sources */,
 				BB313A5F12F07AAA00FD1FDD /* VimeoChannel.m in Sources */,
+				BB313A6412F09ABF00FD1FDD /* AccountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

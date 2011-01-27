@@ -34,9 +34,8 @@
 	NSURLResponse* receivedResponse = nil;
 	NSError* error = nil;
 	OAuthRequest* channelRequest = [self prepareRequestWithParameters:[NSArray arrayWithObject:[OAuthParameter parameterWithKey:@"method" andValue:kVimeoChannelMethodGetAll]]];
-	NSData* receivedData = [NSURLConnection sendSynchronousRequest:channelRequest returningResponse:&receivedResponse error:&error];
-	NSLog(@"received data: %@", [NSString stringWithUTF8String:[receivedData bytes]]);
-	
+	NSData* receivedData = [NSURLConnection sendSynchronousRequest:channelRequest returningResponse:&receivedResponse error:&error];	
+	[receivedData release];
 	return nil;
 	}
 
