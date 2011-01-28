@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OAuth.h"
 
-@interface VimeoAuthorizationViewController : UIViewController
+@interface VimeoAuthorizationViewController : UIViewController <UIWebViewDelegate>
 	{
 	UIWebView* webView;
 	NSURL* authorizationURL;

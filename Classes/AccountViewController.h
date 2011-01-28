@@ -20,6 +20,9 @@
 	}
 
 - (IBAction)login:(id)sender;
+- (NSDictionary*)getAccessTokenWithVerifier:(NSString*)verifier;
+- (NSArray*)parametersFromData:(NSData*)theData;
+
 
 @property(nonatomic, retain) VimeoController* vimeoController;
 @property(nonatomic, retain) AppDelegate* appDelegate;

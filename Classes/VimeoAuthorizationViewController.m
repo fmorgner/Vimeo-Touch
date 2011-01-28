@@ -23,6 +23,7 @@
 		self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 360, 480)];
 		self.token = [[[[UIApplication sharedApplication] delegate] vimeoUser] token];
 		self.authorizationURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://vimeo.com/oauth/authorize?oauth_token=%@&permission=read", token.key]];
+		self.verifier = @"";
 		[webView setDelegate:self];
 		[webView loadRequest:[NSURLRequest requestWithURL:authorizationURL]];
 		[self.view addSubview:webView];
@@ -66,7 +67,7 @@
 			{
 			if([[parameter key] isEqualToString:@"accept"] && [[parameter value] rangeOfString:@"Yes"].location != NSNotFound)
 				{
-				verifier = [theWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('span')[0].firstChild.data"];
+				[self setVerifier:[theWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('span')[0].firstChild.data"]];
 				}
 			}
 		}

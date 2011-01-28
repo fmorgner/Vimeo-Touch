@@ -111,7 +111,7 @@
 	
 	if(![token.key isEqualToString:@""])
 		{
-		[oauthParameters addObject:[[OAuthParameter parameterWithKey:@"oauth_token" andValue:token.key] concatenatedKeyValuePair]];
+		[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_token" andValue:token.key]];
 		}
 		
 	[oauthParameters sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES] autorelease]]];
