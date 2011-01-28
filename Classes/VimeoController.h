@@ -14,13 +14,12 @@
 
 @interface VimeoController : NSObject
 	{
+	@private
 	OAuthConsumer* consumer;
+	OAuthRequest* request;
 	}
 
-- (OAuthRequest*)prepareRequestWithParameters:(NSArray*)theParameters;
-
-- (NSArray*)allChannels; 
-
 @property(nonatomic, retain) OAuthConsumer* consumer;
+@property(nonatomic, retain) OAuthRequest* request;
 
 @end

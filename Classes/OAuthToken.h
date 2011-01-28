@@ -13,6 +13,7 @@
 	{
 	NSString* key;
 	NSString* secret;
+	BOOL authorized;
 	}
 
 - (id)initWithKey:(NSString*)theKey secret:(NSString*)theSecret;
@@ -22,5 +23,6 @@
 
 @property(nonatomic, retain) NSString* key;
 @property(nonatomic, retain) NSString* secret;
+@property(nonatomic, getter = isAuthorized) BOOL authorized;
 
 @end

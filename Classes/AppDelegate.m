@@ -18,11 +18,15 @@
 
 
 @synthesize window;
-
 @synthesize tabBarController;
+@synthesize vimeoUser;
+@synthesize consumer;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 	{
+	[self setVimeoUser:[VimeoUser user]];
+	[self setConsumer:[OAuthConsumer consumerWithKey:@"7ae96ae33601e4482b6bf6e76e442781" secret:@"b79d3ec05a464bd7"]];
+	
 	NSMutableArray* viewControllers = [NSMutableArray arrayWithCapacity:1];
 	
 	UINavigationController* localNavigationController;
@@ -54,7 +58,8 @@
 
 	[window release];
 	[tabBarController release];
-    [super dealloc];
+	[vimeoUser release];
+	[super dealloc];
 }
 
 /*

@@ -1,0 +1,75 @@
+//
+//  VimeoAuthorizationViewController.m
+//  Vimeo Touch
+//
+//  Created by Felix Morgner on 27.01.11.
+//  Copyright 2011 Felix Morgner. All rights reserved.
+//
+
+#import "VimeoAuthorizationViewController.h"
+
+
+@implementation VimeoAuthorizationViewController
+
+@synthesize webView;
+@synthesize authorizationURL;
+@synthesize token;
+@synthesize verifier;
+
+- (id)init
+	{
+	if ((self = [super init]))
+		{
+		self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 360, 480)];
+		self.token = [[[[UIApplication sharedApplication] delegate] vimeoUser] token];
+		self.authorizationURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://vimeo.com/oauth/authorize?oauth_token=%@&permission=read", token.key]];
+		[webView setDelegate:self];
+		[webView loadRequest:[NSURLRequest requestWithURL:authorizationURL]];
+		[self.view addSubview:webView];
+		}
+	return self;
+	}
+
+- (void)dealloc
+{
+    [super dealloc];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - UIWebViewDelegate
+
+- (void)webViewDidFinishLoad:(UIWebView *)theWebView
+	{
+	if([[[theWebView request] HTTPMethod] isEqualToString:@"POST"])
+		{
+		NSArray* parameters = [(NSMutableURLRequest*)[theWebView request] parameters];
+		for(OAuthParameter* parameter in parameters)
+			{
+			if([[parameter key] isEqualToString:@"accept"] && [[parameter value] rangeOfString:@"Yes"].location != NSNotFound)
+				{
+				verifier = [theWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('span')[0].firstChild.data"];
+				}
+			}
+		}
+	}
+
+@end

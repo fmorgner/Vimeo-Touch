@@ -10,18 +10,17 @@
 
 @implementation AccountViewController
 
-@synthesize consumer;
+@synthesize vimeoController;
+@synthesize appDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 	{
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	
-	if (self)
+	if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
 		{
-		[self setConsumer:[OAuthConsumer consumerWithKey:@"7ae96ae33601e4482b6bf6e76e442781" secret:@"b79d3ec05a464bd7"]];
+		self.appDelegate = [[UIApplication sharedApplication] delegate];
+		self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Account" image:[UIImage imageNamed:@"111-user"] tag:0];
 		[self setTitle:@"Account"];
-		}
-	
+		}	
 	return self;
 	}
 
@@ -64,47 +63,32 @@
 - (IBAction)login:(id)sender
 	{
 	OAuthRequest* request = [[OAuthRequest alloc] initWithURL:[NSURL URLWithString:@"http://vimeo.com/oauth/request_token"]
-	 																								 consumer:self.consumer
+	 																								 consumer:appDelegate.consumer
 																									 		token:nil
 																											realm:nil
 																								signerClass:[OAuthSignerHMAC class]];
 	[request prepare];
 	NSHTTPURLResponse* response;
 	NSError* error;
-	NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-	NSString* receivedString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	NSData* receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
 	
 	if([response statusCode] != 200)
 		return;
-		
-	NSArray* parameterPairs = [receivedString componentsSeparatedByString:@"&"];
-	NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithCapacity:[parameterPairs count]];
 	
-	for(NSString* parameterPair in parameterPairs)
+	NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithCapacity:[[request parameters] count]];
+	
+	for(OAuthParameter* parameter in [request parameters])
 		{
-		[parameters setValue:[[parameterPair componentsSeparatedByString:@"="] objectAtIndex:1] forKey:[[parameterPair componentsSeparatedByString:@"="] objectAtIndex:0]];
+		[parameters setValue:parameter.value forKey:parameter.key];
 		}
 	
-	request.token.key = [parameters objectForKey:@"oauth_token"];
-	request.token.secret = [parameters objectForKey:@"oauth_token_secret"];
+	appDelegate.vimeoUser.token.key = [parameters objectForKey:@"oauth_token"];
+	appDelegate.vimeoUser.token.secret = [parameters objectForKey:@"oauth_token_secret"];
 	
-	UIWebView* oauthUserView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 360, 480)];
-	[oauthUserView setDelegate:self];
-	NSURL* authorizationURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://vimeo.com/oauth/authorize?oauth_token=%@&permission=read", request.token.key]];
-
-
-	data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:authorizationURL] returningResponse:nil error:nil];
-	[receivedString release];
-	receivedString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	NSString* newString = [receivedString stringByReplacingOccurrencesOfString:@"content=\"width=1024,maximum-scale=1.0\"" withString:@"content=\"width=360,maximum-scale=1.0\""];
-
-//	[oauthUserView loadRequest:[NSURLRequest requestWithURL:authorizationURL]];
+	VimeoAuthorizationViewController* authorizationViewController = [[VimeoAuthorizationViewController alloc] init];
 	
-	[oauthUserView loadHTMLString:newString baseURL:authorizationURL];
-	
-	UIViewController* oauthUserViewController = [[UIViewController alloc] init];
-	[oauthUserViewController setView:oauthUserView];
-	[self.tabBarController presentModalViewController:oauthUserViewController animated:YES];
+	[self.tabBarController presentModalViewController:authorizationViewController animated:YES];
 	}
 
+#pragma mark - Utility Methods 
 @end

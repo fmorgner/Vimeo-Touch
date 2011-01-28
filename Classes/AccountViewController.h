@@ -7,16 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "VimeoController.h"
+#import "VimeoAuthorizationViewController.h"
 #import "OAuth.h"
-
+#import "NSMutableURLRequest+OAuthParameters.h"
 
 @interface AccountViewController : UIViewController <UIWebViewDelegate>
 	{
-	OAuthConsumer* consumer;
+	VimeoController* vimeoController;
+	AppDelegate* appDelegate;
 	}
 
 - (IBAction)login:(id)sender;
 
-@property(nonatomic, retain) OAuthConsumer* consumer;
+@property(nonatomic, retain) VimeoController* vimeoController;
+@property(nonatomic, retain) AppDelegate* appDelegate;
 
 @end

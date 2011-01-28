@@ -7,14 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VimeoUser.h"
+#import "OAuth.h"
 
 @interface AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate>
 	{
 	UIWindow *window;
 	UITabBarController *tabBarController;
+	
+	VimeoUser* vimeoUser;
+	OAuthConsumer* consumer;
 	}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+
+@property (nonatomic, retain) VimeoUser* vimeoUser;
+@property (nonatomic, retain) OAuthConsumer* consumer;
 
 @end

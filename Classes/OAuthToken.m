@@ -11,7 +11,9 @@
 
 @implementation OAuthToken
 
-@synthesize key, secret;
+@synthesize key;
+@synthesize secret;
+@synthesize authorized;
 
 - (id)init
 	{
@@ -19,6 +21,7 @@
 		{
 		self.key = @"";
 		self.secret = @"";
+		self.authorized = NO;
 		}
 	
 	return self;
@@ -30,6 +33,7 @@
 		{
 		self.key = theKey;
 		self.secret = theSecret;
+		self.authorized = NO;
 		}
 	
 	return self;	
