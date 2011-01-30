@@ -10,11 +10,13 @@
 		BB05348412DCFAC8008578F2 /* ChannelsList.m in Sources */ = {isa = PBXBuildFile; fileRef = BB05348212DCFAC8008578F2 /* ChannelsList.m */; };
 		BB05348512DCFAC8008578F2 /* ChannelsList.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB05348312DCFAC8008578F2 /* ChannelsList.xib */; };
 		BB05348B12DE12D4008578F2 /* 70-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = BB05348A12DE12D4008578F2 /* 70-tv.png */; };
+		BB0B7CFF12F35ABC00F5B44D /* vimeo_logo-2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B7CFD12F35ABC00F5B44D /* vimeo_logo-2x.png */; };
+		BB0B7D0012F35ABC00F5B44D /* vimeo_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B7CFE12F35ABC00F5B44D /* vimeo_logo.png */; };
 		BB1AFA2612E0DF2B00252AF3 /* VimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA2512E0DF2B00252AF3 /* VimeoVideo.m */; };
 		BB1AFA2D12E0E10600252AF3 /* OAuthSignerHMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA2C12E0E10600252AF3 /* OAuthSignerHMAC.m */; };
 		BB1AFA2F12E0E15B00252AF3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1AFA2E12E0E15B00252AF3 /* Security.framework */; };
 		BB1AFA3812E0E38900252AF3 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA3712E0E38900252AF3 /* NSData+Base64.m */; };
-		BB1AFA3F12E0EA7400252AF3 /* NSString+OAuthURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA3E12E0EA7400252AF3 /* NSString+OAuthURLEncoding.m */; };
+		BB1AFA3F12E0EA7400252AF3 /* NSString+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA3E12E0EA7400252AF3 /* NSString+OAuthAdditions.m */; };
 		BB1AFA4312E0EC4900252AF3 /* OAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA4212E0EC4900252AF3 /* OAuthToken.m */; };
 		BB1AFA4612E0EE7D00252AF3 /* OAuthConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA4512E0EE7D00252AF3 /* OAuthConsumer.m */; };
 		BB1AFA4912E0EF6500252AF3 /* OAuthParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA4812E0EF6500252AF3 /* OAuthParameter.m */; };
@@ -26,8 +28,8 @@
 		BB59912012F1E599009F2334 /* VimeoUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59911F12F1E599009F2334 /* VimeoUser.m */; };
 		BB59912312F1E8A1009F2334 /* 111-user.png in Resources */ = {isa = PBXBuildFile; fileRef = BB59912212F1E8A1009F2334 /* 111-user.png */; };
 		BB59912612F1EA45009F2334 /* VimeoAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59912512F1EA45009F2334 /* VimeoAuthorizationViewController.m */; };
-		BBA91EAD12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m */; };
-		BBA91EB412EB129500B95AFE /* NSURL+BaseString.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EB312EB129500B95AFE /* NSURL+BaseString.m */; };
+		BBA91EAD12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.m */; };
+		BBA91EB412EB129500B95AFE /* NSURL+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EB312EB129500B95AFE /* NSURL+OAuthAdditions.m */; };
 		BBF7289F12DB995C00FEEBA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF7289E12DB995C00FEEBA3 /* UIKit.framework */; };
 		BBF728A112DB995C00FEEBA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A012DB995C00FEEBA3 /* Foundation.framework */; };
 		BBF728A312DB995C00FEEBA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A212DB995C00FEEBA3 /* CoreGraphics.framework */; };
@@ -42,15 +44,17 @@
 		BB05348212DCFAC8008578F2 /* ChannelsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelsList.m; sourceTree = "<group>"; };
 		BB05348312DCFAC8008578F2 /* ChannelsList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChannelsList.xib; path = Classes/ChannelsList.xib; sourceTree = "<group>"; };
 		BB05348A12DE12D4008578F2 /* 70-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "70-tv.png"; sourceTree = "<group>"; };
+		BB0B7CFD12F35ABC00F5B44D /* vimeo_logo-2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vimeo_logo-2x.png"; sourceTree = "<group>"; };
+		BB0B7CFE12F35ABC00F5B44D /* vimeo_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo_logo.png; sourceTree = "<group>"; };
 		BB1AFA2412E0DF2B00252AF3 /* VimeoVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoVideo.h; sourceTree = "<group>"; };
 		BB1AFA2512E0DF2B00252AF3 /* VimeoVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoVideo.m; sourceTree = "<group>"; };
 		BB1AFA2B12E0E10600252AF3 /* OAuthSignerHMAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSignerHMAC.h; sourceTree = "<group>"; };
 		BB1AFA2C12E0E10600252AF3 /* OAuthSignerHMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthSignerHMAC.m; sourceTree = "<group>"; };
 		BB1AFA2E12E0E15B00252AF3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		BB1AFA3612E0E38900252AF3 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		BB1AFA3712E0E38900252AF3 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
-		BB1AFA3D12E0EA7300252AF3 /* NSString+OAuthURLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OAuthURLEncoding.h"; sourceTree = "<group>"; };
-		BB1AFA3E12E0EA7400252AF3 /* NSString+OAuthURLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OAuthURLEncoding.m"; sourceTree = "<group>"; };
+		BB1AFA3612E0E38900252AF3 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "Classes/OAuth/NSData+Base64.h"; sourceTree = "<group>"; };
+		BB1AFA3712E0E38900252AF3 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "Classes/OAuth/NSData+Base64.m"; sourceTree = "<group>"; };
+		BB1AFA3D12E0EA7300252AF3 /* NSString+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+OAuthAdditions.h"; path = "Classes/OAuth/NSString+OAuthAdditions.h"; sourceTree = "<group>"; };
+		BB1AFA3E12E0EA7400252AF3 /* NSString+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+OAuthAdditions.m"; path = "Classes/OAuth/NSString+OAuthAdditions.m"; sourceTree = "<group>"; };
 		BB1AFA4112E0EC4900252AF3 /* OAuthToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthToken.h; sourceTree = "<group>"; };
 		BB1AFA4212E0EC4900252AF3 /* OAuthToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthToken.m; sourceTree = "<group>"; };
 		BB1AFA4412E0EE7D00252AF3 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
@@ -72,10 +76,10 @@
 		BB59912212F1E8A1009F2334 /* 111-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "111-user.png"; sourceTree = "<group>"; };
 		BB59912412F1EA45009F2334 /* VimeoAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoAuthorizationViewController.h; sourceTree = "<group>"; };
 		BB59912512F1EA45009F2334 /* VimeoAuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoAuthorizationViewController.m; sourceTree = "<group>"; };
-		BBA91EAB12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+OAuthParameters.h"; sourceTree = "<group>"; };
-		BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+OAuthParameters.m"; sourceTree = "<group>"; };
-		BBA91EB212EB129500B95AFE /* NSURL+BaseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+BaseString.h"; sourceTree = "<group>"; };
-		BBA91EB312EB129500B95AFE /* NSURL+BaseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+BaseString.m"; sourceTree = "<group>"; };
+		BBA91EAB12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableURLRequest+OAuthAdditions.h"; path = "Classes/OAuth/NSMutableURLRequest+OAuthAdditions.h"; sourceTree = "<group>"; };
+		BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableURLRequest+OAuthAdditions.m"; path = "Classes/OAuth/NSMutableURLRequest+OAuthAdditions.m"; sourceTree = "<group>"; };
+		BBA91EB212EB129500B95AFE /* NSURL+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+OAuthAdditions.h"; path = "Classes/OAuth/NSURL+OAuthAdditions.h"; sourceTree = "<group>"; };
+		BBA91EB312EB129500B95AFE /* NSURL+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+OAuthAdditions.m"; path = "Classes/OAuth/NSURL+OAuthAdditions.m"; sourceTree = "<group>"; };
 		BBD34D5812E2085500CAB3BF /* OAuthSignerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSignerProtocol.h; sourceTree = "<group>"; };
 		BBF7289B12DB995C00FEEBA3 /* Vimeo Touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vimeo Touch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF7289E12DB995C00FEEBA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -119,12 +123,13 @@
 				BB59912412F1EA45009F2334 /* VimeoAuthorizationViewController.h */,
 				BB59912512F1EA45009F2334 /* VimeoAuthorizationViewController.m */,
 			);
-			name = Vimeo;
+			path = Vimeo;
 			sourceTree = "<group>";
 		};
 		BB1AFA2A12E0E0F200252AF3 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
+				BB1AFA3512E0E37800252AF3 /* Categories */,
 				BB313A6012F07C9B00FD1FDD /* OAuth.h */,
 				BB1AFA4412E0EE7D00252AF3 /* OAuthConsumer.h */,
 				BB1AFA4512E0EE7D00252AF3 /* OAuthConsumer.m */,
@@ -138,22 +143,23 @@
 				BB1AFA4112E0EC4900252AF3 /* OAuthToken.h */,
 				BB1AFA4212E0EC4900252AF3 /* OAuthToken.m */,
 			);
-			name = OAuth;
+			path = OAuth;
 			sourceTree = "<group>";
 		};
 		BB1AFA3512E0E37800252AF3 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				BBA91EB212EB129500B95AFE /* NSURL+BaseString.h */,
-				BBA91EB312EB129500B95AFE /* NSURL+BaseString.m */,
-				BBA91EAB12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.h */,
-				BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m */,
+				BBA91EB212EB129500B95AFE /* NSURL+OAuthAdditions.h */,
+				BBA91EB312EB129500B95AFE /* NSURL+OAuthAdditions.m */,
+				BBA91EAB12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.h */,
+				BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.m */,
 				BB1AFA3612E0E38900252AF3 /* NSData+Base64.h */,
 				BB1AFA3712E0E38900252AF3 /* NSData+Base64.m */,
-				BB1AFA3D12E0EA7300252AF3 /* NSString+OAuthURLEncoding.h */,
-				BB1AFA3E12E0EA7400252AF3 /* NSString+OAuthURLEncoding.m */,
+				BB1AFA3D12E0EA7300252AF3 /* NSString+OAuthAdditions.h */,
+				BB1AFA3E12E0EA7400252AF3 /* NSString+OAuthAdditions.m */,
 			);
 			name = Categories;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		BB313A6612F09ACD00FD1FDD /* User Interface */ = {
@@ -166,10 +172,17 @@
 			name = "User Interface";
 			sourceTree = "<group>";
 		};
+		BB6A563212F5D25D00CC8AD9 /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Temp;
+			sourceTree = "<group>";
+		};
 		BBF7288C12DB995C00FEEBA3 = {
 			isa = PBXGroup;
 			children = (
-				BB1AFA3512E0E37800252AF3 /* Categories */,
+				BB6A563212F5D25D00CC8AD9 /* Temp */,
 				BBF7289312DB995C00FEEBA3 /* Classes */,
 				BBF7289412DB995C00FEEBA3 /* Other Sources */,
 				BBF7289512DB995C00FEEBA3 /* Resources */,
@@ -205,6 +218,8 @@
 		BBF7289512DB995C00FEEBA3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BB0B7CFD12F35ABC00F5B44D /* vimeo_logo-2x.png */,
+				BB0B7CFE12F35ABC00F5B44D /* vimeo_logo.png */,
 				BB313A6612F09ACD00FD1FDD /* User Interface */,
 				BB05348A12DE12D4008578F2 /* 70-tv.png */,
 				BB59912212F1E8A1009F2334 /* 111-user.png */,
@@ -289,6 +304,8 @@
 				BB05348B12DE12D4008578F2 /* 70-tv.png in Resources */,
 				BB313A6512F09ABF00FD1FDD /* AccountViewController.xib in Resources */,
 				BB59912312F1E8A1009F2334 /* 111-user.png in Resources */,
+				BB0B7CFF12F35ABC00F5B44D /* vimeo_logo-2x.png in Resources */,
+				BB0B7D0012F35ABC00F5B44D /* vimeo_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,13 +322,13 @@
 				BB1AFA2612E0DF2B00252AF3 /* VimeoVideo.m in Sources */,
 				BB1AFA2D12E0E10600252AF3 /* OAuthSignerHMAC.m in Sources */,
 				BB1AFA3812E0E38900252AF3 /* NSData+Base64.m in Sources */,
-				BB1AFA3F12E0EA7400252AF3 /* NSString+OAuthURLEncoding.m in Sources */,
+				BB1AFA3F12E0EA7400252AF3 /* NSString+OAuthAdditions.m in Sources */,
 				BB1AFA4312E0EC4900252AF3 /* OAuthToken.m in Sources */,
 				BB1AFA4612E0EE7D00252AF3 /* OAuthConsumer.m in Sources */,
 				BB1AFA4912E0EF6500252AF3 /* OAuthParameter.m in Sources */,
 				BB1DF9EC12E1C30B00FC342D /* OAuthRequest.m in Sources */,
-				BBA91EAD12EB069A00B95AFE /* NSMutableURLRequest+OAuthParameters.m in Sources */,
-				BBA91EB412EB129500B95AFE /* NSURL+BaseString.m in Sources */,
+				BBA91EAD12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.m in Sources */,
+				BBA91EB412EB129500B95AFE /* NSURL+OAuthAdditions.m in Sources */,
 				BB313A5B12F079F100FD1FDD /* VimeoController.m in Sources */,
 				BB313A5F12F07AAA00FD1FDD /* VimeoChannel.m in Sources */,
 				BB313A6412F09ABF00FD1FDD /* AccountViewController.m in Sources */,

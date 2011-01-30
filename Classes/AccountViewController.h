@@ -11,7 +11,7 @@
 #import "VimeoController.h"
 #import "VimeoAuthorizationViewController.h"
 #import "OAuth.h"
-#import "NSMutableURLRequest+OAuthParameters.h"
+#import "NSMutableURLRequest+OAuthAdditions.h"
 
 @interface AccountViewController : UIViewController <UIWebViewDelegate>
 	{

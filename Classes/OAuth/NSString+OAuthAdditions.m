@@ -1,15 +1,15 @@
 //
-//  NSString+OAuthURLEncoding.m
+//  NSString+OAuthAdditions.m
 //  Vimeo Touch
 //
 //  Created by Felix Morgner on 14.01.11.
 //  Copyright 2011 Felix Morgner. All rights reserved.
 //
 
-#import "NSString+OAuthURLEncoding.h"
+#import "NSString+OAuthAdditions.h"
 
 
-@implementation NSString (OAuthURLEncoding)
+@implementation NSString (OAuthAdditions)
 
 - (NSString*)stringUsingOAuthURLEncoding
 	{

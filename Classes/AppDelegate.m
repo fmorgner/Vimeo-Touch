@@ -24,7 +24,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 	{
-	[self setVimeoUser:[VimeoUser user]];
+	static const UInt8 kKeychainItemIdentifier[] = "ch.felixmorgner.Vimeo_Touch\0";
+	NSData* itemID = [NSData dataWithBytes:kKeychainItemIdentifier length:strlen((const char*)kKeychainItemIdentifier)];
+
+	[self setVimeoUser:[VimeoUser userWithKeychainItemID:itemID]];
 	[self setConsumer:[OAuthConsumer consumerWithKey:@"7ae96ae33601e4482b6bf6e76e442781" secret:@"b79d3ec05a464bd7"]];
 	
 	NSMutableArray* viewControllers = [NSMutableArray arrayWithCapacity:1];

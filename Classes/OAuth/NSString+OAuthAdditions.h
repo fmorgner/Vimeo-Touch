@@ -1,5 +1,5 @@
 //
-//  NSString+OAuthURLEncoding.h
+//  NSString+OAuthAdditions.h
 //  Vimeo Touch
 //
 //  Created by Felix Morgner on 14.01.11.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSString (OAuthURLEncoding)
+@interface NSString (OAuthAdditions)
 
 - (NSString*)stringUsingOAuthURLEncoding;
 

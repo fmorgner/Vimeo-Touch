@@ -7,7 +7,7 @@
 //
 
 #import "VimeoAuthorizationViewController.h"
-
+#import "NSURL+OAuthAdditions.h"
 
 @implementation VimeoAuthorizationViewController
 
@@ -20,8 +20,20 @@
 	{
 	if ((self = [super init]))
 		{
+		self.authorizationURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://vimeo.com/oauth/authorize?oauth_token=%@&permission=read", token.key]];
+		self.webView = nil;
+		self.token = nil;
+		self.verifier = @"";
+		}
+	return self;
+	}
+
+- (id)initWithToken:(OAuthToken*)aToken
+	{
+	if ((self = [super init]))
+		{
 		self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 360, 480)];
-		self.token = [[[[UIApplication sharedApplication] delegate] vimeoUser] token];
+		self.token = aToken;
 		self.authorizationURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://vimeo.com/oauth/authorize?oauth_token=%@&permission=read", token.key]];
 		self.verifier = @"";
 		[webView setDelegate:self];
@@ -30,6 +42,7 @@
 		}
 	return self;
 	}
+
 
 - (void)dealloc
 {

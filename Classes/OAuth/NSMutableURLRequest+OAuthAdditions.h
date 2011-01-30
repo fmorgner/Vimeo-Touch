@@ -1,5 +1,5 @@
 //
-//  Parameters.h
+//  NSMutableURLRequest+OAuthParameters.h
 //  Vimeo Touch
 //
 //  Created by Felix Morgner on 20.01.11.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OAuthParameter.h"
 
-@interface NSMutableURLRequest (OAuthParameters)
+@interface NSMutableURLRequest (OAuthAdditions)
 
 - (NSArray*)parameters;
 - (void)setParameters;

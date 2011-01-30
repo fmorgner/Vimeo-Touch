@@ -1,15 +1,15 @@
 //
-//  Parameters.m
+//  NSMutableURLRequest+OAuthParameters.m
 //  Vimeo Touch
 //
 //  Created by Felix Morgner on 20.01.11.
 //  Copyright 2011 Felix Morgner. All rights reserved.
 //
 
-#import "NSMutableURLRequest+OAuthParameters.h"
+#import "NSMutableURLRequest+OAuthAdditions.h"
 
 
-@implementation NSMutableURLRequest (OAuthParameters)
+@implementation NSMutableURLRequest (OAuthAdditions)
 
 - (NSArray*)parameters
 	{

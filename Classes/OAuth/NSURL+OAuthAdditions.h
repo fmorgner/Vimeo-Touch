@@ -1,5 +1,5 @@
 //
-//  NSURL+BaseString.h
+//  NSURL+OAuthAdditions.h
 //  Vimeo Touch
 //
 //  Created by Felix Morgner on 22.01.11.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSURL (BaseString)
+@interface NSURL (OAuthAdditions)
 
 - (NSString*)URLStringWithoutQuery;
 
