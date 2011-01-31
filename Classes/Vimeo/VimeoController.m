@@ -11,7 +11,5 @@
 @implementation VimeoController
 
 @synthesize consumer;
-@synthesize request;
-
 
 @end

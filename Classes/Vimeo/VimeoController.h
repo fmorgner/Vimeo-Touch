@@ -14,12 +14,9 @@
 
 @interface VimeoController : NSObject
 	{
-	@private
 	OAuthConsumer* consumer;
-	OAuthRequest* request;
 	}
 
 @property(nonatomic, retain) OAuthConsumer* consumer;
-@property(nonatomic, retain) OAuthRequest* request;
 
 @end
