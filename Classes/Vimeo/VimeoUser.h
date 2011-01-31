@@ -26,6 +26,7 @@
 
 - (void)setTokenFromKeychainQueryResult;
 - (void)prepareKeychainItem;
+- (BOOL)writeKeychainItem;
 
 @property(nonatomic, retain) OAuthToken* token;
 @property(nonatomic, retain) NSMutableDictionary* keychainQuery;
