@@ -11,7 +11,12 @@
 
 @implementation OAuthConsumer
 
-@synthesize key, secret;
+#pragma mark - Properties
+
+@synthesize key;
+@synthesize secret;
+
+#pragma mark - Object Lifecycle
 
 - (id)init
 	{
@@ -35,16 +40,18 @@
 	return self;	
 	}
 
-+ (OAuthConsumer*)consumerWithKey:(NSString*)theKey secret:(NSString*)theSecret
-	{
-	return [[[OAuthConsumer alloc] initWithKey:theKey secret:theSecret] autorelease];
-	}
-
 - (void)dealloc
 	{
 	[key release];
 	[secret release];
 	[super dealloc];
+	}
+
+#pragma mark - Convenience Allocators
+
++ (OAuthConsumer*)consumerWithKey:(NSString*)theKey secret:(NSString*)theSecret
+	{
+	return [[[OAuthConsumer alloc] initWithKey:theKey secret:theSecret] autorelease];
 	}
 
 @end

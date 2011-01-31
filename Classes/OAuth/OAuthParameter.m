@@ -10,7 +10,12 @@
 
 @implementation OAuthParameter
 
-@synthesize key, value;
+#pragma mark - Properties
+
+@synthesize key;
+@synthesize value;
+
+#pragma mark - Object Lifecycle
 
 - (id)initWithKey:(NSString*)theKey andValue:(NSString*)theValue
 	{
@@ -22,11 +27,17 @@
 	
 	return self;
 	}
-	
-+ (id)parameterWithKey:(NSString*)theKey andValue:(NSString*)theValue
+
+- (id)init
 	{
-	return [[[OAuthParameter alloc] initWithKey:theKey andValue:theValue] autorelease];
-	}
+	if((self = [super init]))
+		{
+		self.value = nil;
+		self.key = nil;
+		}
+	
+	return self;
+	}	
 
 - (void)dealloc
 	{
@@ -34,6 +45,19 @@
 	[value release];
 	[super dealloc];
 	}
+#pragma mark - Convenience Allocators
+
++ (OAuthParameter*)parameterWithKey:(NSString*)theKey andValue:(NSString*)theValue
+	{
+	return [[[OAuthParameter alloc] initWithKey:theKey andValue:theValue] autorelease];
+	}
+
++ (OAuthParameter*)parameter
+	{
+	return [[[OAuthParameter alloc] init] autorelease];
+	}
+
+#pragma mark - Utility Methods
 	
 - (NSString*)OAuthURLEncodedKey
 	{

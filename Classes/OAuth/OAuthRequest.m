@@ -15,10 +15,69 @@
 #import "NSMutableURLRequest+OAuthAdditions.h"
 #import "NSURL+OAuthAdditions.h"
 
+@interface OAuthRequest (Private)
+
+- (NSString*)generateNonce;
+- (NSString*)generateTimestamp;
+- (NSString*)signatureBaseString;
+
+@end
+
+@implementation OAuthRequest (Private)
+
+- (NSString*)generateNonce
+	{
+	CFUUIDRef uuid = CFUUIDCreate(NULL);
+	CFStringRef uuidString = CFUUIDCreateString(NULL, uuid);
+	NSString* nonceString = (NSString*)uuidString;
+	CFMakeCollectable(uuidString);
+	CFRelease(uuid);
+	
+	return nonceString;
+	}
+	
+- (NSString*)generateTimestamp
+	{
+	return [NSString stringWithFormat:@"%d", time(NULL)];
+	}
+
+- (NSString*)signatureBaseString
+	{
+	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_callback" andValue:@"oob"]];
+	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_consumer_key" andValue:consumer.key]];
+	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_signature_method" andValue:[signerClass signatureType]]];
+	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_timestamp" andValue:timestamp]];
+	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_nonce" andValue:nonce]];
+	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_version" andValue:@"1.0"]];
+	
+	if(![token.key isEqualToString:@""])
+		{
+		[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_token" andValue:token.key]];
+		}
+		
+	[oauthParameters sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES] autorelease]]];
+	NSMutableArray* keyValuePairStrings = [NSMutableArray arrayWithCapacity:[oauthParameters count]];
+	
+	for(OAuthParameter* parameter in [self parameters])
+		{
+		[keyValuePairStrings addObject:[parameter concatenatedKeyValuePair]];
+		}
+
+	for(OAuthParameter* parameter in oauthParameters)
+		{
+		[keyValuePairStrings addObject:[parameter concatenatedKeyValuePair]];
+		}
+
+	NSString* baseString = [keyValuePairStrings componentsJoinedByString:@"&"];
+	
+	return [NSString stringWithFormat:@"%@&%@&%@", [self HTTPMethod], [[[self URL] URLStringWithoutQuery] stringUsingOAuthURLEncoding], [baseString stringUsingOAuthURLEncoding]];
+	}
+
+@end
+
 @implementation OAuthRequest
 
-#pragma mark -
-#pragma mark Properties:
+#pragma mark - Properties
 
 @synthesize consumer;
 @synthesize token;
@@ -29,8 +88,7 @@
 @synthesize signerClass;
 @synthesize oauthParameters;
 
-#pragma mark -
-#pragma mark Allocation/Deallocation:
+#pragma mark - Object Lifecycle
 
 - (id)init
 	{
@@ -81,59 +139,20 @@
 	[super dealloc];
 	}
 
-#pragma mark -
-#pragma mark Utility methods:
+#pragma mark - Convenience Allocators
 
-- (NSString*)generateNonce
++ (OAuthRequest*)request
 	{
-	CFUUIDRef uuid = CFUUIDCreate(NULL);
-	CFStringRef uuidString = CFUUIDCreateString(NULL, uuid);
-	NSString* nonceString = (NSString*)uuidString;
-	CFMakeCollectable(uuidString);
-	CFRelease(uuid);
-	
-	return nonceString;
-	}
-	
-- (NSString*)generateTimestamp
-	{
-	return [NSString stringWithFormat:@"%d", time(NULL)];
+	return [[[OAuthRequest alloc] init] autorelease];
 	}
 
-- (NSString*)signatureBaseString
++ (OAuthRequest*)requestWithURL:(NSURL *)theURL consumer:(OAuthConsumer*)theConsumer token:(OAuthToken*)theToken realm:(NSString*)theRealm signerClass:(Class)theSignerClass
 	{
-	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_callback" andValue:@"oob"]];
-	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_consumer_key" andValue:consumer.key]];
-	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_signature_method" andValue:[signerClass signatureType]]];
-	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_timestamp" andValue:timestamp]];
-	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_nonce" andValue:nonce]];
-	[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_version" andValue:@"1.0"]];
-	
-	if(![token.key isEqualToString:@""])
-		{
-		[oauthParameters addObject:[OAuthParameter parameterWithKey:@"oauth_token" andValue:token.key]];
-		}
-		
-	[oauthParameters sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"key" ascending:YES] autorelease]]];
-	NSMutableArray* keyValuePairStrings = [NSMutableArray arrayWithCapacity:[oauthParameters count]];
-	
-	for(OAuthParameter* parameter in [self parameters])
-		{
-		[keyValuePairStrings addObject:[parameter concatenatedKeyValuePair]];
-		}
-
-	for(OAuthParameter* parameter in oauthParameters)
-		{
-		[keyValuePairStrings addObject:[parameter concatenatedKeyValuePair]];
-		}
-
-	NSString* baseString = [keyValuePairStrings componentsJoinedByString:@"&"];
-	
-	return [NSString stringWithFormat:@"%@&%@&%@", [self HTTPMethod], [[[self URL] URLStringWithoutQuery] stringUsingOAuthURLEncoding], [baseString stringUsingOAuthURLEncoding]];
+	return [[[OAuthRequest alloc] initWithURL:theURL consumer:theConsumer token:theToken realm:theRealm signerClass:theSignerClass] autorelease];
 	}
 
-#pragma mark -
-#pragma mark Instance Methods
+
+#pragma mark - Utility Methods
 
 - (void)addParameter:(OAuthParameter*)aParameter
 	{

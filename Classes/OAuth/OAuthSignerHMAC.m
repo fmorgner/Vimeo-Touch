@@ -11,6 +11,8 @@
 
 @implementation OAuthSignerHMAC
 
+#pragma mark - OAuthSigner Protocol Implementation
+
 + (NSString*)signClearText:(NSString*)theClearText withSecret:(NSString*)theSecret
 	{
 	NSData* secretData = [theSecret dataUsingEncoding:NSUTF8StringEncoding];

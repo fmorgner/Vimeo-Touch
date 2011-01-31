@@ -11,9 +11,13 @@
 
 @implementation OAuthToken
 
+#pragma mark - Properties
+
 @synthesize key;
 @synthesize secret;
 @synthesize authorized;
+
+#pragma mark - Object Lifecycle
 
 - (id)init
 	{
@@ -45,6 +49,8 @@
 	[secret release];
 	[super dealloc];
 	}
+
+#pragma mark - Convenience Allocators
 
 + (OAuthToken*)tokenWithKey:(NSString*)theKey secret:(NSString*)theSecret
 	{

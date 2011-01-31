@@ -17,7 +17,9 @@
 	}
 	
 - (id)initWithKey:(NSString*)theKey andValue:(NSString*)theValue;
-+ (id)parameterWithKey:(NSString*)theKey andValue:(NSString*)theValue;
+
++ (OAuthParameter*)parameterWithKey:(NSString*)theKey andValue:(NSString*)theValue;
++ (OAuthParameter*)parameter;
 
 - (NSString*)OAuthURLEncodedKey;
 - (NSString*)OAuthURLEncodedValue;

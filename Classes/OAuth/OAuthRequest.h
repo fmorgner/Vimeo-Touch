@@ -26,9 +26,8 @@
 
 - (id)initWithURL:(NSURL *)theURL consumer:(OAuthConsumer*)theConsumer token:(OAuthToken*)theToken realm:(NSString*)realm signerClass:(Class)theSignerClass;
 
-- (NSString*)generateNonce;
-- (NSString*)generateTimestamp;
-- (NSString*)signatureBaseString;
++ (OAuthRequest*)requestWithURL:(NSURL *)theURL consumer:(OAuthConsumer*)theConsumer token:(OAuthToken*)theToken realm:(NSString*)theRealm signerClass:(Class)theSignerClass;
++ (OAuthRequest*)request;
 
 - (void)prepare;
 - (void)addParameter:(OAuthParameter*)aParameter;
