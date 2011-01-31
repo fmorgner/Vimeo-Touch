@@ -7,7 +7,7 @@
 //
 
 #import "VimeoAuthorizationViewController.h"
-#import "NSURL+OAuthAdditions.h"
+#import "NSMutableURLRequest+OAuthAdditions.h"
 
 @implementation VimeoAuthorizationViewController
 

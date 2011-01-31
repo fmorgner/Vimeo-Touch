@@ -17,6 +17,8 @@
 	NSString* verifier;
 	}
 
+- (id)initWithToken:(OAuthToken*)aToken;
+
 @property(nonatomic, retain) UIWebView* webView;
 @property(nonatomic, retain) NSURL* authorizationURL;
 @property(nonatomic, assign) OAuthToken* token;
