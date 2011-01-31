@@ -62,7 +62,7 @@
 
 - (IBAction)login:(id)sender
 	{
-	OAuthRequest* request = [[OAuthRequest alloc] initWithURL:[NSURL URLWithString:@"http://vimeo.com/oauth/request_token"]
+	OAuthRequest* request = [OAuthRequest requestWithURL:[NSURL URLWithString:@"http://vimeo.com/oauth/request_token"]
 	 																								 consumer:appDelegate.consumer
 																									 		token:nil
 																											realm:nil
@@ -86,10 +86,11 @@
 	appDelegate.vimeoUser.token.key = [parameters objectForKey:@"oauth_token"];
 	appDelegate.vimeoUser.token.secret = [parameters objectForKey:@"oauth_token_secret"];
 	
-	VimeoAuthorizationViewController* authorizationViewController = [[VimeoAuthorizationViewController alloc] init];
+	VimeoAuthorizationViewController* authorizationViewController = [[VimeoAuthorizationViewController alloc] initWithToken:appDelegate.vimeoUser.token];
 	[authorizationViewController addObserver:self forKeyPath:@"verifier" options:NSKeyValueObservingOptionNew context:NULL];
 	
 	[self.tabBarController presentModalViewController:authorizationViewController animated:YES];
+	[authorizationViewController release];
 	}
 
 #pragma mark - Utility Methods
@@ -97,7 +98,7 @@
 - (NSDictionary*)getAccessTokenWithVerifier:(NSString*)verifier
 	{
 	NSURL* accessTokenURL = [NSURL URLWithString:@"http://vimeo.com/oauth/access_token"];
-	OAuthRequest* request = [[OAuthRequest alloc] initWithURL:accessTokenURL consumer:appDelegate.consumer token:appDelegate.vimeoUser.token realm:nil signerClass:nil];
+	OAuthRequest* request = [OAuthRequest requestWithURL:accessTokenURL consumer:appDelegate.consumer token:appDelegate.vimeoUser.token realm:nil signerClass:nil];
 	NSHTTPURLResponse* response;
 	NSError* error;
 
