@@ -62,6 +62,16 @@
 
 - (IBAction)login:(id)sender
 	{
+	
+	if([appDelegate.vimeoUser.token isAuthorized])
+		{
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vimeo Touch" message:@"Allready authorized!" 
+		delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		return;
+		}
+	
 	OAuthRequest* request = [OAuthRequest requestWithURL:[NSURL URLWithString:@"http://vimeo.com/oauth/request_token"]
 	 																								 consumer:appDelegate.consumer
 																									 		token:nil
@@ -115,6 +125,7 @@
 		}
 	
 	[self.tabBarController dismissModalViewControllerAnimated:YES];
+	[appDelegate.vimeoUser writeKeychainItem];
 	return parameterDict;
 	}
 
