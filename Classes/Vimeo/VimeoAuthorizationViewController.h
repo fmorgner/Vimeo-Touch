@@ -18,6 +18,7 @@
 	}
 
 - (id)initWithToken:(OAuthToken*)aToken;
++ (VimeoAuthorizationViewController*)authorizationViewControllerWithToken:(OAuthToken*)aToken;
 
 @property(nonatomic, retain) UIWebView* webView;
 @property(nonatomic, retain) NSURL* authorizationURL;

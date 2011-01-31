@@ -43,11 +43,15 @@
 	return self;
 	}
 
-
 - (void)dealloc
 {
     [super dealloc];
 }
+
++ (VimeoAuthorizationViewController*)authorizationViewControllerWithToken:(OAuthToken*)aToken
+	{
+	return [[[VimeoAuthorizationViewController alloc] initWithToken:aToken] autorelease];
+	}
 
 - (void)didReceiveMemoryWarning
 {
