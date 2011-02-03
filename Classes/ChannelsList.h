@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Vimeo.h"
 
 @interface ChannelsList : UITableViewController {
     

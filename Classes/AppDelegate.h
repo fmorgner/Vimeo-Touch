@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VimeoUser.h"
+#import "Vimeo.h"
 #import "OAuth.h"
 
 @interface AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate>

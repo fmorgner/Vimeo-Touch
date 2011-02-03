@@ -14,3 +14,4 @@
 #import "OAuthSignerHMAC.h"
 #import "OAuthSignerProtocol.h"
 #import "OAuthToken.h"
+#import "NSMutableURLRequest+OAuthAdditions.h"
