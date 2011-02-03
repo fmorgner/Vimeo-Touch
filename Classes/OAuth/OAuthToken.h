@@ -16,10 +16,10 @@
 	BOOL authorized;
 	}
 
-- (id)initWithKey:(NSString*)theKey secret:(NSString*)theSecret;
-+ (OAuthToken*)tokenWithKey:(NSString*)theKey secret:(NSString*)theSecret;
+- (id)initWithKey:(NSString*)theKey secret:(NSString*)theSecret authorized:(BOOL)isAuthorized;
 
 + (OAuthToken*)token;
++ (OAuthToken*)tokenWithKey:(NSString*)theKey secret:(NSString*)theSecret authorized:(BOOL)isAuthorized;
 
 @property(nonatomic, retain) NSString* key;
 @property(nonatomic, retain) NSString* secret;

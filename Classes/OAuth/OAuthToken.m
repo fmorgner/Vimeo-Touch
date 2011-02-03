@@ -31,13 +31,13 @@
 	return self;
 	}
 
-- (id)initWithKey:(NSString*)theKey secret:(NSString*)theSecret
+- (id)initWithKey:(NSString*)theKey secret:(NSString*)theSecret authorized:(BOOL)isAuthorized
 	{
 	if((self = [super init]))
 		{
 		self.key = theKey;
 		self.secret = theSecret;
-		self.authorized = NO;
+		self.authorized = isAuthorized;
 		}
 	
 	return self;	
@@ -52,9 +52,9 @@
 
 #pragma mark - Convenience Allocators
 
-+ (OAuthToken*)tokenWithKey:(NSString*)theKey secret:(NSString*)theSecret
++ (OAuthToken*)tokenWithKey:(NSString*)theKey secret:(NSString*)theSecret authorized:(BOOL)isAuthorized
 	{
-	return [[[OAuthToken alloc] initWithKey:theKey secret:theSecret] autorelease];
+	return [[[OAuthToken alloc] initWithKey:theKey secret:theSecret authorized:isAuthorized] autorelease];
 	}
 
 + (OAuthToken*)token
