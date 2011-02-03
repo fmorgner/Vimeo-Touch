@@ -62,4 +62,13 @@
 	return [[[OAuthToken alloc] init] autorelease];
 	}
 
+#pragma mark - NSObject methods
+
+- (NSString *)description
+	{
+	NSString* authorizedState = nil;
+	(authorized) ? (authorizedState = @"YES") : (authorizedState = @"NO");
+	return [NSString stringWithFormat:@"%@ {key = %@, secret = %@, authorized = %@}", [self class], key, secret, authorizedState];
+	}
+
 @end
