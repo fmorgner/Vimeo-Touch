@@ -17,7 +17,6 @@
 @implementation VimeoAuthorizationViewController
 
 @synthesize webView;
-@synthesize authorizationURL;
 @synthesize token;
 @synthesize delegate;
 
@@ -25,20 +24,19 @@
 	{
 	if ((self = [super init]))
 		{
-		authorizationURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://vimeo.com/oauth/authorize?oauth_token=%@&permission=read", token.key]];
-		webView = nil;
+		webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 360, 480)];
 		token = nil;
 		}
 	return self;
 	}
 
-- (id)initWithToken:(OAuthToken*)aToken
+- (id)initWithToken:(OAuthToken*)aToken delegate:(id)aDelegate
 	{
 	if ((self = [super init]))
 		{
 		webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 360, 480)];
 		token = aToken;
-		authorizationURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://vimeo.com/oauth/authorize?oauth_token=%@&permission=read", token.key]];
+		delegate = aDelegate;
 		}
 	return self;
 	}
@@ -48,9 +46,9 @@
 	[super dealloc];
 	}
 
-+ (VimeoAuthorizationViewController*)authorizationViewControllerWithToken:(OAuthToken*)aToken
++ (VimeoAuthorizationViewController*)authorizationViewControllerWithToken:(OAuthToken*)aToken delegate:(id)aDelegate
 	{
-	return [[[VimeoAuthorizationViewController alloc] initWithToken:aToken] autorelease];
+	return [[[VimeoAuthorizationViewController alloc] initWithToken:aToken delegate:(id)aDelegate] autorelease];
 	}
 
 - (void)didReceiveMemoryWarning
@@ -62,8 +60,9 @@
 
 - (void)loadView
 	{
+	NSURL* authURL = [NSURL URLWithString:[NSString stringWithFormat:kVimeoUserAuthorizationURL, token.key, kVimeoPermissionRead]];
 	[webView setDelegate:self];
-	[webView loadRequest:[NSURLRequest requestWithURL:authorizationURL]];
+	[webView loadRequest:[NSURLRequest requestWithURL:authURL]];
 	self.view = webView;
 	}
 
@@ -101,14 +100,14 @@
 
 - (void)announceNewVerifier:(NSString *)aVerifier
 	{
+	NSDictionary* userInformation = [NSDictionary dictionaryWithObject:aVerifier forKey:kVimeoVerifierKey];
+	NSNotification* verifierNotification = [NSNotification notificationWithName:kVimeoAuthorizationVerifierNotification object:nil userInfo:userInformation];
+	[[NSNotificationCenter defaultCenter] postNotification:verifierNotification];
+
 	if(delegate && [delegate conformsToProtocol:@protocol(VimeoAuthorizationViewControllerDelegate)])
 		{
 		[delegate authorizationViewController:self didReceiveVerifier:aVerifier];
 		}
-	
-	NSDictionary* userInformation = [NSDictionary dictionaryWithObject:aVerifier forKey:kVimeoVerifierKey];
-	NSNotification* verifierNotification = [NSNotification notificationWithName:kVimeoAuthorizationVerifierNotification object:nil userInfo:userInformation];
-	[[NSNotificationCenter defaultCenter] postNotification:verifierNotification];
 	}
 
 @end

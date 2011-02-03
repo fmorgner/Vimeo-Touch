@@ -14,16 +14,14 @@
 @interface VimeoAuthorizationViewController : UIViewController <UIWebViewDelegate>
 	{
 	UIWebView* webView;
-	NSURL* authorizationURL;
 	OAuthToken* token;
 	id delegate;
 	}
 
-- (id)initWithToken:(OAuthToken*)aToken;
-+ (VimeoAuthorizationViewController*)authorizationViewControllerWithToken:(OAuthToken*)aToken;
+- (id)initWithToken:(OAuthToken*)aToken delegate:(id)aDelegate;
++ (VimeoAuthorizationViewController*)authorizationViewControllerWithToken:(OAuthToken*)aToken delegate:(id)aDelegate;
 
 @property(nonatomic, retain) UIWebView* webView;
-@property(nonatomic, retain) NSURL* authorizationURL;
 @property(nonatomic, assign) OAuthToken* token;
 @property(nonatomic, assign) id delegate;
 
