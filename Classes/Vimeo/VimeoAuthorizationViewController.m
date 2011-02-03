@@ -7,23 +7,27 @@
 //
 
 #import "VimeoAuthorizationViewController.h"
-#import "NSMutableURLRequest+OAuthAdditions.h"
+
+@interface VimeoAuthorizationViewController (Private)
+
+- (void)announceNewVerifier:(NSString*)aVerifier;
+
+@end
 
 @implementation VimeoAuthorizationViewController
 
 @synthesize webView;
 @synthesize authorizationURL;
 @synthesize token;
-@synthesize verifier;
+@synthesize delegate;
 
 - (id)init
 	{
 	if ((self = [super init]))
 		{
-		self.authorizationURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://vimeo.com/oauth/authorize?oauth_token=%@&permission=read", token.key]];
-		self.webView = nil;
-		self.token = nil;
-		self.verifier = @"";
+		authorizationURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://vimeo.com/oauth/authorize?oauth_token=%@&permission=read", token.key]];
+		webView = nil;
+		token = nil;
 		}
 	return self;
 	}
@@ -32,21 +36,17 @@
 	{
 	if ((self = [super init]))
 		{
-		self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 360, 480)];
-		self.token = aToken;
-		self.authorizationURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://vimeo.com/oauth/authorize?oauth_token=%@&permission=read", token.key]];
-		self.verifier = @"";
-		[webView setDelegate:self];
-		[webView loadRequest:[NSURLRequest requestWithURL:authorizationURL]];
-		[self.view addSubview:webView];
+		webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 360, 480)];
+		token = aToken;
+		authorizationURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://vimeo.com/oauth/authorize?oauth_token=%@&permission=read", token.key]];
 		}
 	return self;
 	}
 
 - (void)dealloc
-{
-    [super dealloc];
-}
+	{
+	[super dealloc];
+	}
 
 + (VimeoAuthorizationViewController*)authorizationViewControllerWithToken:(OAuthToken*)aToken
 	{
@@ -54,24 +54,28 @@
 	}
 
 - (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
+	{
+	[super didReceiveMemoryWarning];
+	}
 
 #pragma mark - View lifecycle
 
+- (void)loadView
+	{
+	[webView setDelegate:self];
+	[webView loadRequest:[NSURLRequest requestWithURL:authorizationURL]];
+	self.view = webView;
+	}
+
 - (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
+	{
+	[super viewDidUnload];
+	}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
+	{
+	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	}
 
 #pragma mark - UIWebViewDelegate
 
@@ -84,10 +88,27 @@
 			{
 			if([[parameter key] isEqualToString:@"accept"] && [[parameter value] rangeOfString:@"Yes"].location != NSNotFound)
 				{
-				[self setVerifier:[theWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('span')[0].firstChild.data"]];
+				NSString* verifier = [theWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('span')[0].firstChild.data"];
+				[self announceNewVerifier:verifier];
 				}
 			}
 		}
+	}
+
+@end
+
+@implementation VimeoAuthorizationViewController (Private)
+
+- (void)announceNewVerifier:(NSString *)aVerifier
+	{
+	if(delegate && [delegate conformsToProtocol:@protocol(VimeoAuthorizationViewControllerDelegate)])
+		{
+		[delegate authorizationViewController:self didReceiveVerifier:aVerifier];
+		}
+	
+	NSDictionary* userInformation = [NSDictionary dictionaryWithObject:aVerifier forKey:kVimeoVerifierKey];
+	NSNotification* verifierNotification = [NSNotification notificationWithName:kVimeoAuthorizationVerifierNotification object:nil userInfo:userInformation];
+	[[NSNotificationCenter defaultCenter] postNotification:verifierNotification];
 	}
 
 @end
