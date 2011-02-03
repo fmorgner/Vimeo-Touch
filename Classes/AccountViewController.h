@@ -8,20 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-#import "VimeoController.h"
-#import "VimeoAuthorizationViewController.h"
 #import "OAuth.h"
-#import "NSMutableURLRequest+OAuthAdditions.h"
+#import "Vimeo.h"
 
-@interface AccountViewController : UIViewController <UIWebViewDelegate>
+@interface AccountViewController : UIViewController <UIWebViewDelegate,VimeoAuthorizationViewControllerDelegate>
 	{
 	VimeoController* vimeoController;
 	AppDelegate* appDelegate;
 	}
 
 - (IBAction)login:(id)sender;
-- (NSDictionary*)getAccessTokenWithVerifier:(NSString*)verifier;
-- (NSArray*)parametersFromData:(NSData*)theData;
+- (OAuthToken*)fetchAccessTokenWithVerifier:(NSString*)verifier;
 
 
 @property(nonatomic, retain) VimeoController* vimeoController;

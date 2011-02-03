@@ -8,6 +8,12 @@
 
 #import "AccountViewController.h"
 
+@interface AccountViewController (Private)
+
+- (NSArray*)parametersFromData:(NSData*)theData;
+
+@end
+
 @implementation AccountViewController
 
 @synthesize vimeoController;
@@ -17,46 +23,39 @@
 	{
 	if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
 		{
-		self.appDelegate = [[UIApplication sharedApplication] delegate];
-		self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Account" image:[UIImage imageNamed:@"111-user"] tag:0];
+		[self setAppDelegate:[[UIApplication sharedApplication] delegate]];
+		[self setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Account" image:[UIImage imageNamed:@"111-user"] tag:0]];
 		[self setTitle:@"Account"];
 		}	
 	return self;
 	}
 
 - (void)dealloc
-{
-    [super dealloc];
-}
+	{
+	[super dealloc];
+	}
 
 - (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
+	{
+	[super didReceiveMemoryWarning];
+	}
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
+	{
+	[super viewDidLoad];
+	}
 
 - (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
+	{
+	[super viewDidUnload];
+	}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
+	{
+	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	}
 
 #pragma mark - Actions
 
@@ -72,11 +71,7 @@
 		return;
 		}
 	
-	OAuthRequest* request = [OAuthRequest requestWithURL:[NSURL URLWithString:@"http://vimeo.com/oauth/request_token"]
-	 																								 consumer:appDelegate.consumer
-																									 		token:nil
-																											realm:nil
-																								signerClass:[OAuthSignerHMAC class]];
+	OAuthRequest* request = [OAuthRequest requestWithURL:[NSURL URLWithString:kVimeoAccessTokenRequestURL] consumer:appDelegate.consumer token:nil realm:nil signerClass:[OAuthSignerHMAC class]];
 	[request prepare];
 	NSHTTPURLResponse* response;
 	NSError* error;
@@ -84,20 +79,15 @@
 	
 	if([response statusCode] != 200)
 		return;
-	
-	NSArray* parameterPairs = [[[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding] autorelease] componentsSeparatedByString:@"&"];
-	NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithCapacity:[parameterPairs count]];
-	
-	for(NSString* parameterString in parameterPairs)
-		{
-		[parameters setValue:[[parameterString componentsSeparatedByString:@"="] objectAtIndex:1] forKey:[[parameterString componentsSeparatedByString:@"="] objectAtIndex:0]];
-		}
 
+	NSDictionary* parameters = [NSDictionary dictionaryWithOauthParameters:[self parametersFromData:receivedData]];
+	
 	appDelegate.vimeoUser.token.key = [parameters objectForKey:@"oauth_token"];
 	appDelegate.vimeoUser.token.secret = [parameters objectForKey:@"oauth_token_secret"];
 	
-	VimeoAuthorizationViewController* authorizationViewController = [[VimeoAuthorizationViewController alloc] initWithToken:appDelegate.vimeoUser.token];
-	[authorizationViewController addObserver:self forKeyPath:@"verifier" options:NSKeyValueObservingOptionNew context:NULL];
+	VimeoAuthorizationViewController* authorizationViewController = [[VimeoAuthorizationViewController alloc] init];
+	[authorizationViewController setToken:appDelegate.vimeoUser.token];
+	[authorizationViewController setDelegate:self];
 	
 	[self.tabBarController presentModalViewController:authorizationViewController animated:YES];
 	[authorizationViewController release];
@@ -105,9 +95,9 @@
 
 #pragma mark - Utility Methods
 	
-- (NSDictionary*)getAccessTokenWithVerifier:(NSString*)verifier
+- (OAuthToken*)fetchAccessTokenWithVerifier:(NSString*)verifier
 	{
-	NSURL* accessTokenURL = [NSURL URLWithString:@"http://vimeo.com/oauth/access_token"];
+	NSURL* accessTokenURL = [NSURL URLWithString:kVimeoAccessTokenVerificationURL];
 	OAuthRequest* request = [OAuthRequest requestWithURL:accessTokenURL consumer:appDelegate.consumer token:appDelegate.vimeoUser.token realm:nil signerClass:nil];
 	NSHTTPURLResponse* response;
 	NSError* error;
@@ -116,18 +106,24 @@
 	[request prepare];
 	
 	NSData* receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-	NSArray* parameters = [self parametersFromData:receivedData];
-	NSMutableDictionary* parameterDict = [NSMutableDictionary dictionaryWithCapacity:[parameters count]];
+	NSDictionary* parameters = [NSDictionary dictionaryWithOauthParameters:[self parametersFromData:receivedData]];
 	
-	for(OAuthParameter* parameter in parameters)
-		{
-		[parameterDict setValue:parameter.value forKey:parameter.key];
-		}
+	OAuthToken* newToken = [OAuthToken tokenWithKey:[parameters valueForKey:@"oauth_token"] secret:[parameters valueForKey:@"oauth_token_secret"] authorized:YES];
 	
-	[self.tabBarController dismissModalViewControllerAnimated:YES];
-	[appDelegate.vimeoUser writeKeychainItem];
-	return parameterDict;
+	return newToken;
 	}
+
+	
+#pragma mark - Authorization View Controller Delegate
+
+- (void)authorizationViewController:(VimeoAuthorizationViewController *)authViewController didReceiveVerifier:(NSString *)theVerifier
+	{
+	[self fetchAccessTokenWithVerifier:theVerifier];
+	}
+
+@end
+
+@implementation AccountViewController (Private)
 
 - (NSArray*)parametersFromData:(NSData*)theData
 	{
@@ -144,14 +140,5 @@
 	return [NSArray arrayWithArray:parameters];
 	}
 
-#pragma mark - Key Value Observing
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-	{
-	if([keyPath isEqualToString:@"verifier"] && [object isKindOfClass:[VimeoAuthorizationViewController class]])
-		{
-		[self getAccessTokenWithVerifier:[change valueForKey:NSKeyValueChangeNewKey]];
-		}
-	}
 
 @end
