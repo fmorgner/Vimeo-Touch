@@ -30,6 +30,7 @@
 		BB59912612F1EA45009F2334 /* VimeoAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59912512F1EA45009F2334 /* VimeoAuthorizationViewController.m */; };
 		BBA91EAD12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.m */; };
 		BBA91EB412EB129500B95AFE /* NSURL+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EB312EB129500B95AFE /* NSURL+OAuthAdditions.m */; };
+		BBCACED012FABD0D00B6035C /* NSDictionary+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCACECF12FABD0D00B6035C /* NSDictionary+OAuthAdditions.m */; };
 		BBF7289F12DB995C00FEEBA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF7289E12DB995C00FEEBA3 /* UIKit.framework */; };
 		BBF728A112DB995C00FEEBA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A012DB995C00FEEBA3 /* Foundation.framework */; };
 		BBF728A312DB995C00FEEBA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A212DB995C00FEEBA3 /* CoreGraphics.framework */; };
@@ -80,6 +81,10 @@
 		BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableURLRequest+OAuthAdditions.m"; path = "Classes/OAuth/NSMutableURLRequest+OAuthAdditions.m"; sourceTree = "<group>"; };
 		BBA91EB212EB129500B95AFE /* NSURL+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+OAuthAdditions.h"; path = "Classes/OAuth/NSURL+OAuthAdditions.h"; sourceTree = "<group>"; };
 		BBA91EB312EB129500B95AFE /* NSURL+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+OAuthAdditions.m"; path = "Classes/OAuth/NSURL+OAuthAdditions.m"; sourceTree = "<group>"; };
+		BBCACEC712FAB87C00B6035C /* VimeoConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoConstants.h; sourceTree = "<group>"; };
+		BBCACEC912FAB8A900B6035C /* Vimeo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vimeo.h; sourceTree = "<group>"; };
+		BBCACECE12FABD0D00B6035C /* NSDictionary+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; name = "NSDictionary+OAuthAdditions.h"; path = "Classes/OAuth/NSDictionary+OAuthAdditions.h"; sourceTree = "<group>"; };
+		BBCACECF12FABD0D00B6035C /* NSDictionary+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+OAuthAdditions.m"; path = "Classes/OAuth/NSDictionary+OAuthAdditions.m"; sourceTree = "<group>"; };
 		BBD34D5812E2085500CAB3BF /* OAuthSignerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSignerProtocol.h; sourceTree = "<group>"; };
 		BBF7289B12DB995C00FEEBA3 /* Vimeo Touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vimeo Touch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF7289E12DB995C00FEEBA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -112,6 +117,8 @@
 		BB1AFA2212E0DEFD00252AF3 /* Vimeo */ = {
 			isa = PBXGroup;
 			children = (
+				BBCACEC912FAB8A900B6035C /* Vimeo.h */,
+				BBCACEC712FAB87C00B6035C /* VimeoConstants.h */,
 				BB313A5912F079F100FD1FDD /* VimeoController.h */,
 				BB313A5A12F079F100FD1FDD /* VimeoController.m */,
 				BB1AFA2412E0DF2B00252AF3 /* VimeoVideo.h */,
@@ -157,6 +164,8 @@
 				BB1AFA3712E0E38900252AF3 /* NSData+Base64.m */,
 				BB1AFA3D12E0EA7300252AF3 /* NSString+OAuthAdditions.h */,
 				BB1AFA3E12E0EA7400252AF3 /* NSString+OAuthAdditions.m */,
+				BBCACECE12FABD0D00B6035C /* NSDictionary+OAuthAdditions.h */,
+				BBCACECF12FABD0D00B6035C /* NSDictionary+OAuthAdditions.m */,
 			);
 			name = Categories;
 			path = ../..;
@@ -334,6 +343,7 @@
 				BB313A6412F09ABF00FD1FDD /* AccountViewController.m in Sources */,
 				BB59912012F1E599009F2334 /* VimeoUser.m in Sources */,
 				BB59912612F1EA45009F2334 /* VimeoAuthorizationViewController.m in Sources */,
+				BBCACED012FABD0D00B6035C /* NSDictionary+OAuthAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
