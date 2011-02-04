@@ -30,6 +30,7 @@
 		BBA91EAD12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.m */; };
 		BBA91EB412EB129500B95AFE /* NSURL+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA91EB312EB129500B95AFE /* NSURL+OAuthAdditions.m */; };
 		BBAAE7D812FBFE420021B9E2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAAE7D712FBFE420021B9E2 /* Security.framework */; };
+		BBAAE7E612FC0C680021B9E2 /* VimeoLoadingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAAE7E512FC0C680021B9E2 /* VimeoLoadingOverlay.m */; };
 		BBCACED012FABD0D00B6035C /* NSDictionary+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCACECF12FABD0D00B6035C /* NSDictionary+OAuthAdditions.m */; };
 		BBF7289F12DB995C00FEEBA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF7289E12DB995C00FEEBA3 /* UIKit.framework */; };
 		BBF728A112DB995C00FEEBA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A012DB995C00FEEBA3 /* Foundation.framework */; };
@@ -81,6 +82,8 @@
 		BBA91EB212EB129500B95AFE /* NSURL+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+OAuthAdditions.h"; path = "Classes/OAuth/NSURL+OAuthAdditions.h"; sourceTree = "<group>"; };
 		BBA91EB312EB129500B95AFE /* NSURL+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+OAuthAdditions.m"; path = "Classes/OAuth/NSURL+OAuthAdditions.m"; sourceTree = "<group>"; };
 		BBAAE7D712FBFE420021B9E2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BBAAE7E412FC0C680021B9E2 /* VimeoLoadingOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoLoadingOverlay.h; sourceTree = "<group>"; };
+		BBAAE7E512FC0C680021B9E2 /* VimeoLoadingOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoLoadingOverlay.m; sourceTree = "<group>"; };
 		BBCACEC712FAB87C00B6035C /* VimeoConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoConstants.h; sourceTree = "<group>"; };
 		BBCACEC912FAB8A900B6035C /* Vimeo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vimeo.h; sourceTree = "<group>"; };
 		BBCACECE12FABD0D00B6035C /* NSDictionary+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+OAuthAdditions.h"; path = "Classes/OAuth/NSDictionary+OAuthAdditions.h"; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 				BB59911F12F1E599009F2334 /* VimeoUser.m */,
 				BB59912412F1EA45009F2334 /* VimeoAuthorizationViewController.h */,
 				BB59912512F1EA45009F2334 /* VimeoAuthorizationViewController.m */,
+				BBAAE7E412FC0C680021B9E2 /* VimeoLoadingOverlay.h */,
+				BBAAE7E512FC0C680021B9E2 /* VimeoLoadingOverlay.m */,
 			);
 			path = Vimeo;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 				BB59912012F1E599009F2334 /* VimeoUser.m in Sources */,
 				BB59912612F1EA45009F2334 /* VimeoAuthorizationViewController.m in Sources */,
 				BBCACED012FABD0D00B6035C /* NSDictionary+OAuthAdditions.m in Sources */,
+				BBAAE7E612FC0C680021B9E2 /* VimeoLoadingOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
