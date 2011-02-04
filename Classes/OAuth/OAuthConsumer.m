@@ -11,47 +11,17 @@
 
 @implementation OAuthConsumer
 
-#pragma mark - Properties
-
-@synthesize key;
-@synthesize secret;
-
-#pragma mark - Object Lifecycle
-
-- (id)init
-	{
-	if((self = [super init]))
-		{
-		self.key = nil;
-		self.secret = nil;
-		}
-	
-	return self;
-	}
-
-- (id)initWithKey:(NSString*)theKey secret:(NSString*)theSecret
-	{
-	if((self = [super init]))
-		{
-		self.key = theKey;
-		self.secret = theSecret;
-		}
-	
-	return self;	
-	}
-
-- (void)dealloc
-	{
-	[key release];
-	[secret release];
-	[super dealloc];
-	}
 
 #pragma mark - Convenience Allocators
 
-+ (OAuthConsumer*)consumerWithKey:(NSString*)theKey secret:(NSString*)theSecret
++ (OAuthConsumer*)consumerWithKey:(NSString*)theKey secret:(NSString*)theSecret authorized:(BOOL)isAuthorized
 	{
-	return [[[OAuthConsumer alloc] initWithKey:theKey secret:theSecret] autorelease];
+	return [[[OAuthConsumer alloc] initWithKey:theKey secret:theSecret authorized:isAuthorized] autorelease];
+	}
+
++ (OAuthConsumer*)consumer
+	{
+	return [[[OAuthConsumer alloc] init] autorelease];
 	}
 
 @end

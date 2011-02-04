@@ -7,19 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OAuthToken.h"
 
-
-@interface OAuthConsumer : NSObject
+@interface OAuthConsumer : OAuthToken
 	{
-	NSString* key;
-	NSString* secret;
 	}
-
-- (id)initWithKey:(NSString*)theKey secret:(NSString*)theSecret;
-
-+ (OAuthConsumer*)consumerWithKey:(NSString*)theKey secret:(NSString*)theSecret;
-
-@property(nonatomic, retain) NSString* key;
-@property(nonatomic, retain) NSString* secret;
 
 @end
