@@ -17,6 +17,7 @@
 @implementation VimeoAuthorizationViewController
 
 @synthesize webView;
+@synthesize loadingOverlay;
 @synthesize token;
 @synthesize delegate;
 
@@ -24,8 +25,10 @@
 	{
 	if ((self = [super init]))
 		{
-		webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 360, 480)];
+		webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+		loadingOverlay = [[VimeoLoadingOverlay alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
 		token = nil;
+		delegate = nil;
 		}
 	return self;
 	}
@@ -34,7 +37,8 @@
 	{
 	if ((self = [super init]))
 		{
-		webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 360, 480)];
+		webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+		loadingOverlay = [[VimeoLoadingOverlay alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
 		token = aToken;
 		delegate = aDelegate;
 		}
@@ -43,6 +47,7 @@
 
 - (void)dealloc
 	{
+	[webView release];
 	[super dealloc];
 	}
 
@@ -64,6 +69,8 @@
 	[webView setDelegate:self];
 	[webView loadRequest:[NSURLRequest requestWithURL:authURL]];
 	self.view = webView;
+	
+	[self.view addSubview:loadingOverlay];
 	}
 
 - (void)viewDidUnload
@@ -80,6 +87,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView
 	{
+	[loadingOverlay setHidden:YES];
 	if([[[theWebView request] HTTPMethod] isEqualToString:@"POST"])
 		{
 		NSArray* parameters = [(NSMutableURLRequest*)[theWebView request] parameters];
