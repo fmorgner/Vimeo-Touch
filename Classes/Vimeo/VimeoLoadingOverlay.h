@@ -12,10 +12,12 @@
 @interface VimeoLoadingOverlay : UIView 
 	{
 	UIActivityIndicatorView* loadingIndicator;
+	UILabel* messageLabel;
 	UIView* overlayView;
 	}
 
 @property(nonatomic, retain) UIActivityIndicatorView* loadingIndicator;
+@property(nonatomic, retain) UILabel* messageLabel;
 @property(nonatomic, retain) UIView* overlayView;
 
 @end

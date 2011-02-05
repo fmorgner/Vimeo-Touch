@@ -8,11 +8,13 @@
 
 #import "VimeoLoadingOverlay.h"
 
+#define kOffsetCenterY 15
 
 @implementation VimeoLoadingOverlay
 
 @synthesize overlayView;
 @synthesize loadingIndicator;
+@synthesize messageLabel;
 
 - (id)initWithFrame:(CGRect)frame
 	{
@@ -20,46 +22,46 @@
 		{
 		[self addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew context:nil];
 
-		overlayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+		overlayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
 		overlayView.center = self.center;
 		overlayView.layer.backgroundColor = [[UIColor blackColor] CGColor];
 		overlayView.layer.cornerRadius = 10;
 		overlayView.layer.opacity = 0.75f;
 		
 		loadingIndicator  = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-		loadingIndicator.frame = CGRectMake(0, 0, 30, 30);
-		loadingIndicator.center = overlayView.center;
+		loadingIndicator.frame = CGRectMake(0, 0, 25, 25);
+		loadingIndicator.center = CGPointMake(overlayView.center.x, overlayView.center.y - kOffsetCenterY);
 		loadingIndicator.hidesWhenStopped = YES;
-		[loadingIndicator startAnimating];
+
+		messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 20)];
+		messageLabel.text = @"Loading";
+		messageLabel.font = [UIFont systemFontOfSize:15];
+		messageLabel.textColor = [UIColor whiteColor];
+		messageLabel.userInteractionEnabled = NO;
+		messageLabel.textAlignment = UITextAlignmentCenter;
+		messageLabel.center = CGPointMake(overlayView.center.x, overlayView.center.y + kOffsetCenterY);
+		messageLabel.backgroundColor = [UIColor clearColor];
+		
+		self.userInteractionEnabled = NO;
 		
 		[self addSubview:overlayView];
 		[self addSubview:loadingIndicator];
+		[self addSubview:messageLabel];
 		}
 	return self;
 	}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 	{
-	if([keyPath isEqualToString:@"hidden"] && [change valueForKey:NSKeyValueChangeNewKey])
+	if([keyPath isEqualToString:@"hidden"] && [[change valueForKey:NSKeyValueChangeNewKey] boolValue])
 		{
 		[loadingIndicator stopAnimating];  
 		}
-	else if ([keyPath isEqualToString:@"hidden"] && ![change valueForKey:NSKeyValueChangeNewKey])
+	else if ([keyPath isEqualToString:@"hidden"] && ![[change valueForKey:NSKeyValueChangeNewKey] boolValue])
 		{
 		[loadingIndicator startAnimating];
 		}
-	
-//	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 - (BOOL)canBecomeFirstResponder
 	{
