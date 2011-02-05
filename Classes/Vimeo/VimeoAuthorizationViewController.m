@@ -102,6 +102,11 @@
 		}
 	}
 
+- (void)webViewDidStartLoad:(UIWebView *)webView
+	{
+	[loadingOverlay setHidden:NO];
+	}
+
 @end
 
 @implementation VimeoAuthorizationViewController (Private)
@@ -114,7 +119,10 @@
 
 	if(delegate && [delegate conformsToProtocol:@protocol(VimeoAuthorizationViewControllerDelegate)])
 		{
-		[delegate authorizationViewController:self didReceiveVerifier:aVerifier];
+		static dispatch_once_t onceToken;
+		dispatch_once(&onceToken, ^{
+			[delegate authorizationViewController:self didReceiveVerifier:aVerifier];
+			});
 		}
 	}
 
