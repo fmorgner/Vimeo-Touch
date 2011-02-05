@@ -109,7 +109,7 @@
 	NSDictionary* parameters = [NSDictionary dictionaryWithOauthParameters:[self parametersFromData:receivedData]];
 	
 	OAuthToken* newToken = [OAuthToken tokenWithKey:[parameters valueForKey:@"oauth_token"] secret:[parameters valueForKey:@"oauth_token_secret"] authorized:YES];
-	
+	[self.modalViewController dismissModalViewControllerAnimated:YES];
 	return newToken;
 	}
 
