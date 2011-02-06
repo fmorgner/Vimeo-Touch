@@ -14,7 +14,7 @@
 @synthesize keychainQuery;
 @synthesize keychainQueryResult;
 @synthesize keychainItemID;
-@synthesize keychainData;
+@synthesize keychainItemData;
 
 #pragma mark - Object Lifecycle
 
@@ -23,8 +23,10 @@
 	if((self = [super init]))
 		{
 		token = [[OAuthToken alloc] init];
-		
-		keychainQuery = nil;		
+		keychainQuery = nil;
+		keychainQueryResult = nil;
+		keychainItemID = nil;
+		keychainItemData = nil;
 		}
 	return self;
 	}
@@ -49,7 +51,7 @@
 		
 		if(keychainError == noErr)
 			{
-			[self setTokenFromKeychainQueryResult];
+			[self fetchTokenFromKeychain];
 			}
 		else if(keychainError == errSecItemNotFound)
 			{
@@ -63,7 +65,7 @@
 	{
 	[keychainQuery release];
 	[keychainQueryResult release];
-	[keychainData release];
+	[keychainItemData release];
 	[token release];
 	[super dealloc];
 	}
@@ -82,7 +84,7 @@
 
 #pragma mark - Utility methods
 
-- (void)setTokenFromKeychainQueryResult
+- (void)fetchTokenFromKeychain
 	{
 	NSMutableDictionary* resultDictionary = [NSMutableDictionary dictionaryWithDictionary:keychainQueryResult];
 	[resultDictionary setObject:(id)kCFBooleanTrue forKey:(id)kSecReturnData];
@@ -102,27 +104,24 @@
 
 - (void)prepareKeychainItem
 	{
-	if(!keychainData)
-		keychainData = [[NSMutableDictionary alloc] init];
+	if(!keychainItemData)
+		keychainItemData = [[NSMutableDictionary alloc] init];
 	
-	[keychainData setObject:@"Vimeo user token" forKey:(id)kSecAttrLabel];
-  [keychainData setObject:@"This is the authorized token for the vimeo user" forKey:(id)kSecAttrDescription];
-  [keychainData setObject:@"username" forKey:(id)kSecAttrAccount];
-  [keychainData setObject:@"vimeo" forKey:(id)kSecAttrService];
-  [keychainData setObject:@"" forKey:(id)kSecAttrComment];
-  [keychainData setObject:@"" forKey:(id)kSecValueData];
-	[keychainData setValue:keychainItemID forKey:(id)kSecAttrGeneric];
-	[keychainData setValue:(id)kSecClassGenericPassword forKey:(id)kSecClass];
+	[keychainItemData setObject:@"Vimeo user token" forKey:(id)kSecAttrLabel];
+  [keychainItemData setObject:@"This is the authorized token for the vimeo user" forKey:(id)kSecAttrDescription];
+  [keychainItemData setObject:@"username" forKey:(id)kSecAttrAccount];
+  [keychainItemData setObject:@"vimeo" forKey:(id)kSecAttrService];
+  [keychainItemData setObject:@"" forKey:(id)kSecAttrComment];
+  [keychainItemData setObject:[NSNull null] forKey:(id)kSecValueData];
+	[keychainItemData setValue:keychainItemID forKey:(id)kSecAttrGeneric];
+	[keychainItemData setValue:(id)kSecClassGenericPassword forKey:(id)kSecClass];
 	}
 
 - (BOOL)writeKeychainItem
 	{
-	if([[keychainData valueForKey:(id)kSecValueData] isEqualToString:@""])
-		{
-		NSString* tokenString = [NSString stringWithFormat:@"%@&%@", token.key, token.secret];
-		NSData* tokenData = [tokenString dataUsingEncoding:NSUTF8StringEncoding];
-  	[keychainData setObject:tokenData forKey:(id)kSecValueData];
-		}
+	NSString* tokenString = [NSString stringWithFormat:@"%@&%@", token.key, token.secret];
+	NSData* tokenData = [tokenString dataUsingEncoding:NSUTF8StringEncoding];
+	[keychainItemData setObject:tokenData forKey:(id)kSecValueData];
 	
 	NSAssert(SecItemAdd((CFDictionaryRef)keychainData, NULL) == noErr, @"Couldn't add the Keychain Item." );
 	

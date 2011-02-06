@@ -15,7 +15,7 @@
 	OAuthToken* token;
 	NSMutableDictionary* keychainQuery;
 	NSMutableDictionary* keychainQueryResult;
-	NSMutableDictionary* keychainData;
+	NSMutableDictionary* keychainItemData;
 	NSData* keychainItemID;
 	}
 
@@ -24,14 +24,14 @@
 
 - (id)initWithKeychainItemID:(NSData*)itemID;
 
-- (void)setTokenFromKeychainQueryResult;
+- (void)fetchTokenFromKeychain;
 - (void)prepareKeychainItem;
 - (BOOL)writeKeychainItem;
 
 @property(nonatomic, retain) OAuthToken* token;
 @property(nonatomic, retain) NSMutableDictionary* keychainQuery;
 @property(nonatomic, retain) NSMutableDictionary* keychainQueryResult;
-@property(nonatomic, retain) NSMutableDictionary* keychainData;
+@property(nonatomic, retain) NSMutableDictionary* keychainItemData;
 @property(nonatomic, retain) NSData* keychainItemID;
 
 @end
