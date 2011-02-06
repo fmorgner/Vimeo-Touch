@@ -60,17 +60,7 @@
 #pragma mark - Actions
 
 - (IBAction)login:(id)sender
-	{
-	
-	if([appDelegate.vimeoUser.token isAuthorized])
-		{
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vimeo Touch" message:@"Allready authorized!" 
-		delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-		return;
-		}
-	
+	{	
 	OAuthRequest* request = [OAuthRequest requestWithURL:[NSURL URLWithString:kVimeoAccessTokenRequestURL] consumer:appDelegate.consumer token:nil realm:nil signerClass:[OAuthSignerHMAC class]];
 	[request prepare];
 	NSHTTPURLResponse* response;
