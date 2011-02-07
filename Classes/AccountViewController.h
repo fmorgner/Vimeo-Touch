@@ -11,10 +11,12 @@
 #import "OAuth.h"
 #import "Vimeo.h"
 
-@interface AccountViewController : UIViewController <UIWebViewDelegate,VimeoAuthorizationViewControllerDelegate>
+@interface AccountViewController : UIViewController <VimeoAuthorizationViewControllerDelegate, UITableViewDataSource>
 	{
 	VimeoController* vimeoController;
 	AppDelegate* appDelegate;
+	
+	NSArray* userInformation;
 	}
 
 - (IBAction)login:(id)sender;
@@ -23,5 +25,6 @@
 
 @property(nonatomic, retain) VimeoController* vimeoController;
 @property(nonatomic, retain) AppDelegate* appDelegate;
+@property(nonatomic, retain) NSArray* userInformation;
 
 @end

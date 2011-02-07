@@ -18,6 +18,7 @@
 
 @synthesize vimeoController;
 @synthesize appDelegate;
+@synthesize userInformation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 	{
@@ -44,6 +45,12 @@
 
 - (void)viewDidLoad
 	{
+	NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?method=%@", kVimeoRestURL, kVimeoMethodOAuthCheckAccessToken]];
+	OAuthRequest* tokenCheckRequest = [OAuthRequest requestWithURL:url consumer:appDelegate.consumer token:appDelegate.vimeoUser.token realm:nil signerClass:nil];
+//	[tokenCheckRequest addParameter:[OAuthParameter parameterWithKey:@"method" andValue:kVimeoMethodOAuthCheckAccessToken]];
+	[tokenCheckRequest prepare];
+	NSData* receivedData = [NSURLConnection sendSynchronousRequest:tokenCheckRequest returningResponse:nil error:nil];
+	printf("%s", (char*)[receivedData bytes]);
 	[super viewDidLoad];
 	}
 
@@ -99,6 +106,12 @@
 	NSDictionary* parameters = [NSDictionary dictionaryWithOauthParameters:[self parametersFromData:receivedData]];
 	
 	OAuthToken* newToken = [OAuthToken tokenWithKey:[parameters valueForKey:@"oauth_token"] secret:[parameters valueForKey:@"oauth_token_secret"] authorized:YES];
+	[appDelegate.vimeoUser setToken:newToken];
+	
+	static const UInt8 kKeychainItemIdentifier[] = "ch.felixmorgner.Vimeo_Touch\0";
+	NSData* itemID = [NSData dataWithBytes:kKeychainItemIdentifier length:strlen((const char*)kKeychainItemIdentifier)];
+	[appDelegate.vimeoUser writeToKeychainWithItemID:itemID];
+
 	[self.modalViewController dismissModalViewControllerAnimated:YES];
 	return newToken;
 	}
@@ -109,6 +122,31 @@
 - (void)authorizationViewController:(VimeoAuthorizationViewController *)authViewController didReceiveVerifier:(NSString *)theVerifier
 	{
 	[self fetchAccessTokenWithVerifier:theVerifier];
+	}
+
+#pragma mark - Table View Data Source
+	
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+	{
+	return 2;
+	}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+	{
+	return 2;
+	}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+	{
+	static NSString *cellIdentifier = @"cell";
+
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+	if (cell == nil)
+		{
+		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier] autorelease];
+		}
+
+	return cell;
 	}
 
 @end
