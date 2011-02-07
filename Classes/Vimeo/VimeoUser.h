@@ -9,29 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <Security/Security.h>
 #import "OAuth.h"
+#import "VimeoKeychainAccess.h"
 
 @interface VimeoUser : NSObject
 	{
 	OAuthToken* token;
-	NSMutableDictionary* keychainQuery;
-	NSMutableDictionary* keychainQueryResult;
-	NSMutableDictionary* keychainItemData;
-	NSData* keychainItemID;
 	}
 
 + (VimeoUser*)user;
 + (VimeoUser*)userWithKeychainItemID:(NSData*)itemID;
 
 - (id)initWithKeychainItemID:(NSData*)itemID;
-
-- (void)fetchTokenFromKeychain;
-- (void)prepareKeychainItem;
-- (BOOL)writeKeychainItem;
+- (void)writeToKeychainWithItemID:(NSData*)itemID;
 
 @property(nonatomic, retain) OAuthToken* token;
-@property(nonatomic, retain) NSMutableDictionary* keychainQuery;
-@property(nonatomic, retain) NSMutableDictionary* keychainQueryResult;
-@property(nonatomic, retain) NSMutableDictionary* keychainItemData;
-@property(nonatomic, retain) NSData* keychainItemID;
 
 @end
