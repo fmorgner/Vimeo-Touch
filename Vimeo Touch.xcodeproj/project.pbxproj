@@ -12,6 +12,7 @@
 		BB05348B12DE12D4008578F2 /* 70-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = BB05348A12DE12D4008578F2 /* 70-tv.png */; };
 		BB0B7CFF12F35ABC00F5B44D /* vimeo_logo-2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B7CFD12F35ABC00F5B44D /* vimeo_logo-2x.png */; };
 		BB0B7D0012F35ABC00F5B44D /* vimeo_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0B7CFE12F35ABC00F5B44D /* vimeo_logo.png */; };
+		BB1AA0D1130033F4008E8C6F /* VimeoKeychainAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AA0D0130033F4008E8C6F /* VimeoKeychainAccess.m */; };
 		BB1AFA2612E0DF2B00252AF3 /* VimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA2512E0DF2B00252AF3 /* VimeoVideo.m */; };
 		BB1AFA2D12E0E10600252AF3 /* OAuthSignerHMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA2C12E0E10600252AF3 /* OAuthSignerHMAC.m */; };
 		BB1AFA3812E0E38900252AF3 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1AFA3712E0E38900252AF3 /* NSData+Base64.m */; };
@@ -48,6 +49,8 @@
 		BB05348A12DE12D4008578F2 /* 70-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "70-tv.png"; sourceTree = "<group>"; };
 		BB0B7CFD12F35ABC00F5B44D /* vimeo_logo-2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vimeo_logo-2x.png"; sourceTree = "<group>"; };
 		BB0B7CFE12F35ABC00F5B44D /* vimeo_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo_logo.png; sourceTree = "<group>"; };
+		BB1AA0CF130033F4008E8C6F /* VimeoKeychainAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoKeychainAccess.h; sourceTree = "<group>"; };
+		BB1AA0D0130033F4008E8C6F /* VimeoKeychainAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoKeychainAccess.m; sourceTree = "<group>"; };
 		BB1AFA2412E0DF2B00252AF3 /* VimeoVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoVideo.h; sourceTree = "<group>"; };
 		BB1AFA2512E0DF2B00252AF3 /* VimeoVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoVideo.m; sourceTree = "<group>"; };
 		BB1AFA2B12E0E10600252AF3 /* OAuthSignerHMAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSignerHMAC.h; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				BB59912512F1EA45009F2334 /* VimeoAuthorizationViewController.m */,
 				BBAAE7E412FC0C680021B9E2 /* VimeoLoadingOverlay.h */,
 				BBAAE7E512FC0C680021B9E2 /* VimeoLoadingOverlay.m */,
+				BB1AA0CF130033F4008E8C6F /* VimeoKeychainAccess.h */,
+				BB1AA0D0130033F4008E8C6F /* VimeoKeychainAccess.m */,
 			);
 			path = Vimeo;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				BB59912612F1EA45009F2334 /* VimeoAuthorizationViewController.m in Sources */,
 				BBCACED012FABD0D00B6035C /* NSDictionary+OAuthAdditions.m in Sources */,
 				BBAAE7E612FC0C680021B9E2 /* VimeoLoadingOverlay.m in Sources */,
+				BB1AA0D1130033F4008E8C6F /* VimeoKeychainAccess.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
