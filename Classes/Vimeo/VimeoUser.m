@@ -29,6 +29,11 @@
 		{
 		NSError* error = nil;
 		[self setToken:[VimeoKeychainAccess fetchTokenForItemID:itemID error:&error]];
+		
+		if(error)
+			{
+			token = [[OAuthToken alloc] init];
+			}
 		}
 	return self;
 	}
