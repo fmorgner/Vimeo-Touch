@@ -50,6 +50,7 @@
 //	[tokenCheckRequest addParameter:[OAuthParameter parameterWithKey:@"method" andValue:kVimeoMethodOAuthCheckAccessToken]];
 	[tokenCheckRequest prepare];
 	NSData* receivedData = [NSURLConnection sendSynchronousRequest:tokenCheckRequest returningResponse:nil error:nil];
+	VimeoAPIResponse* response = [[VimeoAPIResponse alloc] initWithData:receivedData];
 	printf("%s", (char*)[receivedData bytes]);
 	[super viewDidLoad];
 	}

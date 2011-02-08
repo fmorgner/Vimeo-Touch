@@ -34,6 +34,7 @@
 		BBAAE7D812FBFE420021B9E2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAAE7D712FBFE420021B9E2 /* Security.framework */; };
 		BBAAE7E612FC0C680021B9E2 /* VimeoLoadingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAAE7E512FC0C680021B9E2 /* VimeoLoadingOverlay.m */; };
 		BBCACED012FABD0D00B6035C /* NSDictionary+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCACECF12FABD0D00B6035C /* NSDictionary+OAuthAdditions.m */; };
+		BBE78C941301D11100940680 /* FMXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE78C931301D11100940680 /* FMXMLElement.m */; };
 		BBF7289F12DB995C00FEEBA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF7289E12DB995C00FEEBA3 /* UIKit.framework */; };
 		BBF728A112DB995C00FEEBA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A012DB995C00FEEBA3 /* Foundation.framework */; };
 		BBF728A312DB995C00FEEBA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A212DB995C00FEEBA3 /* CoreGraphics.framework */; };
@@ -95,6 +96,8 @@
 		BBCACECE12FABD0D00B6035C /* NSDictionary+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+OAuthAdditions.h"; path = "Classes/OAuth/NSDictionary+OAuthAdditions.h"; sourceTree = "<group>"; };
 		BBCACECF12FABD0D00B6035C /* NSDictionary+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+OAuthAdditions.m"; path = "Classes/OAuth/NSDictionary+OAuthAdditions.m"; sourceTree = "<group>"; };
 		BBD34D5812E2085500CAB3BF /* OAuthSignerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSignerProtocol.h; sourceTree = "<group>"; };
+		BBE78C921301D11100940680 /* FMXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMXMLElement.h; sourceTree = "<group>"; };
+		BBE78C931301D11100940680 /* FMXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMXMLElement.m; sourceTree = "<group>"; };
 		BBF7289B12DB995C00FEEBA3 /* Vimeo Touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vimeo Touch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF7289E12DB995C00FEEBA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBF728A012DB995C00FEEBA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -203,6 +206,15 @@
 			name = Temp;
 			sourceTree = "<group>";
 		};
+		BBE78C911301D0C400940680 /* FMXMLKit */ = {
+			isa = PBXGroup;
+			children = (
+				BBE78C921301D11100940680 /* FMXMLElement.h */,
+				BBE78C931301D11100940680 /* FMXMLElement.m */,
+			);
+			path = FMXMLKit;
+			sourceTree = "<group>";
+		};
 		BBF7288C12DB995C00FEEBA3 = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +230,7 @@
 		BBF7289312DB995C00FEEBA3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BBE78C911301D0C400940680 /* FMXMLKit */,
 				BB1AFA2A12E0E0F200252AF3 /* OAuth */,
 				BB1AFA2212E0DEFD00252AF3 /* Vimeo */,
 				BBF728AB12DB995C00FEEBA3 /* AppDelegate.h */,
@@ -362,6 +375,7 @@
 				BBAAE7E612FC0C680021B9E2 /* VimeoLoadingOverlay.m in Sources */,
 				BB1AA0D1130033F4008E8C6F /* VimeoKeychainAccess.m in Sources */,
 				BB1AA0D51300860D008E8C6F /* VimeoAPIResponse.m in Sources */,
+				BBE78C941301D11100940680 /* FMXMLElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +411,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
@@ -411,7 +425,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
@@ -426,9 +440,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vimeo_Touch-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Vimeo_Touch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -441,9 +455,9 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vimeo_Touch-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Vimeo_Touch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
