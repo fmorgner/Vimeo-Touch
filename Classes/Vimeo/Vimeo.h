@@ -14,3 +14,4 @@
 #import "VimeoController.h"
 #import "VimeoUser.h"
 #import "VimeoVideo.h"
+#import "VimeoAPIResponse.h"

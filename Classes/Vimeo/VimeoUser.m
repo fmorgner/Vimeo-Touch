@@ -11,6 +11,9 @@
 @implementation VimeoUser
 
 @synthesize token;
+@synthesize displayName;
+@synthesize userID;
+@synthesize username;
 
 #pragma mark - Object Lifecycle
 

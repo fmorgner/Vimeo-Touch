@@ -13,10 +13,20 @@
 	{
 	NSString* status;
 	NSNumber* generationTime;
+	NSXMLParser* xmlParser;
+	NSMutableDictionary* content;
+	NSString* type;
+
+	@private
+	NSString* activeElement;
+	NSString* previousElement;
 	}
+
+- (id)initWithData:(NSData*)theData;
 
 @property(nonatomic, retain) NSString* status;
 @property(nonatomic, retain) NSNumber* generationTime;
-
+@property(nonatomic, retain) NSString* type;
+@property(nonatomic, readonly) NSMutableDictionary* content;
 
 @end

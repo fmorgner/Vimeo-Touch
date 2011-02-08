@@ -14,6 +14,9 @@
 @interface VimeoUser : NSObject
 	{
 	OAuthToken* token;
+	NSString* displayName;
+	NSString* username;
+	NSUInteger userID;
 	}
 
 + (VimeoUser*)user;
@@ -23,5 +26,8 @@
 - (void)writeToKeychainWithItemID:(NSData*)itemID;
 
 @property(nonatomic, retain) OAuthToken* token;
+@property(nonatomic, retain) NSString* displayName;
+@property(nonatomic, retain) NSString* username;
+@property(nonatomic, assign) NSUInteger userID;
 
 @end
