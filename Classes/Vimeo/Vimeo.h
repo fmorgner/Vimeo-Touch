@@ -15,3 +15,4 @@
 #import "VimeoUser.h"
 #import "VimeoVideo.h"
 #import "VimeoAPIResponse.h"
+#import "VimeoError.h"

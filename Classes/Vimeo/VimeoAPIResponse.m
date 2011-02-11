@@ -21,6 +21,7 @@
 	{
 	if((self = [super init]))
 		{
+		error = nil;
 		content = [NSMutableDictionary new];
 		NSString* xmlString = [[NSString alloc] initWithBytes:[theData bytes] length:[theData length] encoding:NSASCIIStringEncoding];
 		CXMLDocument* xmlDoc = [[CXMLDocument alloc] initWithXMLString:xmlString options:CXMLDocumentTidyXML error:nil];
@@ -28,6 +29,16 @@
 		[xmlDoc release];
 		}
 	return self;
+	}
+
+- (void)dealloc
+	{
+	[error release];
+	[content release];
+	[type release];
+	[generationTime release];
+	[status release];
+	[super dealloc];
 	}
 
 - (BOOL)parseResponseDocument:(CXMLDocument*)theXMLDocument
@@ -62,9 +73,14 @@
 	
 	if([self.type isEqualToString:@"err"])
 		{
+		NSMutableDictionary* attributes = [NSMutableDictionary new];
+		
 		[[contentElement attributes] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 			[content setValue:[obj stringValue] forKey:[obj name]];
+			[attributes setValue:[obj stringValue] forKey:[obj name]];
 		}];
+
+		error = [[VimeoError alloc] initWithCode:[[attributes valueForKey:@"code"] integerValue] explanation:[attributes valueForKey:@"expl"] name:[attributes valueForKey:@"msg"]];
 		return YES;
 		}
 	

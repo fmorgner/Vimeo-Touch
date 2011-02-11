@@ -15,4 +15,16 @@
 @synthesize explanation;
 @synthesize name;
 
+- (id) initWithCode:(NSUInteger)theCode explanation:(NSString*)theExplanation name:(NSString*)theName
+	{
+	if((self = [super init]))
+		{
+		code = theCode;
+		explanation = [theExplanation copy];
+		name = [theName copy];
+		}
+	return self;
+	}
+
+
 @end

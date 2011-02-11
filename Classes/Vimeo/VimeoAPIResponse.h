@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TouchXML.h"
+#import "VimeoError.h"
 
 @interface VimeoAPIResponse : NSObject
 	{
@@ -15,6 +16,7 @@
 	NSNumber* generationTime;
 	NSMutableDictionary* content;
 	NSString* type;
+	VimeoError* error;
 	}
 
 - (id)initWithData:(NSData*)theData;

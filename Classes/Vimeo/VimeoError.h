@@ -16,9 +16,10 @@
 	NSString* name;
 	}
 
-@property(nonatomic, assign) NSUInteger code;
-@property(nonatomic, retain) NSString* explanation;
-@property(nonatomic, retain) NSString* name;
+- (id) initWithCode:(NSUInteger)theCode explanation:(NSString*)theExplanation name:(NSString*)theName;
 
+@property(nonatomic, readonly) NSUInteger code;
+@property(nonatomic, readonly) NSString* explanation;
+@property(nonatomic, readonly) NSString* name;
 
 @end
