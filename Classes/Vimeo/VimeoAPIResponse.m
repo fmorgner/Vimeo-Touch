@@ -7,7 +7,7 @@
 //
 
 #import "VimeoAPIResponse.h"
-
+#import "TouchXML.h"
 
 @implementation VimeoAPIResponse
 
@@ -22,57 +22,12 @@
 	{
 	if((self = [super init]))
 		{
-		content = [[NSMutableDictionary alloc] init];
-		xmlParser = [[NSXMLParser alloc] initWithData:theData];
-		[xmlParser setDelegate:self];
-		[xmlParser setShouldProcessNamespaces:NO];
-		[xmlParser setShouldReportNamespacePrefixes:NO];
-		[xmlParser setShouldResolveExternalEntities:NO];
-		[xmlParser parse];
+		content = [NSMutableDictionary new];
+		NSString* xmlString = [[NSString alloc] initWithBytes:[theData bytes] length:[theData length] encoding:NSASCIIStringEncoding];
+		CXMLDocument* xmlDoc = [[CXMLDocument alloc] initWithXMLString:xmlString options:CXMLDocumentTidyXML error:nil];
+		[xmlDoc release];
 		}
 	return self;
-	}
-
-#pragma mark - NSXMLParser delegate methods
-
-- (void)parserDidEndDocument:(NSXMLParser *)parser
-	{
-	
-	}
-
-- (void)parserDidStartDocument:(NSXMLParser *)parser
-	{
-	
-	}
-
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
-	{
-	activeElement = elementName;
-	
-	if([activeElement isEqualToString:@"rsp"])
-		{
-		[self setGenerationTime:[NSNumber numberWithFloat:[[attributeDict valueForKey:@"generated_in"] floatValue]]];
-		[self setStatus:[attributeDict valueForKey:@"stat"]];
-		}
-	else if([activeElement isEqualToString:@"oauth"])
-		{
-		[self setType:activeElement];
-		}
-	else if([attributeDict count])
-		{
-		[content setObject:attributeDict forKey:activeElement];
-		}
-	else
-		{
-		[content setObject:[NSNull null] forKey:activeElement];
-		}
-	}
-
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
-	{
-	if([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""])
-		return;
-	[content setValue:string forKey:activeElement];
 	}
 
 @end

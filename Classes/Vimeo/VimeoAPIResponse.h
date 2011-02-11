@@ -8,18 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface VimeoAPIResponse : NSObject <NSXMLParserDelegate>
 	{
 	NSString* status;
 	NSNumber* generationTime;
-	NSXMLParser* xmlParser;
 	NSMutableDictionary* content;
 	NSString* type;
-
-	@private
-	NSString* activeElement;
-	NSString* previousElement;
 	}
 
 - (id)initWithData:(NSData*)theData;
