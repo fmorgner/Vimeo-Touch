@@ -48,6 +48,7 @@
 		BBDB52381305756A005696AC /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB52281305756A005696AC /* CXMLNode.m */; };
 		BBDB52391305756A005696AC /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB522B1305756A005696AC /* CTidy.m */; };
 		BBDB524513059313005696AC /* CXMLNode_FilteredAttributesExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB524413059313005696AC /* CXMLNode_FilteredAttributesExtensions.m */; };
+		BBE8687913059A8400BF9DAF /* VimeoError.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE8687813059A8400BF9DAF /* VimeoError.m */; };
 		BBF7289F12DB995C00FEEBA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF7289E12DB995C00FEEBA3 /* UIKit.framework */; };
 		BBF728A112DB995C00FEEBA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A012DB995C00FEEBA3 /* Foundation.framework */; };
 		BBF728A312DB995C00FEEBA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A212DB995C00FEEBA3 /* CoreGraphics.framework */; };
@@ -138,6 +139,8 @@
 		BBDB522C1305756A005696AC /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
 		BBDB5242130592D5005696AC /* CXMLNode_FilteredAttributesExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_FilteredAttributesExtensions.h; sourceTree = "<group>"; };
 		BBDB524413059313005696AC /* CXMLNode_FilteredAttributesExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_FilteredAttributesExtensions.m; sourceTree = "<group>"; };
+		BBE8687713059A8400BF9DAF /* VimeoError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoError.h; sourceTree = "<group>"; };
+		BBE8687813059A8400BF9DAF /* VimeoError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoError.m; sourceTree = "<group>"; };
 		BBF7289B12DB995C00FEEBA3 /* Vimeo Touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vimeo Touch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF7289E12DB995C00FEEBA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBF728A012DB995C00FEEBA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -187,6 +190,8 @@
 				BB1AA0D0130033F4008E8C6F /* VimeoKeychainAccess.m */,
 				BB1AA0D31300860D008E8C6F /* VimeoAPIResponse.h */,
 				BB1AA0D41300860D008E8C6F /* VimeoAPIResponse.m */,
+				BBE8687713059A8400BF9DAF /* VimeoError.h */,
+				BBE8687813059A8400BF9DAF /* VimeoError.m */,
 			);
 			path = Vimeo;
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 				BBDB52381305756A005696AC /* CXMLNode.m in Sources */,
 				BBDB52391305756A005696AC /* CTidy.m in Sources */,
 				BBDB524513059313005696AC /* CXMLNode_FilteredAttributesExtensions.m in Sources */,
+				BBE8687913059A8400BF9DAF /* VimeoError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
