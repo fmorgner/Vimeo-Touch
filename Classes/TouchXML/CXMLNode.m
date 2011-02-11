@@ -33,6 +33,7 @@
 #import "CXMLDocument.h"
 #import "CXMLElement.h"
 #import "CXMLNode_CreationExtensions.h"
+#import "CXMLNode_FilteredAttributesExtensions.h"
 
 #include <libxml/xpath.h>
 #include <libxml/xpathInternals.h>
@@ -174,25 +175,6 @@ else
 	NSMutableArray *theChildren = [NSMutableArray array];
 	
 	if (_node->type != CXMLAttributeKind) // NSXML Attribs don't have children.
-	{
-		xmlNodePtr theCurrentNode = _node->children;
-		while (theCurrentNode != NULL)
-		{
-			CXMLNode *theNode = [CXMLNode nodeWithLibXMLNode:theCurrentNode freeOnDealloc:NO];
-			[theChildren addObject:theNode];
-			theCurrentNode = theCurrentNode->next;
-		}
-	}
-	return(theChildren);      
-}
-
-- (NSArray *)childrenOfKind:(CXMLNodeKind)theKind
-{
-	NSAssert(_node != NULL, @"CXMLNode does not have attached libxml2 _node.");
-	
-	NSMutableArray *theChildren = [NSMutableArray array];
-	
-	if (_node->type != CXMLAttributeKind && _node->type != theKind) // NSXML Attribs don't have children.
 	{
 		xmlNodePtr theCurrentNode = _node->children;
 		while (theCurrentNode != NULL)

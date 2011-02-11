@@ -35,3 +35,4 @@
 #import "CXMLNode.h"
 #import "CXMLNode_CreationExtensions.h"
 #import "CXMLNode_XPathExtensions.h"
+#import "CXMLNode_FilteredAttributesExtensions.h"

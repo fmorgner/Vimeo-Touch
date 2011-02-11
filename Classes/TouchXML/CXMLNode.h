@@ -63,7 +63,6 @@ typedef enum {
 - (CXMLNode *)parent;
 - (NSUInteger)childCount;
 - (NSArray *)children;
-- (NSArray *)childrenOfKind:(CXMLNodeKind)theKind;
 - (CXMLNode *)childAtIndex:(NSUInteger)index;
 - (CXMLNode *)previousSibling;
 - (CXMLNode *)nextSibling;
