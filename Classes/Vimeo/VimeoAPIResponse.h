@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TouchXML.h"
 
-@interface VimeoAPIResponse : NSObject <NSXMLParserDelegate>
+@interface VimeoAPIResponse : NSObject
 	{
 	NSString* status;
 	NSNumber* generationTime;
@@ -17,9 +18,10 @@
 	}
 
 - (id)initWithData:(NSData*)theData;
+- (BOOL)parseResponseDocument:(CXMLDocument*)theXMLDocument;
 
 @property(nonatomic, retain) NSString* status;
-@property(nonatomic, retain) NSNumber* generationTime;
+@property(nonatomic, assign) NSNumber* generationTime;
 @property(nonatomic, retain) NSString* type;
 @property(nonatomic, readonly) NSMutableDictionary* content;
 
