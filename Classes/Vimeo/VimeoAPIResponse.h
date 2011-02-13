@@ -26,5 +26,6 @@
 @property(nonatomic, assign) NSNumber* generationTime;
 @property(nonatomic, retain) NSString* type;
 @property(nonatomic, readonly) NSMutableDictionary* content;
+@property(nonatomic, readonly) VimeoError* error;
 
 @end

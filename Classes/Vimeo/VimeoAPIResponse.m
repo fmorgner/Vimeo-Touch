@@ -16,6 +16,7 @@
 @synthesize generationTime;
 @synthesize type;
 @synthesize content;
+@synthesize error;
 
 - (id)initWithData:(NSData*)theData
 	{
@@ -106,6 +107,11 @@
 		}
 	
 	return YES;
+	}
+
+- (NSString *)description
+	{
+	return([NSString stringWithFormat:@"<%@ %p> status=%@, generationTime=%fs, type=%@", NSStringFromClass([self class]), self, self.status, [self.generationTime floatValue], self.type]);
 	}
 
 @end
