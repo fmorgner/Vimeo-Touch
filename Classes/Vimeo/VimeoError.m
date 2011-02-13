@@ -19,12 +19,16 @@
 	{
 	if((self = [super init]))
 		{
-		code = theCode;
+		(theCode == 305) ? (code = 303) : (code = theCode);
 		explanation = [theExplanation copy];
 		name = [theName copy];
 		}
 	return self;
 	}
 
+- (NSString*) description
+	{
+	return([NSString stringWithFormat:@"<%@ [%p]> code=%i, error name=%@, error explanation=%@",NSStringFromClass([self class]), self, [self code] , [self name], [self explanation]]);
+	}
 
 @end
