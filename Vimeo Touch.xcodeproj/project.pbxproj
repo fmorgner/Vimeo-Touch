@@ -244,13 +244,6 @@
 			name = "User Interface";
 			sourceTree = "<group>";
 		};
-		BB6A563212F5D25D00CC8AD9 /* Temp */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Temp;
-			sourceTree = "<group>";
-		};
 		BBDB520F13057537005696AC /* TouchXML */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,7 +299,6 @@
 		BBF7288C12DB995C00FEEBA3 = {
 			isa = PBXGroup;
 			children = (
-				BB6A563212F5D25D00CC8AD9 /* Temp */,
 				BBF7289312DB995C00FEEBA3 /* Classes */,
 				BBF7289412DB995C00FEEBA3 /* Other Sources */,
 				BBF7289512DB995C00FEEBA3 /* Resources */,
