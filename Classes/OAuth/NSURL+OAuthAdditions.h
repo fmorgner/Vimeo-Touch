@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "OAuthParameter.h"
 
 @interface NSURL (OAuthAdditions)
 
 - (NSString*)URLStringWithoutQuery;
+- (NSURL*)URLByAppendingParameter:(OAuthParameter*)aParameter;
+- (NSURL*)URLByAppendingParameters:(NSArray*)theParameters;
 
 @end
