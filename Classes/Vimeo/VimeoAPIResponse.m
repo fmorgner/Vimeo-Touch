@@ -87,7 +87,7 @@
 	
 	NSArray* contentElementChildren = [contentElement childrenOfKind:CXMLElementKind];
 	
-	if([self.type isEqualToString:@"oauth"])
+	if([self.type isEqualToString:kVimeoOAuthResponseType])
 		{
 		for(CXMLElement* element in contentElementChildren)
 			{
@@ -103,6 +103,23 @@
 				{
 				[content setValue:[element stringValue] forKey:[element name]];
 				}
+			}
+		
+		}
+
+	if([self.type isEqualToString:kVimeoChannelsResponseType])
+		{
+		NSMutableArray* channelsArray = [NSMutableArray array];
+		
+		for(CXMLElement* element in contentElementChildren)
+			{
+			[channelsArray addObject:[[VimeoChannel alloc] initWithXMLElement:element]];
+			}
+			
+		[content setObject:channelsArray forKey:@"channels"];
+		for(VimeoChannel* channel in [content objectForKey:@"channels"])
+			{
+			NSLog(@"%@", channel.name);
 			}
 		}
 	
