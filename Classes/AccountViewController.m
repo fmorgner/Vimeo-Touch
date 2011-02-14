@@ -45,13 +45,13 @@
 
 - (void)viewDidLoad
 	{
-	NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?method=%@", kVimeoRestURL, kVimeoMethodOAuthCheckAccessToken]];
+	NSURL* url = [NSURL URLWithString:kVimeoRestURL];
+	OAuthParameter* parameter = [OAuthParameter parameterWithKey:@"method" andValue:kVimeoMethodOAuthCheckAccessToken];
+	url = [url URLByAppendingParameter:parameter];
 	OAuthRequest* tokenCheckRequest = [OAuthRequest requestWithURL:url consumer:appDelegate.consumer token:appDelegate.vimeoUser.token realm:nil signerClass:nil];
-//	[tokenCheckRequest addParameter:[OAuthParameter parameterWithKey:@"method" andValue:kVimeoMethodOAuthCheckAccessToken]];
 	[tokenCheckRequest prepare];
 	NSData* receivedData = [NSURLConnection sendSynchronousRequest:tokenCheckRequest returningResponse:nil error:nil];
 	VimeoAPIResponse* response = [[VimeoAPIResponse alloc] initWithData:receivedData];
-	printf("%s", (char*)[receivedData bytes]);
 	[super viewDidLoad];
 	}
 
