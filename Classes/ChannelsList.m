@@ -11,16 +11,33 @@
 
 @implementation ChannelsList
 
+@synthesize appDelegate;
 
 #pragma mark -
 #pragma mark View lifecycle
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+	{
+	if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
+		{
+		[self setAppDelegate:[[UIApplication sharedApplication] delegate]];
+		self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Channels" image:[UIImage imageNamed:@"70-tv"] tag:0];
+		self.title = @"Channels";
+		}	
+
+	return self;
+	}
+
 - (void)viewDidLoad
 	{
-	[super viewDidLoad];
-
-	self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Channels" image:[UIImage imageNamed:@"70-tv"] tag:0];
-	self.title = @"Channels";
+	[super viewDidLoad];	
+	NSURL* url = [NSURL URLWithString:kVimeoRestURL];
+	OAuthParameter* parameter = [OAuthParameter parameterWithKey:@"method" andValue:kVimeoMethodChannelsGetAll];
+	url = [url URLByAppendingParameter:parameter];
+	OAuthRequest* tokenCheckRequest = [OAuthRequest requestWithURL:url consumer:appDelegate.consumer token:appDelegate.vimeoUser.token realm:nil signerClass:nil];
+	[tokenCheckRequest prepare];
+	NSData* receivedData = [NSURLConnection sendSynchronousRequest:tokenCheckRequest returningResponse:nil error:nil];
+	VimeoAPIResponse* response = [[VimeoAPIResponse alloc] initWithData:receivedData];
 	}
 
 

@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Vimeo.h"
+#import "AppDelegate.h"
 
-@interface ChannelsList : UITableViewController {
-    
-}
+@interface ChannelsList : UITableViewController
+	{
+	AppDelegate* appDelegate;
+	}
+
+@property(nonatomic, retain) AppDelegate* appDelegate;
 
 @end
