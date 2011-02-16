@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-enum VimeoErrorCode {
-  VimeoUserNotFoundError = 1,
-  VimeoGroupNotFoundError = 1,
-  VimeoVideoNotFoundError = 1,
-  VimeoUserNotModerator = 2,
+enum VimeoErrorCode
+	{
+  VimeoNotFoundError = 1,
+  VimeoUserNotModeratorError = 2,
   VimeoNotAllowedError = 3,
   VimeoInvalidSignatureError = 96,
 	VimeoMissingSignatureError = 97,
@@ -29,7 +28,7 @@ enum VimeoErrorCode {
 	VimeoOAuthMissingRequiredParameterError = 307,
 	VimeoOAuthDuplicateParameterError = 308,
 	VimeoRateLimitExceeded = 999
-};
+	};
 
 @interface VimeoError : NSObject
 	{
