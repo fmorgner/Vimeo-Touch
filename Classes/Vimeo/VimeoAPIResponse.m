@@ -58,7 +58,7 @@
 			{
 			if([[attribute name] isEqualToString:@"generated_in"])
 				{
-				[self setGenerationTime:[NSNumber numberWithFloat:[[attribute stringValue] floatValue]]];
+				[self setGenerationTime:[[NSNumber numberWithFloat:[[attribute stringValue] floatValue]] retain]];
 				}
 			else if([[attribute name] isEqualToString:@"stat"])
 				{
