@@ -105,7 +105,6 @@
 				[content setValue:[element stringValue] forKey:[element name]];
 				}
 			}
-		
 		}
 
 	if([self.type isEqualToString:kVimeoChannelsResponseType])
@@ -114,14 +113,12 @@
 		
 		for(CXMLElement* element in contentElementChildren)
 			{
-			[channelsArray addObject:[[[VimeoChannel alloc] initWithXMLElement:element] autorelease]];
+			VimeoChannel* channel = [[VimeoChannel alloc] initWithXMLElement:element];
+			[channelsArray addObject:channel];
+			[channel release];
 			}
 			
 		[content setObject:channelsArray forKey:@"channels"];
-		for(VimeoChannel* channel in [content objectForKey:@"channels"])
-			{
-			NSLog(@"%@", channel.name);
-			}
 		}
 	
 	return YES;

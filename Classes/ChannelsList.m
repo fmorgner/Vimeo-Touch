@@ -12,6 +12,7 @@
 @implementation ChannelsList
 
 @synthesize appDelegate;
+@synthesize channelList;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -37,8 +38,15 @@
 	[tokenCheckRequest prepare];
 	NSData* receivedData = [NSURLConnection sendSynchronousRequest:tokenCheckRequest returningResponse:nil error:nil];
 	VimeoAPIResponse* response = [[VimeoAPIResponse alloc] initWithData:receivedData];
+	
+	if(!response.error)
+		[self setChannelList:[[response content] objectForKey:@"channels"]];
+	else
+		[self setChannelList:nil];
+		
 	[response release];
-	[super viewDidLoad];	
+
+	[super viewDidLoad];
 	}
 
 
@@ -82,7 +90,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 1;
+    return [channelList count];
 }
 
 
@@ -96,7 +104,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 
-	[cell.textLabel setText:[NSString stringWithFormat:@"Cell number %i", indexPath.row]];    
+	[cell.textLabel setText:[[channelList objectAtIndex:indexPath.row] name]];    
     
     return cell;
 }

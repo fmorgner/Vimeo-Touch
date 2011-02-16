@@ -10,11 +10,13 @@
 #import "Vimeo.h"
 #import "AppDelegate.h"
 
-@interface ChannelsList : UITableViewController
+@interface ChannelsList : UITableViewController <UITableViewDataSource>
 	{
 	AppDelegate* appDelegate;
+	NSArray* channelList;
 	}
 
 @property(nonatomic, retain) AppDelegate* appDelegate;
+@property(nonatomic, retain) NSArray* channelList;
 
 @end
