@@ -27,6 +27,7 @@
 		NSString* xmlString = [[NSString alloc] initWithBytes:[theData bytes] length:[theData length] encoding:NSASCIIStringEncoding];
 		CXMLDocument* xmlDoc = [[CXMLDocument alloc] initWithXMLString:xmlString options:CXMLDocumentTidyXML error:nil];
 		[self parseResponseDocument:xmlDoc];
+		[xmlString release];
 		[xmlDoc release];
 		}
 	return self;
@@ -113,7 +114,7 @@
 		
 		for(CXMLElement* element in contentElementChildren)
 			{
-			[channelsArray addObject:[[VimeoChannel alloc] initWithXMLElement:element]];
+			[channelsArray addObject:[[[VimeoChannel alloc] initWithXMLElement:element] autorelease]];
 			}
 			
 		[content setObject:channelsArray forKey:@"channels"];

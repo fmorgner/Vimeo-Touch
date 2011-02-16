@@ -200,11 +200,11 @@ if (theResultCode < 0)
 // 
 uint theBufferLength = 0;
 
-theResultCode = tidySaveString(theTidyDocument, NULL, &theBufferLength);
+tidySaveString(theTidyDocument, NULL, &theBufferLength);
 
 NSMutableData *theOutputBuffer = [NSMutableData dataWithLength:theBufferLength];
 
-theResultCode = tidySaveString(theTidyDocument, [theOutputBuffer mutableBytes], &theBufferLength);
+tidySaveString(theTidyDocument, [theOutputBuffer mutableBytes], &theBufferLength);
 
 NSString *theString = [[[NSString alloc] initWithData:theOutputBuffer encoding:NSUTF8StringEncoding] autorelease];
 

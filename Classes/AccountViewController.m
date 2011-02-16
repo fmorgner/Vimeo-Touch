@@ -52,6 +52,7 @@
 	[tokenCheckRequest prepare];
 	NSData* receivedData = [NSURLConnection sendSynchronousRequest:tokenCheckRequest returningResponse:nil error:nil];
 	VimeoAPIResponse* response = [[VimeoAPIResponse alloc] initWithData:receivedData];
+	[response release];
 	[super viewDidLoad];
 	}
 

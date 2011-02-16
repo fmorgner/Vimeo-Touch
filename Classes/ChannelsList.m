@@ -30,7 +30,6 @@
 
 - (void)viewDidLoad
 	{
-	[super viewDidLoad];	
 	NSURL* url = [NSURL URLWithString:kVimeoRestURL];
 	OAuthParameter* parameter = [OAuthParameter parameterWithKey:@"method" andValue:kVimeoMethodChannelsGetAll];
 	url = [url URLByAppendingParameter:parameter];
@@ -38,6 +37,8 @@
 	[tokenCheckRequest prepare];
 	NSData* receivedData = [NSURLConnection sendSynchronousRequest:tokenCheckRequest returningResponse:nil error:nil];
 	VimeoAPIResponse* response = [[VimeoAPIResponse alloc] initWithData:receivedData];
+	[response release];
+	[super viewDidLoad];	
 	}
 
 

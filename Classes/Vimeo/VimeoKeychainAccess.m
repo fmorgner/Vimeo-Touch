@@ -22,7 +22,8 @@
 	if(keychainSearchQueryStatus != noErr)
 		{
 		NSDictionary* userInfo = [NSDictionary dictionaryWithObject:@"Keychain item not found" forKey:NSLocalizedDescriptionKey];
-		*error = [NSError errorWithDomain:kVimeoKeychainAccessErrorDomain code:-1 userInfo:userInfo];
+		if(error)
+			*error = [NSError errorWithDomain:kVimeoKeychainAccessErrorDomain code:-1 userInfo:userInfo];
 		return nil;
 		}
 
@@ -38,7 +39,8 @@
 	if(keychainFetchQueryStatus != noErr)
 		{
 		NSDictionary* userInfo = [NSDictionary dictionaryWithObject:@"Keychain item could not be fetched" forKey:NSLocalizedDescriptionKey];
-		*error = [NSError errorWithDomain:kVimeoKeychainAccessErrorDomain code:-2 userInfo:userInfo];
+		if(error)
+			*error = [NSError errorWithDomain:kVimeoKeychainAccessErrorDomain code:-2 userInfo:userInfo];
 		return nil;
 		}
 	
@@ -65,7 +67,7 @@
 		NSMutableDictionary* keychainUpdateQuery = [NSMutableDictionary dictionaryWithDictionary:keychainSearchQueryResult];
 		[keychainUpdateQuery setValue:(id)kSecClassGenericPassword forKey:(id)kSecClass];
 
-		NSMutableDictionary* keychainItemData = [[NSMutableDictionary alloc] init];
+		NSMutableDictionary* keychainItemData = [NSMutableDictionary dictionary];
 
 		[keychainItemData setObject:@"Vimeo user token" forKey:(id)kSecAttrLabel];
 		[keychainItemData setObject:@"This is the authorized token for the vimeo user" forKey:(id)kSecAttrDescription];
@@ -77,18 +79,19 @@
 		
 		OSStatus keychainItemUpdateStatus = noErr;
 		keychainItemUpdateStatus = SecItemUpdate((CFDictionaryRef)keychainUpdateQuery, (CFDictionaryRef)keychainItemData);
-		
+				
 		if(keychainItemUpdateStatus != noErr)
 			{
 			NSDictionary* userInfo = [NSDictionary dictionaryWithObject:@"Keychain item could not be updated" forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:kVimeoKeychainAccessErrorDomain code:-3 userInfo:userInfo];
+			if(error)
+				*error = [NSError errorWithDomain:kVimeoKeychainAccessErrorDomain code:-3 userInfo:userInfo];
 			return NO;
 			}
 		
 		}
 	else
 		{
-		NSMutableDictionary* keychainItemData = [[NSMutableDictionary alloc] init];
+		NSMutableDictionary* keychainItemData = [NSMutableDictionary dictionary];
 
 		[keychainItemData setObject:@"Vimeo user token" forKey:(id)kSecAttrLabel];
 		[keychainItemData setObject:@"This is the authorized token for the vimeo user" forKey:(id)kSecAttrDescription];
@@ -105,7 +108,8 @@
 		if(keychainWriteQueryStatus != noErr)
 			{
 			NSDictionary* userInfo = [NSDictionary dictionaryWithObject:@"Keychain item could not be written" forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:kVimeoKeychainAccessErrorDomain code:-4 userInfo:userInfo];
+			if(error)
+				*error = [NSError errorWithDomain:kVimeoKeychainAccessErrorDomain code:-4 userInfo:userInfo];
 			return NO;
 			}
 
