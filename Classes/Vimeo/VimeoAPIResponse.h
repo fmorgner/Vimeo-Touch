@@ -27,7 +27,7 @@ static NSString* kVimeoChannelsResponseType = @"channels";
 - (BOOL)parseResponseDocument:(CXMLDocument*)theXMLDocument;
 
 @property(nonatomic, retain) NSString* status;
-@property(nonatomic, assign) NSNumber* generationTime;
+@property(nonatomic, retain) NSNumber* generationTime;
 @property(nonatomic, retain) NSString* type;
 @property(nonatomic, readonly) NSMutableDictionary* content;
 @property(nonatomic, readonly) VimeoError* error;

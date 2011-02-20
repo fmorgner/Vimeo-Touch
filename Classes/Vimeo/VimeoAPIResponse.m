@@ -25,7 +25,7 @@
 		error = nil;
 		content = [NSMutableDictionary new];
 		NSString* xmlString = [[NSString alloc] initWithBytes:[theData bytes] length:[theData length] encoding:NSASCIIStringEncoding];
-		CXMLDocument* xmlDoc = [[CXMLDocument alloc] initWithXMLString:xmlString options:CXMLDocumentTidyXML error:nil];
+		CXMLDocument* xmlDoc = [[CXMLDocument alloc] initWithXMLString:xmlString options:0 error:nil];
 		[self parseResponseDocument:xmlDoc];
 		[xmlString release];
 		[xmlDoc release];
