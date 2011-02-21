@@ -20,7 +20,7 @@
 	{
 	if ((self = [super init]))
 		{
-		receivedData = [[NSData alloc] init];
+		receivedData = [[NSMutableData alloc] init];
     }
     
 	return self;
@@ -41,8 +41,8 @@
 		return;
 		}
 	
-	completionHandler = block;
-	request = aRequest;
+	[self setCompletionHandler:block];
+	[self setRequest:aRequest];
 	
 	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	}
@@ -66,4 +66,8 @@
 	completionHandler(receivedData);
 	}
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+	{
+	
+	}
 @end

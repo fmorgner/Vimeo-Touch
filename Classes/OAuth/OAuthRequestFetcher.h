@@ -22,7 +22,7 @@
 @property(nonatomic,retain) NSURLRequest* request;
 @property(nonatomic,retain) NSURLConnection* connection;
 @property(nonatomic,retain) NSMutableData* receivedData;
-@property(nonatomic,assign) void (^completionHandler)(NSData*);
+@property(nonatomic,copy) void (^completionHandler)(NSData*);
 
 
 @end

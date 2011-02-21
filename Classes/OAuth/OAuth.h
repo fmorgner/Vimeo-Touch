@@ -11,6 +11,7 @@
 #import "OAuthConsumer.h"
 #import "OAuthParameter.h"
 #import "OAuthRequest.h"
+#import "OAuthRequestFetcher.h"
 #import "OAuthSignerHMAC.h"
 #import "OAuthSignerProtocol.h"
 #import "OAuthToken.h"
