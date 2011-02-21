@@ -8,7 +8,6 @@
 
 #import "ChannelsList.h"
 
-
 @implementation ChannelsList
 
 @synthesize appDelegate;
@@ -40,8 +39,14 @@
 	OAuthRequest* request = [OAuthRequest requestWithURL:url consumer:appDelegate.consumer token:nil realm:nil signerClass:nil];
 	[request prepare];
 
+	OAuthRequestFetcher* fetcher = [[OAuthRequestFetcher alloc] init];
+	[fetcher fetchRequest:request completionHandler:^(NSData *fetchedData) {
+		VimeoAPIResponse* response = [[VimeoAPIResponse alloc] initWithData:fetchedData];
+		[self setChannelList:[[response content] objectForKey:@"channels"]];
+		[(UITableView*)self.view reloadData];
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+	}];
 	
-	connection = [NSURLConnection connectionWithRequest:request delegate:self];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	[super viewDidAppear:animated];
 	}
@@ -55,92 +60,59 @@
 #pragma mark -
 #pragma mark Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
-}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+	{
+	return 1;
+	}
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return [channelList count];
-}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+	{
+	return [channelList count];
+	}
 
 
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+	{
+	static NSString *CellIdentifier = @"Cell";
     
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	
+	if (cell == nil)
+		{
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 
 	[cell.textLabel setText:[[channelList objectAtIndex:indexPath.row] name]];    
     
-    return cell;
-}
+	return cell;
+	}
 
 #pragma mark -
 #pragma mark Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
-}
-
-#pragma mark -
-#pragma mark NSURLConnection delegate
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 	{
-	if(!loadedData)
-		loadedData = [[NSMutableData alloc] init];
-		
-	[loadedData appendData:data];
-	}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-	{
-	VimeoAPIResponse* response = [[VimeoAPIResponse alloc] initWithData:loadedData];
-	if(!response.error)
-		{
-		[self setChannelList:[response.content objectForKey:@"channels"]];
-		[self.view reloadData];
-		}
-	[response release];
-	[loadedData release];
-	loadedData = nil;
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	}
 
 #pragma mark -
 #pragma mark Memory management
 
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Relinquish ownership any cached data, images, etc that aren't in use.
-}
+- (void)didReceiveMemoryWarning
+	{
+	[super didReceiveMemoryWarning];
+	}
 
-- (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
-}
+- (void)viewDidUnload
+	{
+	}
 
 
-- (void)dealloc {
+- (void)dealloc
+	{
 	[loadedData release];
-    [super dealloc];
-}
+	[super dealloc];
+	}
 
 
 @end
