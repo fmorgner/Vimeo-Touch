@@ -15,12 +15,16 @@
 	UIWindow *window;
 	UITabBarController *tabBarController;
 	
+	NSData* keychainItemID;
+	
 	VimeoUser* vimeoUser;
 	OAuthConsumer* consumer;
 	}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+
+@property (nonatomic, retain) IBOutlet NSData* keychainItemID;
 
 @property (nonatomic, retain) VimeoUser* vimeoUser;
 @property (nonatomic, retain) OAuthConsumer* consumer;
