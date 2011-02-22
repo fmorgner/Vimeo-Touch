@@ -10,6 +10,7 @@
 
 #import "VimeoConstants.h"
 #import "VimeoAuthorizationViewController.h"
+#import "VimeoAuthorizationViewControllerDelegate.h"
 #import "VimeoChannel.h"
 #import "VimeoController.h"
 #import "VimeoUser.h"
