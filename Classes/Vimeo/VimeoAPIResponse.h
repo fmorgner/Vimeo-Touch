@@ -26,6 +26,8 @@ static NSString* kVimeoChannelsResponseType = @"channels";
 - (id)initWithData:(NSData*)theData;
 - (BOOL)parseResponseDocument:(CXMLDocument*)theXMLDocument;
 
++ (id)responseWithData:(NSData*)theData;
+
 @property(nonatomic, retain) NSString* status;
 @property(nonatomic, retain) NSNumber* generationTime;
 @property(nonatomic, retain) NSString* type;
