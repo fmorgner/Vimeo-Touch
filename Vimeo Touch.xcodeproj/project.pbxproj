@@ -49,6 +49,7 @@
 		BBDB52391305756A005696AC /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB522B1305756A005696AC /* CTidy.m */; };
 		BBDB524513059313005696AC /* CXMLNode_FilteredAttributesExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB524413059313005696AC /* CXMLNode_FilteredAttributesExtensions.m */; };
 		BBE8687913059A8400BF9DAF /* VimeoError.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE8687813059A8400BF9DAF /* VimeoError.m */; };
+		BBF0CBD81312E926004F85FE /* OAuthRequestFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF0CBD71312E926004F85FE /* OAuthRequestFetcher.m */; };
 		BBF7289F12DB995C00FEEBA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF7289E12DB995C00FEEBA3 /* UIKit.framework */; };
 		BBF728A112DB995C00FEEBA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A012DB995C00FEEBA3 /* Foundation.framework */; };
 		BBF728A312DB995C00FEEBA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF728A212DB995C00FEEBA3 /* CoreGraphics.framework */; };
@@ -141,6 +142,9 @@
 		BBDB524413059313005696AC /* CXMLNode_FilteredAttributesExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_FilteredAttributesExtensions.m; sourceTree = "<group>"; };
 		BBE8687713059A8400BF9DAF /* VimeoError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoError.h; sourceTree = "<group>"; };
 		BBE8687813059A8400BF9DAF /* VimeoError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoError.m; sourceTree = "<group>"; };
+		BBF0CBD61312E926004F85FE /* OAuthRequestFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthRequestFetcher.h; sourceTree = "<group>"; };
+		BBF0CBD71312E926004F85FE /* OAuthRequestFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthRequestFetcher.m; sourceTree = "<group>"; };
+		BBF530A6130C64DD0032BB33 /* APIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
 		BBF7289B12DB995C00FEEBA3 /* Vimeo Touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vimeo Touch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF7289E12DB995C00FEEBA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBF728A012DB995C00FEEBA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -212,6 +216,8 @@
 				BBD34D5812E2085500CAB3BF /* OAuthSignerProtocol.h */,
 				BB1AFA4112E0EC4900252AF3 /* OAuthToken.h */,
 				BB1AFA4212E0EC4900252AF3 /* OAuthToken.m */,
+				BBF0CBD61312E926004F85FE /* OAuthRequestFetcher.h */,
+				BBF0CBD71312E926004F85FE /* OAuthRequestFetcher.m */,
 			);
 			path = OAuth;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 		BBF7289312DB995C00FEEBA3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BBF530A6130C64DD0032BB33 /* APIKey.h */,
 				BBDB520F13057537005696AC /* TouchXML */,
 				BB1AFA2A12E0E0F200252AF3 /* OAuth */,
 				BB1AFA2212E0DEFD00252AF3 /* Vimeo */,
@@ -470,6 +477,7 @@
 				BBDB52391305756A005696AC /* CTidy.m in Sources */,
 				BBDB524513059313005696AC /* CXMLNode_FilteredAttributesExtensions.m in Sources */,
 				BBE8687913059A8400BF9DAF /* VimeoError.m in Sources */,
+				BBF0CBD81312E926004F85FE /* OAuthRequestFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

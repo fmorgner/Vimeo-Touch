@@ -14,9 +14,16 @@
 	{
 	AppDelegate* appDelegate;
 	NSArray* channelList;
+	
+	NSMutableData* loadedData;
+	NSURLConnection* connection;
+	IBOutlet UITableView* channelsTable;
 	}
 
 @property(nonatomic, retain) AppDelegate* appDelegate;
 @property(nonatomic, retain) NSArray* channelList;
+
+@property(nonatomic, retain) NSMutableData* loadedData;
+@property(nonatomic, retain) NSURLConnection* connection;
 
 @end

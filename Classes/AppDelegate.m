@@ -7,15 +7,13 @@
 //
 
 #import "AppDelegate.h"
-
+#import "APIKey.h"
 #import "ChannelsList.h"
 #import "AccountViewController.h"
-
 #import "OAuth.h"
 #import "VimeoController.h"
 
 @implementation AppDelegate
-
 
 @synthesize window;
 @synthesize tabBarController;
@@ -28,7 +26,7 @@
 	NSData* itemID = [NSData dataWithBytes:kKeychainItemIdentifier length:strlen((const char*)kKeychainItemIdentifier)];
 
 	[self setVimeoUser:[VimeoUser userWithKeychainItemID:itemID]];
-	[self setConsumer:[OAuthConsumer consumerWithKey:@"7ae96ae33601e4482b6bf6e76e442781" secret:@"b79d3ec05a464bd7" authorized:NO]];
+	[self setConsumer:[OAuthConsumer consumerWithKey:apiKey secret:apiSecret authorized:NO]];
 	
 	NSMutableArray* viewControllers = [NSMutableArray arrayWithCapacity:1];
 	
