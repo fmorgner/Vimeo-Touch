@@ -99,6 +99,8 @@
 		BB59912212F1E8A1009F2334 /* 111-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "111-user.png"; sourceTree = "<group>"; };
 		BB59912412F1EA45009F2334 /* VimeoAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoAuthorizationViewController.h; sourceTree = "<group>"; };
 		BB59912512F1EA45009F2334 /* VimeoAuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoAuthorizationViewController.m; sourceTree = "<group>"; };
+		BB96A34513142F93005146E2 /* VimeoAuthorizationViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoAuthorizationViewControllerDelegate.h; sourceTree = "<group>"; };
+		BB96A34613142FD7005146E2 /* VimeoControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoControllerDelegate.h; sourceTree = "<group>"; };
 		BBA91EAB12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableURLRequest+OAuthAdditions.h"; path = "Classes/OAuth/NSMutableURLRequest+OAuthAdditions.h"; sourceTree = "<group>"; };
 		BBA91EAC12EB069A00B95AFE /* NSMutableURLRequest+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableURLRequest+OAuthAdditions.m"; path = "Classes/OAuth/NSMutableURLRequest+OAuthAdditions.m"; sourceTree = "<group>"; };
 		BBA91EB212EB129500B95AFE /* NSURL+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+OAuthAdditions.h"; path = "Classes/OAuth/NSURL+OAuthAdditions.h"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		BB1AFA2212E0DEFD00252AF3 /* Vimeo */ = {
 			isa = PBXGroup;
 			children = (
+				BB96A34413142EDE005146E2 /* Protocols */,
 				BBCACEC912FAB8A900B6035C /* Vimeo.h */,
 				BBCACEC712FAB87C00B6035C /* VimeoConstants.h */,
 				BB313A5912F079F100FD1FDD /* VimeoController.h */,
@@ -248,6 +251,15 @@
 				BB05348312DCFAC8008578F2 /* ChannelsList.xib */,
 			);
 			name = "User Interface";
+			sourceTree = "<group>";
+		};
+		BB96A34413142EDE005146E2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BB96A34513142F93005146E2 /* VimeoAuthorizationViewControllerDelegate.h */,
+				BB96A34613142FD7005146E2 /* VimeoControllerDelegate.h */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		BBDB520F13057537005696AC /* TouchXML */ = {

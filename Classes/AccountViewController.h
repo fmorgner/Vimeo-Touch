@@ -11,7 +11,7 @@
 #import "OAuth.h"
 #import "Vimeo.h"
 
-@interface AccountViewController : UIViewController <VimeoAuthorizationViewControllerDelegate, UITableViewDataSource>
+@interface AccountViewController : UIViewController <VimeoAuthorizationViewControllerDelegate, UITableViewDataSource, VimeoControllerDelegate>
 	{
 	VimeoController* vimeoController;
 	AppDelegate* appDelegate;

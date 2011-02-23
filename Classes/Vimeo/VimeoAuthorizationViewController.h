@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "OAuth.h"
+
 #import "VimeoConstants.h"
 #import "VimeoLoadingOverlay.h"
-
+#import "VimeoAuthorizationViewControllerDelegate.h"
 
 @interface VimeoAuthorizationViewController : UIViewController <UIWebViewDelegate>
 	{
@@ -28,11 +29,5 @@
 @property(nonatomic, retain) VimeoLoadingOverlay* loadingOverlay;
 @property(nonatomic, assign) OAuthToken* token;
 @property(nonatomic, assign) id delegate;
-
-@end
-
-@protocol VimeoAuthorizationViewControllerDelegate <NSObject>
-
-- (void)authorizationViewController:(VimeoAuthorizationViewController*)authViewController didReceiveVerifier:(NSString*)theVerifier;
 
 @end

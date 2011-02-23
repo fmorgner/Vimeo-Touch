@@ -19,13 +19,16 @@
 @synthesize tabBarController;
 @synthesize vimeoUser;
 @synthesize consumer;
+@synthesize keychainItemID;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 	{
 	static const UInt8 kKeychainItemIdentifier[] = "ch.felixmorgner.Vimeo_Touch\0";
 	NSData* itemID = [NSData dataWithBytes:kKeychainItemIdentifier length:strlen((const char*)kKeychainItemIdentifier)];
 
-	[self setVimeoUser:[VimeoUser userWithKeychainItemID:itemID]];
+	keychainItemID = [itemID copy];
+
+	[self setVimeoUser:[VimeoUser userWithKeychainItemID:keychainItemID]];
 	[self setConsumer:[OAuthConsumer consumerWithKey:apiKey secret:apiSecret authorized:NO]];
 	
 	NSMutableArray* viewControllers = [NSMutableArray arrayWithCapacity:1];

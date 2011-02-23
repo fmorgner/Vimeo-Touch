@@ -7,16 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VimeoChannel.h"
 #import "OAuth.h"
 
-#define kVimeoChannelMethodGetAll @"vimeo.channels.getAll"
+#import "VimeoUser.h"
+#import "VimeoControllerDelegate.h"
+#import "VimeoConstants.h"
+#import "VimeoAPIResponse.h"
 
 @interface VimeoController : NSObject
 	{
 	OAuthConsumer* consumer;
+	VimeoUser* user;
+	OAuthRequestFetcher* requestFetcher;
+
+	id<VimeoControllerDelegate> delegate;
 	}
 
-@property(nonatomic, retain) OAuthConsumer* consumer;
+- (id)initWithConsumer:(OAuthConsumer*)aConsumer user:(VimeoUser*)aUser delegate:(id<VimeoControllerDelegate>)aDelegate;
+- (void)verifyUserToken;
 
+@property(nonatomic, readonly) OAuthConsumer* consumer;
+@property(nonatomic, readonly) VimeoUser* user;
 @end

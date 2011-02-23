@@ -33,6 +33,12 @@
 	return self;
 	}
 
++ (id)responseWithData:(NSData*)theData
+	{
+	return [[[VimeoAPIResponse alloc] initWithData:theData] autorelease];
+	}
+
+
 - (void)dealloc
 	{
 	[error release];

@@ -43,17 +43,11 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 	{
-	NSURL* url = [NSURL URLWithString:kVimeoRestURL];
-	OAuthParameter* parameter = [OAuthParameter parameterWithKey:@"method" andValue:kVimeoMethodOAuthCheckAccessToken];
-	url = [url URLByAppendingParameter:parameter];
-	OAuthRequest* tokenCheckRequest = [OAuthRequest requestWithURL:url consumer:appDelegate.consumer token:appDelegate.vimeoUser.token realm:nil signerClass:nil];
-	[tokenCheckRequest prepare];
-	NSData* receivedData = [NSURLConnection sendSynchronousRequest:tokenCheckRequest returningResponse:nil error:nil];
-	VimeoAPIResponse* response = [[VimeoAPIResponse alloc] initWithData:receivedData];
-	[response release];
-	[super viewDidLoad];
+	VimeoController* vController = [[VimeoController alloc] initWithConsumer:appDelegate.consumer user:appDelegate.vimeoUser delegate:self];
+	[vController verifyUserToken];
+	[super viewDidAppear:animated];
 	}
 
 - (void)viewDidUnload
@@ -124,6 +118,24 @@
 - (void)authorizationViewController:(VimeoAuthorizationViewController *)authViewController didReceiveVerifier:(NSString *)theVerifier
 	{
 	[self fetchAccessTokenWithVerifier:theVerifier];
+	}
+
+#pragma mark - Vimeo Controller Delegate
+
+- (void)vimeoController:(VimeoController *)aController didFetchResponse:(VimeoAPIResponse *)theResponse
+	{
+	if([theResponse.type isEqualToString:kVimeoOAuthResponseType] && !theResponse.error)
+		{
+		[appDelegate.vimeoUser setUsername:[theResponse.content valueForKeyPath:@"user.username"]];
+		[appDelegate.vimeoUser setDisplayName:[theResponse.content valueForKeyPath:@"user.display_name"]];
+		[appDelegate.vimeoUser setUserID:[[theResponse.content valueForKeyPath:@"user.id"] intValue]];
+		[appDelegate.vimeoUser writeToKeychainWithItemID:appDelegate.keychainItemID];
+		}
+	}
+
+- (void)vimeoController:(VimeoController *)aController didFailFetchingWithError:(NSError *)theError
+	{
+	
 	}
 
 #pragma mark - Table View Data Source
