@@ -20,19 +20,19 @@
 @synthesize vimeoUser;
 @synthesize consumer;
 @synthesize keychainItemID;
+@synthesize vimeoController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 	{
-	static const UInt8 kKeychainItemIdentifier[] = "ch.felixmorgner.Vimeo_Touch\0";
 	NSData* itemID = [NSData dataWithBytes:kKeychainItemIdentifier length:strlen((const char*)kKeychainItemIdentifier)];
-
 	keychainItemID = [itemID copy];
-
+	
 	[self setVimeoUser:[VimeoUser userWithKeychainItemID:keychainItemID]];
 	[self setConsumer:[OAuthConsumer consumerWithKey:apiKey secret:apiSecret authorized:NO]];
 	
-	NSMutableArray* viewControllers = [NSMutableArray arrayWithCapacity:1];
+	vimeoController = [[VimeoController alloc] initWithConsumer:consumer user:vimeoUser];
 	
+	NSMutableArray* viewControllers = [NSMutableArray arrayWithCapacity:1];
 	UINavigationController* localNavigationController;
 	
 	ChannelsList* channelsListController = [[ChannelsList alloc] init];	
@@ -53,18 +53,17 @@
     return YES;
 	}
 
-- (void)applicationWillTerminate:(UIApplication *)application {
+- (void)applicationWillTerminate:(UIApplication *)application
+	{
+	}
 
-	// Save data if appropriate.
-}
-
-- (void)dealloc {
-
+- (void)dealloc
+	{
 	[window release];
 	[tabBarController release];
 	[vimeoUser release];
 	[super dealloc];
-}
+	}
 
 /*
 // Optional UITabBarControllerDelegate method.
