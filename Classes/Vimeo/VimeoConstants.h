@@ -30,4 +30,5 @@ static NSString* kVimeoMethodOAuthCheckAccessToken = @"vimeo.oauth.checkAccessTo
 static NSString* kVimeoMethodChannelsGetAll = @"vimeo.channels.getAll";
 
 // Vimeo API response types
-static NSString* kVimeoOAuthAPIResponseType = @"oauth";
+static NSString* kVimeoOAuthResponseType = @"oauth";
+static NSString* kVimeoChannelsResponseType = @"channels";
