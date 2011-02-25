@@ -26,8 +26,10 @@
 	return self;
 	}
 
-- (void)fetchRequest:(NSURLRequest*)aRequest completionHandler:(void (^)(NSData* fetchedData))block
+- (void)fetchRequest:(NSURLRequest*)aRequest completionHandler:(void (^)(id fetchResult))block
 	{
+	[receivedData setLength:0];
+
 	if(!block)
 		{
 		NSException* exception = [NSException exceptionWithName:@"OAuthRequestFetcherCompletionHandlerNULLException" reason:@"The completion handler must not be NULL" userInfo:nil];
@@ -51,6 +53,7 @@
     [receivedData release];
 		[request release];
 		[connection release];
+		[completionHandler dealloc];
     [super dealloc];
 }
 
@@ -68,6 +71,6 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 	{
-	
+	completionHandler(error);
 	}
 @end
