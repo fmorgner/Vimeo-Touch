@@ -1,4 +1,4 @@
-//
+	//
 //  ChannelsList.m
 //  Vimeo Touch
 //
@@ -15,8 +15,7 @@
 @synthesize loadedData;
 @synthesize connection;
 
-#pragma mark -
-#pragma mark View lifecycle
+#pragma mark - View lifecycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 	{
@@ -33,20 +32,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 	{
-	NSURL* url = [NSURL URLWithString:kVimeoRestURL];
-	OAuthParameter* parameter = [OAuthParameter parameterWithKey:@"method" andValue:kVimeoMethodChannelsGetAll];
-	url = [url URLByAppendingParameter:parameter];
-	OAuthRequest* request = [OAuthRequest requestWithURL:url consumer:appDelegate.consumer token:nil realm:nil signerClass:nil];
-	[request prepare];
-
-	OAuthRequestFetcher* fetcher = [[OAuthRequestFetcher alloc] init];
-	[fetcher fetchRequest:request completionHandler:^(NSData *fetchedData) {
-		VimeoAPIResponse* response = [[VimeoAPIResponse alloc] initWithData:fetchedData];
-		[self setChannelList:[[response content] objectForKey:@"channels"]];
-		[(UITableView*)self.view reloadData];
-		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	}];
-	
+	[appDelegate.vimeoController callMethod:kVimeoMethodChannelsGetAll withParameters:nil delegate:self sign:NO];	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	[super viewDidAppear:animated];
 	}
@@ -57,8 +43,7 @@
 	}
 
 
-#pragma mark -
-#pragma mark Table view data source
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 	{
@@ -88,15 +73,30 @@
 	return cell;
 	}
 
-#pragma mark -
-#pragma mark Table view delegate
+#pragma mark - Table View Delegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 	{
 	}
+	
+#pragma mark - Vimeo Controller Delegate
 
-#pragma mark -
-#pragma mark Memory management
+- (void)vimeoController:(VimeoController *)aController didFetchResponse:(VimeoAPIResponse *)theResponse
+	{
+	if([theResponse.type isEqualToString:kVimeoChannelsResponseType] && !theResponse.error)
+		{
+		[self setChannelList:[[theResponse content] valueForKey:@"channels"]];
+		[(UITableView*)self.view reloadData];
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		}
+	}
+
+- (void)vimeoController:(VimeoController *)aController didFailFetchingWithError:(NSError *)theError
+	{
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+	}
+
+#pragma mark - Memory Management
 
 - (void)didReceiveMemoryWarning
 	{
