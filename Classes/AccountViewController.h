@@ -13,17 +13,19 @@
 
 @interface AccountViewController : UIViewController <VimeoAuthorizationViewControllerDelegate, UITableViewDataSource, VimeoControllerDelegate>
 	{
-	VimeoController* vimeoController;
 	AppDelegate* appDelegate;
 	
 	NSArray* userInformation;
+	
+	IBOutlet UILabel* usernameLabel;
+	IBOutlet UILabel* displayNameLabel;
+	IBOutlet UILabel* userIDLabel;
 	}
 
 - (IBAction)login:(id)sender;
 - (OAuthToken*)fetchAccessTokenWithVerifier:(NSString*)verifier;
 
 
-@property(nonatomic, retain) VimeoController* vimeoController;
 @property(nonatomic, retain) AppDelegate* appDelegate;
 @property(nonatomic, retain) NSArray* userInformation;
 
