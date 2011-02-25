@@ -10,9 +10,7 @@
 #import "TouchXML.h"
 #import "VimeoError.h"
 #import "VimeoChannel.h"
-
-static NSString* kVimeoOAuthResponseType = @"oauth";
-static NSString* kVimeoChannelsResponseType = @"channels";
+#import "VimeoConstants.h"
 
 @interface VimeoAPIResponse : NSObject
 	{
