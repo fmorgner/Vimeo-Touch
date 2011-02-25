@@ -19,12 +19,10 @@
 	OAuthConsumer* consumer;
 	VimeoUser* user;
 	OAuthRequestFetcher* requestFetcher;
-
-	id<VimeoControllerDelegate> delegate;
 	}
 
-- (id)initWithConsumer:(OAuthConsumer*)aConsumer user:(VimeoUser*)aUser delegate:(id<VimeoControllerDelegate>)aDelegate;
-- (void)verifyUserToken;
+- (id)initWithConsumer:(OAuthConsumer*)aConsumer user:(VimeoUser*)aUser;
+- (void)callMethod:(NSString*)aMethod withParameters:(NSArray*)theParameters delegate:(id<VimeoControllerDelegate>)aDelegate sign:(BOOL)shouldSign;
 
 @property(nonatomic, readonly) OAuthConsumer* consumer;
 @property(nonatomic, readonly) VimeoUser* user;
