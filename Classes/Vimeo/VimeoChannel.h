@@ -10,7 +10,7 @@
 #import "TouchXML.h"
 
 
-@interface VimeoChannel : NSObject
+@interface VimeoChannel : NSObject <NSCoding>
 	{
 	NSUInteger ID;
 	BOOL featured;
