@@ -1,4 +1,4 @@
-	//
+//
 //  ChannelsList.m
 //  Vimeo Touch
 //
@@ -32,8 +32,15 @@
 
 - (void)viewDidAppear:(BOOL)animated
 	{
-	[appDelegate.vimeoController callMethod:kVimeoMethodChannelsGetAll withParameters:nil delegate:self sign:NO];	
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	if(!channelList)
+		{
+		[appDelegate.vimeoController callMethod:kVimeoMethodChannelsGetAll withParameters:nil delegate:self sign:NO];	
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+		}
+	else
+		{
+		[(UITableView*)self.view reloadData];
+		}
 	[super viewDidAppear:animated];
 	}
 
@@ -42,6 +49,11 @@
 	return YES;
 	}
 
+- (void)reloadChannels
+	{
+	[appDelegate.vimeoController callMethod:kVimeoMethodChannelsGetAll withParameters:nil delegate:self sign:NO];	
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	}
 
 #pragma mark - Table view data source
 
