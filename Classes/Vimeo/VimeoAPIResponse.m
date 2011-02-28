@@ -125,13 +125,23 @@
 			[channel release];
 			}
 			
-		return YES;
 		[content setObject:channelsArray forKey:@"channels"];
+		return YES;
 		}
 	
 	if([type isEqualToString:kVimeoVideosResponseType])
 		{
+		NSMutableArray* videosArray = [NSMutableArray array];
 		
+		for(CXMLElement* element in contentElementChildren)
+			{
+			VimeoVideo* video = [[VimeoVideo alloc] initWithXMLElement:element];
+			[videosArray addObject:video];
+			[video release];
+			}
+		
+		[content setObject:videosArray forKey:@"videos"];
+		return YES;
 		}
 	
 	return YES;

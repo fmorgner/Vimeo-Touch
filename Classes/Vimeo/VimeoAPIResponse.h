@@ -11,6 +11,7 @@
 #import "VimeoError.h"
 #import "VimeoChannel.h"
 #import "VimeoConstants.h"
+#import "VimeoVideo.h"
 
 @interface VimeoAPIResponse : NSObject
 	{
