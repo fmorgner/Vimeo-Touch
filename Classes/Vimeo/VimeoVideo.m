@@ -11,6 +11,8 @@
 @implementation VimeoVideo
 
 @synthesize ID;
+@synthesize HD;
+@synthesize title;
 
 - (id)initWithXMLElement:(CXMLElement*)aElement
 	{
