@@ -27,6 +27,8 @@
 @synthesize badgeURL;
 @synthesize url;
 
+@synthesize videos;
+
 - (id)initWithXMLElement:(CXMLElement*)aElement
 	{
 	if((self = [super init]))

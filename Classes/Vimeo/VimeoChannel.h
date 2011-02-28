@@ -27,6 +27,8 @@
 	NSURL* logoURL;
 	NSURL* badgeURL;
 	NSURL* url;
+	
+	NSArray* videos;
 	}
 
 - (id)initWithXMLElement:(CXMLElement*)aElement;
@@ -37,5 +39,5 @@
 @property(nonatomic,copy) NSDate* createdOn, *modifiedOn;
 @property(nonatomic,assign,getter = isFeatured) BOOL featured;
 @property(nonatomic,assign,getter = isSponsored) BOOL sponsored;
-
+@property(nonatomic, retain) NSArray* videos;
 @end
