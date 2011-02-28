@@ -94,7 +94,7 @@
 	
 	NSArray* contentElementChildren = [contentElement childrenOfKind:CXMLElementKind];
 	
-	if([self.type isEqualToString:kVimeoOAuthResponseType])
+	if([type isEqualToString:kVimeoOAuthResponseType])
 		{
 		for(CXMLElement* element in contentElementChildren)
 			{
@@ -111,9 +111,10 @@
 				[content setValue:[element stringValue] forKey:[element name]];
 				}
 			}
+		return YES;
 		}
 
-	if([self.type isEqualToString:kVimeoChannelsResponseType])
+	if([type isEqualToString:kVimeoChannelsResponseType])
 		{
 		NSMutableArray* channelsArray = [NSMutableArray array];
 		
@@ -124,7 +125,13 @@
 			[channel release];
 			}
 			
+		return YES;
 		[content setObject:channelsArray forKey:@"channels"];
+		}
+	
+	if([type isEqualToString:kVimeoVideosResponseType])
+		{
+		
 		}
 	
 	return YES;
