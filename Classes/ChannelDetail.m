@@ -7,7 +7,7 @@
 //
 
 #import "ChannelDetail.h"
-
+#import "AppDelegate.h"
 
 @implementation ChannelDetail
 
@@ -43,6 +43,7 @@
 	self.title = channel.name;
 	channelNameLabel.text = channel.name;
 	channelDescriptionView.text = channel.desc;
+	[channel loadVideos:[(AppDelegate*)[[UIApplication sharedApplication] delegate] consumer]];
 	}
 
 - (void)viewDidUnload
