@@ -86,4 +86,24 @@
 		}
 	return self;
 	}
+
+- (void)loadVideos:(OAuthConsumer*)consumer
+	{
+	VimeoController* controller = [[VimeoController alloc] initWithConsumer:consumer user:nil];
+	[controller callMethod:kVimeoMethodChannelsGetVideos withParameters:[NSArray arrayWithObject:[OAuthParameter parameterWithKey:@"channel_id" andValue:[NSString stringWithFormat:@"%i", ID]]] delegate:self sign:NO];
+	}
+
+- (void)vimeoController:(VimeoController *)aController didFetchResponse:(VimeoAPIResponse *)theResponse
+	{
+	if([theResponse.type isEqualToString:kVimeoVideosResponseType] && !theResponse.error)
+		{
+		[self setVideos:[theResponse.content objectForKey:@"videos"]];
+		}
+	}
+
+- (void)vimeoController:(VimeoController *)aController didFailFetchingWithError:(NSError *)theError
+	{
+	
+	}
+
 @end

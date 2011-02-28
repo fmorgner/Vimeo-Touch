@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TouchXML.h"
+#import "VimeoController.h"
 
 
 @interface VimeoChannel : NSObject <NSCoding>
@@ -32,12 +33,13 @@
 	}
 
 - (id)initWithXMLElement:(CXMLElement*)aElement;
+- (void)loadVideos:(OAuthConsumer*)consumer;
 
 @property(nonatomic,assign) NSUInteger ID, videoCount, subscriberCount;
 @property(nonatomic,copy) NSString* name, *desc;
 @property(nonatomic,copy) NSURL* logoURL, *badgeURL, *url;
 @property(nonatomic,copy) NSDate* createdOn, *modifiedOn;
+@property(nonatomic,copy) NSArray* videos;
 @property(nonatomic,assign,getter = isFeatured) BOOL featured;
 @property(nonatomic,assign,getter = isSponsored) BOOL sponsored;
-@property(nonatomic, retain) NSArray* videos;
 @end
