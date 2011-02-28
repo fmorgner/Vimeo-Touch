@@ -44,6 +44,7 @@
 	channelNameLabel.text = channel.name;
 	channelDescriptionView.text = channel.desc;
 	[channel loadVideos:[(AppDelegate*)[[UIApplication sharedApplication] delegate] consumer]];
+	[[NSNotificationCenter defaultCenter] addObserver:videosTableView selector:@selector(reloadData) name:@"kVimeoChannelVideosLoadedNotification" object:channel];
 	}
 
 - (void)viewDidUnload
@@ -58,5 +59,36 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark - Table View Data Source methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+	{
+	return 1;
+	}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+	{
+	return [channel.videos count];
+	}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+	{
+	static NSString *CellIdentifier = @"Cell";
+    
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	
+	if (cell == nil)
+		{
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+
+	[cell.textLabel setText:[[channel.videos objectAtIndex:indexPath.row] title]];    
+    
+	return cell;
+	}
+
 
 @end
