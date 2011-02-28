@@ -98,6 +98,7 @@
 	if([theResponse.type isEqualToString:kVimeoVideosResponseType] && !theResponse.error)
 		{
 		[self setVideos:[theResponse.content objectForKey:@"videos"]];
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"kVimeoChannelVideosLoadedNotification" object:self];
 		}
 	}
 
