@@ -92,6 +92,7 @@
 	ChannelDetail* detailView = [[ChannelDetail alloc] initWithNibName:@"ChannelDetail" bundle:[NSBundle mainBundle]];
 	detailView.channel = [channelList objectAtIndex:indexPath.row];
 	[self.navigationController pushViewController:detailView animated:YES];
+	[detailView release];
 	}
 	
 #pragma mark - Vimeo Controller Delegate
