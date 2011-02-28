@@ -10,6 +10,19 @@
 
 @implementation VimeoVideo
 
+@synthesize ID;
+
+- (id)initWithXMLElement:(CXMLElement*)aElement
+	{
+	if((self = [super init]))
+		{
+		ID = [[[aElement attributeForName:@"ID"] stringValue] intValue];
+		HD = [[[aElement attributeForName:@"is_hd"] stringValue] boolValue];
+		
+		[self setTitle:[[aElement attributeForName:@"title"] stringValue]];
+		}
+	return self;
+	}
 
 
 @end
