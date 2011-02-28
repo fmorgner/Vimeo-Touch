@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Vimeo.h"
 #import "AppDelegate.h"
+#import "ChannelDetail.h"
 
 @interface ChannelsList : UITableViewController <UITableViewDataSource,VimeoControllerDelegate>
 	{

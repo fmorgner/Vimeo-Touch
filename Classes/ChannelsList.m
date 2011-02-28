@@ -89,6 +89,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 	{
+	ChannelDetail* detailView = [[ChannelDetail alloc] initWithNibName:@"ChannelDetail" bundle:[NSBundle mainBundle]];
+	detailView.channel = [channelList objectAtIndex:indexPath.row];
+	[self.navigationController pushViewController:detailView animated:YES];
 	}
 	
 #pragma mark - Vimeo Controller Delegate
