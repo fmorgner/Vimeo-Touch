@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VimeoChannel.h"
 
-@interface ChannelDetail : UIViewController <UITableViewDataSource>
+@interface ChannelDetail : UIViewController <UITableViewDataSource,UITableViewDelegate>
 	{
 	IBOutlet UILabel* channelNameLabel;
 	IBOutlet UITextView* channelDescriptionView;
