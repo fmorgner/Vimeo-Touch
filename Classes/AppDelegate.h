@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Vimeo.h"
 #import "OAuth.h"
+#import "VimeoController.h"
+
+static const UInt8 kKeychainItemIdentifier[] = "ch.felixmorgner.Vimeo_Touch\0";
 
 @interface AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate>
 	{
@@ -19,6 +22,7 @@
 	
 	VimeoUser* vimeoUser;
 	OAuthConsumer* consumer;
+	VimeoController* vimeoController;
 	}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -28,5 +32,6 @@
 
 @property (nonatomic, retain) VimeoUser* vimeoUser;
 @property (nonatomic, retain) OAuthConsumer* consumer;
+@property (nonatomic, retain) VimeoController* vimeoController;
 
 @end

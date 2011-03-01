@@ -14,15 +14,15 @@
 	NSURLRequest* request;
 	NSURLConnection* connection;
 	NSMutableData* receivedData;
-	void (^completionHandler)(NSData* fetchedData);
+	void (^completionHandler)(id);
 	}
 
-- (void)fetchRequest:(NSURLRequest*)aRequest completionHandler:(void (^)(NSData* fetchedData))block;
+- (void)fetchRequest:(NSURLRequest*)aRequest completionHandler:(void (^)(id fetchResult))block;
 
 @property(nonatomic,retain) NSURLRequest* request;
 @property(nonatomic,retain) NSURLConnection* connection;
 @property(nonatomic,retain) NSMutableData* receivedData;
-@property(nonatomic,copy) void (^completionHandler)(NSData*);
+@property(nonatomic,copy) void (^completionHandler)(id);
 
 
 @end

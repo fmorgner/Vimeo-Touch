@@ -16,7 +16,6 @@
 
 @implementation AccountViewController
 
-@synthesize vimeoController;
 @synthesize appDelegate;
 @synthesize userInformation;
 
@@ -45,8 +44,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 	{
-	VimeoController* vController = [[VimeoController alloc] initWithConsumer:appDelegate.consumer user:appDelegate.vimeoUser delegate:self];
-	[vController verifyUserToken];
+	[appDelegate.vimeoController callMethod:kVimeoMethodOAuthCheckAccessToken withParameters:nil delegate:self sign:YES];
 	[super viewDidAppear:animated];
 	}
 
@@ -104,9 +102,7 @@
 	OAuthToken* newToken = [OAuthToken tokenWithKey:[parameters valueForKey:@"oauth_token"] secret:[parameters valueForKey:@"oauth_token_secret"] authorized:YES];
 	[appDelegate.vimeoUser setToken:newToken];
 	
-	static const UInt8 kKeychainItemIdentifier[] = "ch.felixmorgner.Vimeo_Touch\0";
-	NSData* itemID = [NSData dataWithBytes:kKeychainItemIdentifier length:strlen((const char*)kKeychainItemIdentifier)];
-	[appDelegate.vimeoUser writeToKeychainWithItemID:itemID];
+	[appDelegate.vimeoUser writeToKeychainWithItemID:appDelegate.keychainItemID];
 
 	[self.modalViewController dismissModalViewControllerAnimated:YES];
 	return newToken;
@@ -130,6 +126,10 @@
 		[appDelegate.vimeoUser setDisplayName:[theResponse.content valueForKeyPath:@"user.display_name"]];
 		[appDelegate.vimeoUser setUserID:[[theResponse.content valueForKeyPath:@"user.id"] intValue]];
 		[appDelegate.vimeoUser writeToKeychainWithItemID:appDelegate.keychainItemID];
+		
+		[usernameLabel setText:appDelegate.vimeoController.user.username];
+		[displayNameLabel setText:appDelegate.vimeoController.user.displayName];
+		[userIDLabel setText:[NSString stringWithFormat:@"%i", appDelegate.vimeoController.user.userID]];
 		}
 	}
 

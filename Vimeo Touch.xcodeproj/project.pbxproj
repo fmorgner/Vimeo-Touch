@@ -34,6 +34,8 @@
 		BBAAE7D812FBFE420021B9E2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAAE7D712FBFE420021B9E2 /* Security.framework */; };
 		BBAAE7E612FC0C680021B9E2 /* VimeoLoadingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAAE7E512FC0C680021B9E2 /* VimeoLoadingOverlay.m */; };
 		BBCACED012FABD0D00B6035C /* NSDictionary+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCACECF12FABD0D00B6035C /* NSDictionary+OAuthAdditions.m */; };
+		BBD58B1E131C218A003BAAA1 /* ChannelDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD58B1C131C218A003BAAA1 /* ChannelDetail.m */; };
+		BBD58B1F131C218A003BAAA1 /* ChannelDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD58B1D131C218A003BAAA1 /* ChannelDetail.xib */; };
 		BBDB522D1305756A005696AC /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB52121305756A005696AC /* CXMLDocument_CreationExtensions.m */; };
 		BBDB522E1305756A005696AC /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB52141305756A005696AC /* CXMLNode_CreationExtensions.m */; };
 		BBDB522F1305756A005696AC /* CXHTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB52161305756A005696AC /* CXHTMLDocument.m */; };
@@ -113,6 +115,9 @@
 		BBCACECE12FABD0D00B6035C /* NSDictionary+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+OAuthAdditions.h"; path = "Classes/OAuth/NSDictionary+OAuthAdditions.h"; sourceTree = "<group>"; };
 		BBCACECF12FABD0D00B6035C /* NSDictionary+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+OAuthAdditions.m"; path = "Classes/OAuth/NSDictionary+OAuthAdditions.m"; sourceTree = "<group>"; };
 		BBD34D5812E2085500CAB3BF /* OAuthSignerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSignerProtocol.h; sourceTree = "<group>"; };
+		BBD58B1B131C218A003BAAA1 /* ChannelDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelDetail.h; sourceTree = "<group>"; };
+		BBD58B1C131C218A003BAAA1 /* ChannelDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelDetail.m; sourceTree = "<group>"; };
+		BBD58B1D131C218A003BAAA1 /* ChannelDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChannelDetail.xib; path = Classes/ChannelDetail.xib; sourceTree = "<group>"; };
 		BBDB52111305756A005696AC /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
 		BBDB52121305756A005696AC /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
 		BBDB52131305756A005696AC /* CXMLNode_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_CreationExtensions.h; sourceTree = "<group>"; };
@@ -180,25 +185,25 @@
 			children = (
 				BB96A34413142EDE005146E2 /* Protocols */,
 				BBCACEC912FAB8A900B6035C /* Vimeo.h */,
+				BB1AA0D31300860D008E8C6F /* VimeoAPIResponse.h */,
+				BB1AA0D41300860D008E8C6F /* VimeoAPIResponse.m */,
+				BB59912412F1EA45009F2334 /* VimeoAuthorizationViewController.h */,
+				BB59912512F1EA45009F2334 /* VimeoAuthorizationViewController.m */,
 				BBCACEC712FAB87C00B6035C /* VimeoConstants.h */,
 				BB313A5912F079F100FD1FDD /* VimeoController.h */,
 				BB313A5A12F079F100FD1FDD /* VimeoController.m */,
-				BB1AFA2412E0DF2B00252AF3 /* VimeoVideo.h */,
-				BB1AFA2512E0DF2B00252AF3 /* VimeoVideo.m */,
 				BB313A5D12F07AAA00FD1FDD /* VimeoChannel.h */,
 				BB313A5E12F07AAA00FD1FDD /* VimeoChannel.m */,
-				BB59911E12F1E599009F2334 /* VimeoUser.h */,
-				BB59911F12F1E599009F2334 /* VimeoUser.m */,
-				BB59912412F1EA45009F2334 /* VimeoAuthorizationViewController.h */,
-				BB59912512F1EA45009F2334 /* VimeoAuthorizationViewController.m */,
-				BBAAE7E412FC0C680021B9E2 /* VimeoLoadingOverlay.h */,
-				BBAAE7E512FC0C680021B9E2 /* VimeoLoadingOverlay.m */,
-				BB1AA0CF130033F4008E8C6F /* VimeoKeychainAccess.h */,
-				BB1AA0D0130033F4008E8C6F /* VimeoKeychainAccess.m */,
-				BB1AA0D31300860D008E8C6F /* VimeoAPIResponse.h */,
-				BB1AA0D41300860D008E8C6F /* VimeoAPIResponse.m */,
 				BBE8687713059A8400BF9DAF /* VimeoError.h */,
 				BBE8687813059A8400BF9DAF /* VimeoError.m */,
+				BB1AA0CF130033F4008E8C6F /* VimeoKeychainAccess.h */,
+				BB1AA0D0130033F4008E8C6F /* VimeoKeychainAccess.m */,
+				BBAAE7E412FC0C680021B9E2 /* VimeoLoadingOverlay.h */,
+				BBAAE7E512FC0C680021B9E2 /* VimeoLoadingOverlay.m */,
+				BB59911E12F1E599009F2334 /* VimeoUser.h */,
+				BB59911F12F1E599009F2334 /* VimeoUser.m */,
+				BB1AFA2412E0DF2B00252AF3 /* VimeoVideo.h */,
+				BB1AFA2512E0DF2B00252AF3 /* VimeoVideo.m */,
 			);
 			path = Vimeo;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 				BB313A6312F09ABF00FD1FDD /* AccountViewController.xib */,
 				BBF728AE12DB995C00FEEBA3 /* MainWindow.xib */,
 				BB05348312DCFAC8008578F2 /* ChannelsList.xib */,
+				BBD58B1D131C218A003BAAA1 /* ChannelDetail.xib */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -336,6 +342,8 @@
 				BBF728AC12DB995C00FEEBA3 /* AppDelegate.m */,
 				BB05348112DCFAC8008578F2 /* ChannelsList.h */,
 				BB05348212DCFAC8008578F2 /* ChannelsList.m */,
+				BBD58B1B131C218A003BAAA1 /* ChannelDetail.h */,
+				BBD58B1C131C218A003BAAA1 /* ChannelDetail.m */,
 				BB313A6112F09ABF00FD1FDD /* AccountViewController.h */,
 				BB313A6212F09ABF00FD1FDD /* AccountViewController.m */,
 			);
@@ -442,6 +450,7 @@
 				BB59912312F1E8A1009F2334 /* 111-user.png in Resources */,
 				BB0B7CFF12F35ABC00F5B44D /* vimeo_logo-2x.png in Resources */,
 				BB0B7D0012F35ABC00F5B44D /* vimeo_logo.png in Resources */,
+				BBD58B1F131C218A003BAAA1 /* ChannelDetail.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +499,7 @@
 				BBDB524513059313005696AC /* CXMLNode_FilteredAttributesExtensions.m in Sources */,
 				BBE8687913059A8400BF9DAF /* VimeoError.m in Sources */,
 				BBF0CBD81312E926004F85FE /* OAuthRequestFetcher.m in Sources */,
+				BBD58B1E131C218A003BAAA1 /* ChannelDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
