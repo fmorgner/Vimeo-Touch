@@ -9,14 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "TouchXML.h"
 
-@interface VimeoVideo : NSObject
+@interface VimeoVideo : NSObject <UIWebViewDelegate>
 	{
 	NSUInteger ID;
 	NSString* title;
-	BOOL HD; 
+	BOOL HD;
+	
+	@private
+	UIWebView* loadingWebView;
+	NSTimer* urlFetchTimer;
 	}
 
 - (id)initWithXMLElement:(CXMLElement*)aElement;
+- (void)loadMobileVideoURL;
+- (void)generateURL:(NSTimer*)theTimer;
 
 @property(nonatomic,assign) NSUInteger ID;
 @property(nonatomic,copy) NSString* title;
