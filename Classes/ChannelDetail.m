@@ -45,6 +45,21 @@
 	channelDescriptionView.text = channel.desc;
 	[channel loadVideos:[(AppDelegate*)[[UIApplication sharedApplication] delegate] consumer]];
 	[[NSNotificationCenter defaultCenter] addObserver:videosTableView selector:@selector(reloadData) name:@"kVimeoChannelVideosLoadedNotification" object:channel];
+//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(debugLoad) name:@"kVimeoChannelVideosLoadedNotification" object:channel];
+	}
+/*
+- (void)debugLoad
+	{
+	[[channel.videos objectAtIndex:1] loadMobileVideoURL];
+	}
+*/
+- (void)playVideo:(NSNotification*)aNotification
+	{
+//	UIWebView* videoWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+	UIWebView* videoWebView = [[UIWebView alloc] initWithFrame:self.view.frame];
+	NSURL* vURL = [NSURL URLWithString:[[aNotification userInfo] objectForKey:@"url"]];	
+	[videoWebView loadRequest:[NSURLRequest requestWithURL:vURL]];
+	[self.view addSubview:videoWebView];
 	}
 
 - (void)viewDidUnload
@@ -57,7 +72,8 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+//    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	return YES;
 }
 
 #pragma mark - Table View Data Source methods
@@ -90,9 +106,11 @@
 	return cell;
 	}
 	
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 	{
-	
+	VimeoVideo* video = [channel.videos objectAtIndex:indexPath.row];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playVideo:) name:@"VideoURLNotification" object:video];
+	[video loadMobileVideoURL];
 	}
 
 

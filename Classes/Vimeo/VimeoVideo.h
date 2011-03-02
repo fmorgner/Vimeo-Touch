@@ -15,6 +15,8 @@
 	NSString* title;
 	BOOL HD;
 	
+	NSURL* URL;
+	
 	@private
 	UIWebView* loadingWebView;
 	NSTimer* urlFetchTimer;
@@ -26,5 +28,6 @@
 
 @property(nonatomic,assign) NSUInteger ID;
 @property(nonatomic,copy) NSString* title;
+@property(nonatomic,readonly) NSURL* URL;
 @property(nonatomic,assign,getter = isHD) BOOL HD; 
 @end

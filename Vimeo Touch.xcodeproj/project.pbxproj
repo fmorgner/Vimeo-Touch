@@ -50,6 +50,7 @@
 		BBDB52381305756A005696AC /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB52281305756A005696AC /* CXMLNode.m */; };
 		BBDB52391305756A005696AC /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB522B1305756A005696AC /* CTidy.m */; };
 		BBDB524513059313005696AC /* CXMLNode_FilteredAttributesExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB524413059313005696AC /* CXMLNode_FilteredAttributesExtensions.m */; };
+		BBDEDA63131D68A500A3C30A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDEDA62131D68A500A3C30A /* MediaPlayer.framework */; };
 		BBE8687913059A8400BF9DAF /* VimeoError.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE8687813059A8400BF9DAF /* VimeoError.m */; };
 		BBF0CBD81312E926004F85FE /* OAuthRequestFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF0CBD71312E926004F85FE /* OAuthRequestFetcher.m */; };
 		BBF7289F12DB995C00FEEBA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF7289E12DB995C00FEEBA3 /* UIKit.framework */; };
@@ -147,6 +148,7 @@
 		BBDB522C1305756A005696AC /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
 		BBDB5242130592D5005696AC /* CXMLNode_FilteredAttributesExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_FilteredAttributesExtensions.h; sourceTree = "<group>"; };
 		BBDB524413059313005696AC /* CXMLNode_FilteredAttributesExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_FilteredAttributesExtensions.m; sourceTree = "<group>"; };
+		BBDEDA62131D68A500A3C30A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BBE8687713059A8400BF9DAF /* VimeoError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoError.h; sourceTree = "<group>"; };
 		BBE8687813059A8400BF9DAF /* VimeoError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoError.m; sourceTree = "<group>"; };
 		BBF0CBD61312E926004F85FE /* OAuthRequestFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthRequestFetcher.h; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBDEDA63131D68A500A3C30A /* MediaPlayer.framework in Frameworks */,
 				BBAAE7D812FBFE420021B9E2 /* Security.framework in Frameworks */,
 				BBF7289F12DB995C00FEEBA3 /* UIKit.framework in Frameworks */,
 				BBF728A112DB995C00FEEBA3 /* Foundation.framework in Frameworks */,
@@ -376,6 +379,7 @@
 		BBF7289612DB995C00FEEBA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBDEDA62131D68A500A3C30A /* MediaPlayer.framework */,
 				BBAAE7D712FBFE420021B9E2 /* Security.framework */,
 				BBF7289E12DB995C00FEEBA3 /* UIKit.framework */,
 				BBF728A012DB995C00FEEBA3 /* Foundation.framework */,

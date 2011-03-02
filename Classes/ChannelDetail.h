@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "VimeoChannel.h"
 
 @interface ChannelDetail : UIViewController <UITableViewDataSource,UITableViewDelegate>

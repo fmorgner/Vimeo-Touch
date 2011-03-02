@@ -13,6 +13,7 @@
 @synthesize ID;
 @synthesize HD;
 @synthesize title;
+@synthesize URL;
 
 - (id)initWithXMLElement:(CXMLElement*)aElement
 	{
@@ -47,6 +48,11 @@
 	
 	NSString* videoURL = [videoString stringByReplacingOccurrencesOfString:@"vimeo.playVideo('" withString:@""];
 	videoURL = [videoURL stringByReplacingOccurrencesOfString:@"')" withString:@""];
+	
+	URL = [[NSURL alloc] initWithString:videoURL];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"VideoURLNotification" object:self userInfo:[NSDictionary dictionaryWithObject:videoURL forKey:@"url"]];
+	
 	return;
 	}
 
