@@ -6,7 +6,7 @@
 //  Copyright 2011 Felix Morgner. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 
 @protocol OAuthSigner <NSObject>
